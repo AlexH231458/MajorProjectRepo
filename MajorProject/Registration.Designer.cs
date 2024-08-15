@@ -110,10 +110,11 @@
             // RegEnterButton
             // 
             this.RegEnterButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.RegEnterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RegEnterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RegEnterButton.Location = new System.Drawing.Point(350, 230);
+            this.RegEnterButton.Location = new System.Drawing.Point(355, 230);
             this.RegEnterButton.Name = "RegEnterButton";
-            this.RegEnterButton.Size = new System.Drawing.Size(100, 50);
+            this.RegEnterButton.Size = new System.Drawing.Size(95, 50);
             this.RegEnterButton.TabIndex = 13;
             this.RegEnterButton.Text = "Enter";
             this.RegEnterButton.UseVisualStyleBackColor = false;
@@ -122,10 +123,11 @@
             // RegReturnButton
             // 
             this.RegReturnButton.BackColor = System.Drawing.Color.DarkRed;
+            this.RegReturnButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RegReturnButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegReturnButton.Location = new System.Drawing.Point(250, 230);
             this.RegReturnButton.Name = "RegReturnButton";
-            this.RegReturnButton.Size = new System.Drawing.Size(100, 50);
+            this.RegReturnButton.Size = new System.Drawing.Size(95, 50);
             this.RegReturnButton.TabIndex = 14;
             this.RegReturnButton.Text = "Return";
             this.RegReturnButton.UseVisualStyleBackColor = false;
@@ -135,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 361);
+            this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.RegReturnButton);
             this.Controls.Add(this.RegEnterButton);
             this.Controls.Add(this.RegDateBox);
@@ -147,6 +149,7 @@
             this.Controls.Add(this.RegUsernameBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Registration";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registration";
             this.Load += new System.EventHandler(this.Registration_Load);
             this.ResumeLayout(false);

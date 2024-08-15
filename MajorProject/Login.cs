@@ -56,7 +56,11 @@ namespace MajorProject
 
         private void LoginEnterButton_Click(object sender, EventArgs e)
         {
-
+            //switches to menu form on button click
+            Menu temp = new Menu();
+            temp.Region = this.Region;
+            temp.Show();
+            this.Hide();
         }
     }
 }

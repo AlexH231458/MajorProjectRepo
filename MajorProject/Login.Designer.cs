@@ -79,10 +79,11 @@
             // LoginEnterButton
             // 
             this.LoginEnterButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.LoginEnterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoginEnterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoginEnterButton.Location = new System.Drawing.Point(350, 180);
+            this.LoginEnterButton.Location = new System.Drawing.Point(355, 180);
             this.LoginEnterButton.Name = "LoginEnterButton";
-            this.LoginEnterButton.Size = new System.Drawing.Size(100, 50);
+            this.LoginEnterButton.Size = new System.Drawing.Size(95, 50);
             this.LoginEnterButton.TabIndex = 4;
             this.LoginEnterButton.Text = "Enter";
             this.LoginEnterButton.UseVisualStyleBackColor = false;
@@ -91,10 +92,11 @@
             // LoginNewButton
             // 
             this.LoginNewButton.BackColor = System.Drawing.Color.Silver;
+            this.LoginNewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoginNewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginNewButton.Location = new System.Drawing.Point(250, 180);
             this.LoginNewButton.Name = "LoginNewButton";
-            this.LoginNewButton.Size = new System.Drawing.Size(100, 50);
+            this.LoginNewButton.Size = new System.Drawing.Size(95, 50);
             this.LoginNewButton.TabIndex = 5;
             this.LoginNewButton.Text = "New User?";
             this.LoginNewButton.UseVisualStyleBackColor = false;
@@ -115,7 +117,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 261);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.LoginShowCheck);
             this.Controls.Add(this.LoginNewButton);
             this.Controls.Add(this.LoginEnterButton);
@@ -124,6 +127,7 @@
             this.Controls.Add(this.LoginPasswordBox);
             this.Controls.Add(this.LoginUsernameBox);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
