@@ -61,9 +61,10 @@
             // RegShowCheck
             // 
             this.RegShowCheck.AutoSize = true;
+            this.RegShowCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RegShowCheck.Location = new System.Drawing.Point(470, 135);
             this.RegShowCheck.Name = "RegShowCheck";
-            this.RegShowCheck.Size = new System.Drawing.Size(53, 17);
+            this.RegShowCheck.Size = new System.Drawing.Size(50, 17);
             this.RegShowCheck.TabIndex = 7;
             this.RegShowCheck.Text = "Show";
             this.RegShowCheck.UseVisualStyleBackColor = true;
@@ -101,6 +102,7 @@
             // 
             // RegDateBox
             // 
+            this.RegDateBox.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.RegDateBox.Location = new System.Drawing.Point(250, 180);
             this.RegDateBox.Name = "RegDateBox";
             this.RegDateBox.Size = new System.Drawing.Size(200, 20);

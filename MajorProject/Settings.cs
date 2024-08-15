@@ -44,5 +44,10 @@ namespace MajorProject
             temp.Show();
             this.Hide();
         }
+
+        private void SettingsFontButton_Click(object sender, EventArgs e)
+        {
+            var font = SettingsFontDialog.ShowDialog();
+        }
     }
 }

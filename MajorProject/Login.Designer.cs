@@ -105,9 +105,10 @@
             // LoginShowCheck
             // 
             this.LoginShowCheck.AutoSize = true;
+            this.LoginShowCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoginShowCheck.Location = new System.Drawing.Point(470, 135);
             this.LoginShowCheck.Name = "LoginShowCheck";
-            this.LoginShowCheck.Size = new System.Drawing.Size(53, 17);
+            this.LoginShowCheck.Size = new System.Drawing.Size(50, 17);
             this.LoginShowCheck.TabIndex = 6;
             this.LoginShowCheck.Text = "Show";
             this.LoginShowCheck.UseVisualStyleBackColor = true;

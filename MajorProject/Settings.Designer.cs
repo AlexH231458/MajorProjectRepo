@@ -32,11 +32,12 @@
             this.SettingsFontLabel = new System.Windows.Forms.Label();
             this.SettingsColourLabel = new System.Windows.Forms.Label();
             this.SettingsAutoshiftBox = new System.Windows.Forms.ComboBox();
-            this.SettingsFontBox = new System.Windows.Forms.ComboBox();
             this.SettingsColourButton = new System.Windows.Forms.Button();
             this.SettingsColourDialog = new System.Windows.Forms.ColorDialog();
             this.SettingsReturnButton = new System.Windows.Forms.Button();
             this.SettingsExitButton = new System.Windows.Forms.Button();
+            this.SettingsFontDialog = new System.Windows.Forms.FontDialog();
+            this.SettingsFontButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SettingsAutoshiftLabel
@@ -71,21 +72,17 @@
             // 
             // SettingsAutoshiftBox
             // 
+            this.SettingsAutoshiftBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SettingsAutoshiftBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SettingsAutoshiftBox.FormattingEnabled = true;
+            this.SettingsAutoshiftBox.Items.AddRange(new object[] {
+            "On",
+            "Off"});
             this.SettingsAutoshiftBox.Location = new System.Drawing.Point(250, 80);
             this.SettingsAutoshiftBox.Name = "SettingsAutoshiftBox";
             this.SettingsAutoshiftBox.Size = new System.Drawing.Size(200, 28);
             this.SettingsAutoshiftBox.TabIndex = 6;
-            // 
-            // SettingsFontBox
-            // 
-            this.SettingsFontBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SettingsFontBox.FormattingEnabled = true;
-            this.SettingsFontBox.Location = new System.Drawing.Point(250, 130);
-            this.SettingsFontBox.Name = "SettingsFontBox";
-            this.SettingsFontBox.Size = new System.Drawing.Size(200, 28);
-            this.SettingsFontBox.TabIndex = 7;
+            this.SettingsAutoshiftBox.Text = "On";
             // 
             // SettingsColourButton
             // 
@@ -125,15 +122,37 @@
             this.SettingsExitButton.UseVisualStyleBackColor = false;
             this.SettingsExitButton.Click += new System.EventHandler(this.SettingsExitButton_Click);
             // 
+            // SettingsFontDialog
+            // 
+            this.SettingsFontDialog.AllowScriptChange = false;
+            this.SettingsFontDialog.AllowSimulations = false;
+            this.SettingsFontDialog.AllowVectorFonts = false;
+            this.SettingsFontDialog.AllowVerticalFonts = false;
+            this.SettingsFontDialog.FixedPitchOnly = true;
+            this.SettingsFontDialog.FontMustExist = true;
+            this.SettingsFontDialog.ShowEffects = false;
+            // 
+            // SettingsFontButton
+            // 
+            this.SettingsFontButton.BackColor = System.Drawing.Color.Silver;
+            this.SettingsFontButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SettingsFontButton.Location = new System.Drawing.Point(250, 130);
+            this.SettingsFontButton.Name = "SettingsFontButton";
+            this.SettingsFontButton.Size = new System.Drawing.Size(200, 28);
+            this.SettingsFontButton.TabIndex = 17;
+            this.SettingsFontButton.Text = "Fonts";
+            this.SettingsFontButton.UseVisualStyleBackColor = false;
+            this.SettingsFontButton.Click += new System.EventHandler(this.SettingsFontButton_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.SettingsFontButton);
             this.Controls.Add(this.SettingsExitButton);
             this.Controls.Add(this.SettingsReturnButton);
             this.Controls.Add(this.SettingsColourButton);
-            this.Controls.Add(this.SettingsFontBox);
             this.Controls.Add(this.SettingsAutoshiftBox);
             this.Controls.Add(this.SettingsColourLabel);
             this.Controls.Add(this.SettingsFontLabel);
@@ -153,10 +172,11 @@
         private System.Windows.Forms.Label SettingsFontLabel;
         private System.Windows.Forms.Label SettingsColourLabel;
         private System.Windows.Forms.ComboBox SettingsAutoshiftBox;
-        private System.Windows.Forms.ComboBox SettingsFontBox;
         private System.Windows.Forms.Button SettingsColourButton;
         private System.Windows.Forms.ColorDialog SettingsColourDialog;
         private System.Windows.Forms.Button SettingsReturnButton;
         private System.Windows.Forms.Button SettingsExitButton;
+        private System.Windows.Forms.FontDialog SettingsFontDialog;
+        private System.Windows.Forms.Button SettingsFontButton;
     }
 }
