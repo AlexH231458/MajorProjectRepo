@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -56,6 +57,8 @@ namespace MajorProject
 
         private void LoginEnterButton_Click(object sender, EventArgs e)
         {
+            SqlConnection SqlCon = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\Right Click\source\repos\MajorProjectRepo\MajorProject\ProjectDatabase.mdf; Integrated Security = True");
+
             //switches to menu form on button click
             Menu temp = new Menu();
             temp.Region = this.Region;
