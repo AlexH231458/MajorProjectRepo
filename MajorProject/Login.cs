@@ -57,7 +57,22 @@ namespace MajorProject
 
         private void LoginEnterButton_Click(object sender, EventArgs e)
         {
-            SqlConnection SqlCon = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\Right Click\source\repos\MajorProjectRepo\MajorProject\ProjectDatabase.mdf; Integrated Security = True");
+            //Opens SQL connection
+            SqlConnection SqlCon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Right Click\source\repos\MajorProjectRepo\MajorProject\AppData\Database.mdf;Integrated Security=True");
+            SqlCon.Open();
+
+            string sqlUser = ("SELECT * FROM [Users] WHERE Username = @U AND Password = @P");
+
+            SqlCommand DataAdaptor1 = new SqlCommand(sqlUser, SqlCon);
+            DataAdaptor1.CommandType.ToString();
+            DataAdaptor1.Parameters.AddWithValue("@U", LoginUsernameBox.Text);
+            DataAdaptor1.Parameters.AddWithValue("@P", LoginPasswordBox.Text);
+
+            SqlDataAdapter selectUser = new SqlDataAdapter(DataAdaptor1);
+            DataTable DT1 = new DataTable();
+            selectUser.Fill(DT1);
+            SqlCon.Close();
+            //3.26 video 3
 
             //switches to menu form on button click
             Menu temp = new Menu();
