@@ -63,6 +63,7 @@ namespace MajorProject
 
             string sqlUser = ("SELECT * FROM [Users] WHERE Username = @U AND Password = @P");
 
+            //fills parameters with values from user input
             SqlCommand DataAdaptor1 = new SqlCommand(sqlUser, SqlCon);
             DataAdaptor1.CommandType.ToString();
             DataAdaptor1.Parameters.AddWithValue("@U", LoginUsernameBox.Text);
@@ -72,13 +73,23 @@ namespace MajorProject
             DataTable DT1 = new DataTable();
             selectUser.Fill(DT1);
             SqlCon.Close();
-            //3.26 video 3
 
-            //switches to menu form on button click
-            Menu temp = new Menu();
-            temp.Region = this.Region;
-            temp.Show();
-            this.Hide();
+            foreach (DataRow row in DT1.Rows)
+            {
+                if (DT1.Rows.Count == 1)
+                {
+                    //switches to menu form if details are valid
+                    Menu Menu = new Menu();
+                    //Menu.Username = DT1.Rows[0]["Username"].ToString();
+                    this.Hide();
+                    Menu.Show();
+                }
+                else
+                {
+                    LoginErrorText.Text = "Error: invalid login details";
+                    LoginErrorText.Show();
+                }
+            }
         }
     }
 }

@@ -35,6 +35,7 @@
             this.LoginEnterButton = new System.Windows.Forms.Button();
             this.LoginNewButton = new System.Windows.Forms.Button();
             this.LoginShowCheck = new System.Windows.Forms.CheckBox();
+            this.LoginErrorText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LoginUsernameBox
@@ -114,12 +115,23 @@
             this.LoginShowCheck.UseVisualStyleBackColor = true;
             this.LoginShowCheck.CheckedChanged += new System.EventHandler(this.LoginShowCheck_CheckedChanged);
             // 
+            // LoginErrorText
+            // 
+            this.LoginErrorText.AutoSize = true;
+            this.LoginErrorText.ForeColor = System.Drawing.Color.Red;
+            this.LoginErrorText.Location = new System.Drawing.Point(250, 250);
+            this.LoginErrorText.Name = "LoginErrorText";
+            this.LoginErrorText.Size = new System.Drawing.Size(10, 13);
+            this.LoginErrorText.TabIndex = 7;
+            this.LoginErrorText.Text = " ";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.LoginErrorText);
             this.Controls.Add(this.LoginShowCheck);
             this.Controls.Add(this.LoginNewButton);
             this.Controls.Add(this.LoginEnterButton);
@@ -145,6 +157,7 @@
         private System.Windows.Forms.Button LoginEnterButton;
         private System.Windows.Forms.Button LoginNewButton;
         private System.Windows.Forms.CheckBox LoginShowCheck;
+        private System.Windows.Forms.Label LoginErrorText;
     }
 }
 
