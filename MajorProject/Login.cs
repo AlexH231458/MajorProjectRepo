@@ -79,10 +79,10 @@ namespace MajorProject
                 if (DT1.Rows.Count == 1)
                 {
                     //switches to menu form if details are valid
-                    Menu Menu = new Menu();
+                    Menu MenuForm = new Menu();
                     //Menu.Username = DT1.Rows[0]["Username"].ToString();
                     this.Hide();
-                    Menu.Show();
+                    MenuForm.Show();
                 }
                 else
                 {

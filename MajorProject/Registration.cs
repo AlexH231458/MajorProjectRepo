@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -59,9 +60,112 @@ namespace MajorProject
             this.Hide();
         }
 
+        public bool checkPassword(string text)
+        {
+            bool allNumbers;
+            int tempNumber;
+            try
+            {
+                tempNumber = int.Parse(text);
+                allNumbers = true;
+            }
+            catch
+            {
+                allNumbers = false;
+            }
+
+            if (text.ToUpper() != text && text.ToLower() != text)
+            {
+                bool numberFound = false;
+                foreach (char C in text)
+                {
+                    try
+                    {
+                        tempNumber = int.Parse(C.ToString());
+                        numberFound = true;
+                    }
+                    catch
+                    {
+
+                    }
+                }
+                if (numberFound == true && allNumbers == false)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private void RegEnterButton_Click(object sender, EventArgs e)
         {
+            //sets variables from user input
+            string userName = RegUsernameBox.Text;
+            string password = RegPasswordBox.Text;
+            DateTime DoB = DateTime.Parse(RegDateBox.Text);
 
+            //Opens SQL connection
+            SqlConnection SqlCon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Right Click\source\repos\MajorProjectRepo\MajorProject\AppData\Database.mdf;Integrated Security=True");
+            SqlCon.Open();
+
+            string sqlUser = ("SELECT * FROM [Users] WHERE Username = @U");
+
+            //fills parameters with values from user input
+            SqlCommand DataAdaptor1 = new SqlCommand(sqlUser, SqlCon);
+            DataAdaptor1.CommandType.ToString();
+            DataAdaptor1.Parameters.AddWithValue("@U", userName);
+
+            SqlDataAdapter selectUser = new SqlDataAdapter(DataAdaptor1);
+            DataTable DT1 = new DataTable();
+            selectUser.Fill(DT1);
+            SqlCon.Close();
+
+            foreach (DataRow row in DT1.Rows)
+            {
+                //checks that username is unique
+                if (DT1.Rows.Count == 1)
+                {
+                    RegErrorText.Text = "Error: Username already exists";
+                    RegErrorText.Show();
+                }
+
+                //checks that the password has lower case, upper case and numbers
+                else if (checkPassword(password) == false)
+                {
+                    RegErrorText.Text = "Error: Password is not secure";
+                    RegErrorText.Show();
+                }
+
+                //checks that the user is over 13 years old
+                else if (DoB.AddYears(13) < DateTime.Today)
+                {
+                    RegErrorText.Text = "Error: Users must be over 13";
+                    RegErrorText.Show();
+                }
+
+                //adds the new user to the databse then returns to the login form
+                else
+                {
+                    SqlCon.Open();
+                    string isql = "INSERT INTO Users (Username, Password) VALUES (@Username, @Password)";
+                    SqlCommand cmd = new SqlCommand(isql, SqlCon);
+                    cmd.Parameters.AddWithValue("@Username", userName);
+                    cmd.Parameters.AddWithValue("@Password", password);
+                    cmd.ExecuteNonQuery();
+                    SqlCon.Close();
+
+                    Login LoginForm = new Login();
+                    this.Hide();
+                    LoginForm.Show();
+                }
+            }
         }
     }
 }

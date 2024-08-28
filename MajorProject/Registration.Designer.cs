@@ -37,6 +37,7 @@
             this.RegDateBox = new System.Windows.Forms.DateTimePicker();
             this.RegEnterButton = new System.Windows.Forms.Button();
             this.RegReturnButton = new System.Windows.Forms.Button();
+            this.RegErrorText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // RegUsernameBox
@@ -135,11 +136,22 @@
             this.RegReturnButton.UseVisualStyleBackColor = false;
             this.RegReturnButton.Click += new System.EventHandler(this.RegReturnButton_Click);
             // 
+            // RegErrorText
+            // 
+            this.RegErrorText.AutoSize = true;
+            this.RegErrorText.ForeColor = System.Drawing.Color.Red;
+            this.RegErrorText.Location = new System.Drawing.Point(250, 300);
+            this.RegErrorText.Name = "RegErrorText";
+            this.RegErrorText.Size = new System.Drawing.Size(10, 13);
+            this.RegErrorText.TabIndex = 15;
+            this.RegErrorText.Text = " ";
+            // 
             // Registration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.RegErrorText);
             this.Controls.Add(this.RegReturnButton);
             this.Controls.Add(this.RegEnterButton);
             this.Controls.Add(this.RegDateBox);
@@ -170,5 +182,6 @@
         private System.Windows.Forms.DateTimePicker RegDateBox;
         private System.Windows.Forms.Button RegEnterButton;
         private System.Windows.Forms.Button RegReturnButton;
+        private System.Windows.Forms.Label RegErrorText;
     }
 }
