@@ -30,19 +30,17 @@ namespace MajorProject
         private void SettingsReturnButton_Click(object sender, EventArgs e)
         {
             //switches to menu form on button click
-            Menu temp = new Menu();
-            temp.Region = this.Region;
-            temp.Show();
+            Menu MenuForm = new Menu();
             this.Hide();
+            MenuForm.Show();
         }
 
         private void SettingsExitButton_Click(object sender, EventArgs e)
         {
             //switches to login form on button click
-            Login temp = new Login();
-            temp.Region = this.Region;
-            temp.Show();
+            Login LoginForm = new Login();
             this.Hide();
+            LoginForm.Show();
         }
 
         private void SettingsFontButton_Click(object sender, EventArgs e)

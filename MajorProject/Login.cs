@@ -50,18 +50,21 @@ namespace MajorProject
         {
             //switches to registration form on button click
             Registration temp = new Registration();
-            temp.Region = this.Region;
-            temp.Show();
+            Registration RegForm = new Registration();
             this.Hide();
+            RegForm.Show();
         }
 
         private void LoginEnterButton_Click(object sender, EventArgs e)
         {
+            LoginErrorText.Text = "";
+            LoginErrorText.Show();
+
             //Opens SQL connection
             SqlConnection SqlCon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Right Click\source\repos\MajorProjectRepo\MajorProject\AppData\Database.mdf;Integrated Security=True");
             SqlCon.Open();
 
-            string sqlUser = ("SELECT * FROM [Users] WHERE Username = @U AND Password = @P");
+            string sqlUser = ("SELECT * FROM [Users] WHERE Username = @U AND Password = @P COLLATE SQL_Latin1_General_CP1_CS_AS");
 
             //fills parameters with values from user input
             SqlCommand DataAdaptor1 = new SqlCommand(sqlUser, SqlCon);
@@ -73,23 +76,19 @@ namespace MajorProject
             DataTable DT1 = new DataTable();
             selectUser.Fill(DT1);
             SqlCon.Close();
-
             foreach (DataRow row in DT1.Rows)
             {
                 if (DT1.Rows.Count == 1)
                 {
                     //switches to menu form if details are valid
                     Menu MenuForm = new Menu();
-                    //Menu.Username = DT1.Rows[0]["Username"].ToString();
+                    Information.userName = DT1.Rows[0]["Username"].ToString();
                     this.Hide();
                     MenuForm.Show();
                 }
-                else
-                {
-                    LoginErrorText.Text = "Error: invalid login details";
-                    LoginErrorText.Show();
-                }
             }
+            LoginErrorText.Text = "Error: invalid login details";
+            LoginErrorText.Show();
         }
     }
 }

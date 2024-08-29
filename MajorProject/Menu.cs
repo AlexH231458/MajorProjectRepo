@@ -25,10 +25,9 @@ namespace MajorProject
         private void MenuSettingsButton_Click(object sender, EventArgs e)
         {
             //switches to settings form on button click
-            Settings temp = new Settings();
-            temp.Region = this.Region;
-            temp.Show();
+            Settings SettingsForm = new Settings();
             this.Hide();
+            SettingsForm.Show();
         }
     }
 }

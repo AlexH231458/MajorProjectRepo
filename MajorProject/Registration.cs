@@ -54,10 +54,9 @@ namespace MajorProject
         private void RegReturnButton_Click(object sender, EventArgs e)
         {
             //switches to login form on button click
-            Login temp = new Login();
-            temp.Region = this.Region;
-            temp.Show();
+            Login LoginForm = new Login();
             this.Hide();
+            LoginForm.Show();
         }
 
         public bool checkPassword(string text)
@@ -106,6 +105,8 @@ namespace MajorProject
 
         private void RegEnterButton_Click(object sender, EventArgs e)
         {
+            RegErrorText.Text = "";
+            RegErrorText.Show();
             //sets variables from user input
             string userName = RegUsernameBox.Text;
             string password = RegPasswordBox.Text;
@@ -115,7 +116,7 @@ namespace MajorProject
             SqlConnection SqlCon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Right Click\source\repos\MajorProjectRepo\MajorProject\AppData\Database.mdf;Integrated Security=True");
             SqlCon.Open();
 
-            string sqlUser = ("SELECT * FROM [Users] WHERE Username = @U");
+            string sqlUser = ("SELECT * FROM [Users] WHERE Username = @U COLLATE SQL_Latin1_General_CP1_CS_AS");
 
             //fills parameters with values from user input
             SqlCommand DataAdaptor1 = new SqlCommand(sqlUser, SqlCon);
@@ -127,24 +128,29 @@ namespace MajorProject
             selectUser.Fill(DT1);
             SqlCon.Close();
 
+            bool userFound = false;
             foreach (DataRow row in DT1.Rows)
             {
                 //checks that username is unique
                 if (DT1.Rows.Count == 1)
                 {
+                    userFound = true;
                     RegErrorText.Text = "Error: Username already exists";
                     RegErrorText.Show();
                 }
+            }
 
+            if (userFound == false)
+            {
                 //checks that the password has lower case, upper case and numbers
-                else if (checkPassword(password) == false)
+                if (checkPassword(password) == false)
                 {
                     RegErrorText.Text = "Error: Password is not secure";
                     RegErrorText.Show();
                 }
 
                 //checks that the user is over 13 years old
-                else if (DoB.AddYears(13) < DateTime.Today)
+                else if (DoB.AddYears(13) >= DateTime.Today)
                 {
                     RegErrorText.Text = "Error: Users must be over 13";
                     RegErrorText.Show();
@@ -154,11 +160,15 @@ namespace MajorProject
                 else
                 {
                     SqlCon.Open();
-                    string isql = "INSERT INTO Users (Username, Password) VALUES (@Username, @Password)";
-                    SqlCommand cmd = new SqlCommand(isql, SqlCon);
-                    cmd.Parameters.AddWithValue("@Username", userName);
-                    cmd.Parameters.AddWithValue("@Password", password);
-                    cmd.ExecuteNonQuery();
+                    string isql = "INSERT INTO Users VALUES (@Username, @Password)";
+                    //SqlCommand cmd = new SqlCommand(isql, SqlCon);
+
+                    using(SqlCommand cmd = new SqlCommand(isql, SqlCon))
+                    {
+                        cmd.Parameters.AddWithValue("@Username", userName);
+                        cmd.Parameters.AddWithValue("@Password", password);
+                        cmd.ExecuteNonQuery();
+                    }
                     SqlCon.Close();
 
                     Login LoginForm = new Login();

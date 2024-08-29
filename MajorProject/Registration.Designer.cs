@@ -139,10 +139,11 @@
             // RegErrorText
             // 
             this.RegErrorText.AutoSize = true;
+            this.RegErrorText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegErrorText.ForeColor = System.Drawing.Color.Red;
             this.RegErrorText.Location = new System.Drawing.Point(250, 300);
             this.RegErrorText.Name = "RegErrorText";
-            this.RegErrorText.Size = new System.Drawing.Size(10, 13);
+            this.RegErrorText.Size = new System.Drawing.Size(15, 24);
             this.RegErrorText.TabIndex = 15;
             this.RegErrorText.Text = " ";
             // 

@@ -118,10 +118,11 @@
             // LoginErrorText
             // 
             this.LoginErrorText.AutoSize = true;
+            this.LoginErrorText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginErrorText.ForeColor = System.Drawing.Color.Red;
             this.LoginErrorText.Location = new System.Drawing.Point(250, 250);
             this.LoginErrorText.Name = "LoginErrorText";
-            this.LoginErrorText.Size = new System.Drawing.Size(10, 13);
+            this.LoginErrorText.Size = new System.Drawing.Size(15, 24);
             this.LoginErrorText.TabIndex = 7;
             this.LoginErrorText.Text = " ";
             // 
