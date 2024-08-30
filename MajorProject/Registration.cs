@@ -161,14 +161,10 @@ namespace MajorProject
                 {
                     SqlCon.Open();
                     string isql = "INSERT INTO Users VALUES (@Username, @Password)";
-                    //SqlCommand cmd = new SqlCommand(isql, SqlCon);
-
-                    using(SqlCommand cmd = new SqlCommand(isql, SqlCon))
-                    {
-                        cmd.Parameters.AddWithValue("@Username", userName);
-                        cmd.Parameters.AddWithValue("@Password", password);
-                        cmd.ExecuteNonQuery();
-                    }
+                    SqlCommand cmd = new SqlCommand(isql, SqlCon);
+                    cmd.Parameters.AddWithValue("@Username", userName);
+                    cmd.Parameters.AddWithValue("@Password", password);
+                    cmd.ExecuteNonQuery();
                     SqlCon.Close();
 
                     Login LoginForm = new Login();

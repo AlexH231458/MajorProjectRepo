@@ -64,7 +64,7 @@ namespace MajorProject
             SqlConnection SqlCon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Right Click\source\repos\MajorProjectRepo\MajorProject\AppData\Database.mdf;Integrated Security=True");
             SqlCon.Open();
 
-            string sqlUser = ("SELECT * FROM [Users] WHERE Username = @U AND Password = @P COLLATE SQL_Latin1_General_CP1_CS_AS");
+            string sqlUser = ("SELECT * FROM [Users] WHERE Username = @U COLLATE SQL_Latin1_General_CP1_CS_AS AND Password = @P COLLATE SQL_Latin1_General_CP1_CS_AS");
 
             //fills parameters with values from user input
             SqlCommand DataAdaptor1 = new SqlCommand(sqlUser, SqlCon);
