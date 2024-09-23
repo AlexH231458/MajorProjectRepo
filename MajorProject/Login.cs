@@ -61,13 +61,12 @@ namespace MajorProject
             LoginErrorText.Show();
 
             //Opens SQL connection
-            SqlConnection SqlCon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Right Click\source\repos\MajorProjectRepo\MajorProject\AppData\Database.mdf;Integrated Security=True");
-            SqlCon.Open();
+            Information.SqlCon.Open();
 
             string sqlUser = ("SELECT * FROM [Users] WHERE Username = @U COLLATE SQL_Latin1_General_CP1_CS_AS AND Password = @P COLLATE SQL_Latin1_General_CP1_CS_AS");
 
             //fills parameters with values from user input
-            SqlCommand DataAdaptor1 = new SqlCommand(sqlUser, SqlCon);
+            SqlCommand DataAdaptor1 = new SqlCommand(sqlUser, Information.SqlCon);
             DataAdaptor1.CommandType.ToString();
             DataAdaptor1.Parameters.AddWithValue("@U", LoginUsernameBox.Text);
             DataAdaptor1.Parameters.AddWithValue("@P", LoginPasswordBox.Text);
@@ -75,7 +74,7 @@ namespace MajorProject
             SqlDataAdapter selectUser = new SqlDataAdapter(DataAdaptor1);
             DataTable DT1 = new DataTable();
             selectUser.Fill(DT1);
-            SqlCon.Close();
+            Information.SqlCon.Close();
             foreach (DataRow row in DT1.Rows)
             {
                 if (DT1.Rows.Count == 1)

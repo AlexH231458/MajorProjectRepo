@@ -29,5 +29,13 @@ namespace MajorProject
             this.Hide();
             SettingsForm.Show();
         }
+
+        private void MenuFriendsButton_Click(object sender, EventArgs e)
+        {
+            //switches to friends form on button click
+            Settings SettingsForm = new Settings();
+            this.Hide();
+            SettingsForm.Show();
+        }
     }
 }

@@ -113,20 +113,19 @@ namespace MajorProject
             DateTime DoB = DateTime.Parse(RegDateBox.Text);
 
             //Opens SQL connection
-            SqlConnection SqlCon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Right Click\source\repos\MajorProjectRepo\MajorProject\AppData\Database.mdf;Integrated Security=True");
-            SqlCon.Open();
+            Information.SqlCon.Open();
 
             string sqlUser = ("SELECT * FROM [Users] WHERE Username = @U COLLATE SQL_Latin1_General_CP1_CS_AS");
 
             //fills parameters with values from user input
-            SqlCommand DataAdaptor1 = new SqlCommand(sqlUser, SqlCon);
+            SqlCommand DataAdaptor1 = new SqlCommand(sqlUser, Information.SqlCon);
             DataAdaptor1.CommandType.ToString();
             DataAdaptor1.Parameters.AddWithValue("@U", userName);
 
             SqlDataAdapter selectUser = new SqlDataAdapter(DataAdaptor1);
             DataTable DT1 = new DataTable();
             selectUser.Fill(DT1);
-            SqlCon.Close();
+            Information.SqlCon.Close();
 
             bool userFound = false;
             foreach (DataRow row in DT1.Rows)
@@ -159,13 +158,13 @@ namespace MajorProject
                 //adds the new user to the databse then returns to the login form
                 else
                 {
-                    SqlCon.Open();
+                    Information.SqlCon.Open();
                     string isql = "INSERT INTO Users VALUES (@Username, @Password)";
-                    SqlCommand cmd = new SqlCommand(isql, SqlCon);
+                    SqlCommand cmd = new SqlCommand(isql, Information.SqlCon);
                     cmd.Parameters.AddWithValue("@Username", userName);
                     cmd.Parameters.AddWithValue("@Password", password);
                     cmd.ExecuteNonQuery();
-                    SqlCon.Close();
+                    Information.SqlCon.Close();
 
                     Login LoginForm = new Login();
                     this.Hide();
