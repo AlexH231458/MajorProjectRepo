@@ -33,9 +33,9 @@ namespace MajorProject
         private void MenuFriendsButton_Click(object sender, EventArgs e)
         {
             //switches to friends form on button click
-            Settings SettingsForm = new Settings();
+            Friends FriendsForm = new Friends();
             this.Hide();
-            SettingsForm.Show();
+            FriendsForm.Show();
         }
     }
 }

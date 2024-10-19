@@ -82,6 +82,7 @@ namespace MajorProject
                     //switches to menu form if details are valid
                     Menu MenuForm = new Menu();
                     Information.userName = DT1.Rows[0]["Username"].ToString();
+                    Information.userID = Convert.ToInt32(DT1.Rows[0]["UserID"]);
                     this.Hide();
                     MenuForm.Show();
                 }
