@@ -20,7 +20,7 @@ namespace MajorProject
 
             //open SQL connection
             Information.SqlCon.Open();
-            string sql = ("SELECT Username FROM [Users] WHERE UserID != @I");
+            string sql = ("SELECT Username FROM [Users] WHERE Users.UserID != @I");
             SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
             cmd.CommandType.ToString();
             cmd.Parameters.AddWithValue("@I", Information.userID);
@@ -74,6 +74,11 @@ namespace MajorProject
             Cmd.ExecuteNonQuery();
 
             Information.SqlCon.Close();
+        }
+
+        private void Friends_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

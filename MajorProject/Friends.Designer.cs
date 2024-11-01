@@ -33,6 +33,7 @@
             this.FriendTitleLabel = new System.Windows.Forms.Label();
             this.FriendSearchLabel = new System.Windows.Forms.Label();
             this.FriendRequestButton = new System.Windows.Forms.Button();
+            this.FriendsRequestsPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // FriendReturnButton
@@ -90,11 +91,20 @@
             this.FriendRequestButton.UseVisualStyleBackColor = false;
             this.FriendRequestButton.Click += new System.EventHandler(this.FriendRequestButton_Click);
             // 
+            // FriendsRequestsPanel
+            // 
+            this.FriendsRequestsPanel.AutoScroll = true;
+            this.FriendsRequestsPanel.Location = new System.Drawing.Point(39, 181);
+            this.FriendsRequestsPanel.Name = "FriendsRequestsPanel";
+            this.FriendsRequestsPanel.Size = new System.Drawing.Size(471, 146);
+            this.FriendsRequestsPanel.TabIndex = 20;
+            // 
             // Friends
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 761);
+            this.Controls.Add(this.FriendsRequestsPanel);
             this.Controls.Add(this.FriendRequestButton);
             this.Controls.Add(this.FriendSearchLabel);
             this.Controls.Add(this.FriendTitleLabel);
@@ -102,6 +112,7 @@
             this.Controls.Add(this.FriendReturnButton);
             this.Name = "Friends";
             this.Text = "Friends";
+            this.Load += new System.EventHandler(this.Friends_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,5 +125,6 @@
         private System.Windows.Forms.Label FriendTitleLabel;
         private System.Windows.Forms.Label FriendSearchLabel;
         private System.Windows.Forms.Button FriendRequestButton;
+        private System.Windows.Forms.Panel FriendsRequestsPanel;
     }
 }
