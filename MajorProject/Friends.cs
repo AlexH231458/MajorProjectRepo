@@ -76,9 +76,23 @@ namespace MajorProject
             Information.SqlCon.Close();
         }
 
+        private List<NewRequest> Requests = new List<NewRequest>();
+
+        public void displayRequests()
+        {
+            FriendsRequestsPanel.Controls.Clear();
+            int totalRequests = 0;
+            foreach (NewRequest R in )
+            {
+                Requests NR = new Requests(R);
+                NR.Parent = FriendsRequestsPanel;
+                totalRequests++;
+            }
+        }
+
         private void Friends_Load(object sender, EventArgs e)
         {
-
+            displayRequests();
         }
     }
 }

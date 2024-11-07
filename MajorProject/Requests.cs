@@ -12,9 +12,18 @@ namespace MajorProject
 {
     public partial class Requests : UserControl
     {
-        public Requests()
+        public NewRequest NewRequest;
+
+        public Requests(NewRequest R)
         {
             InitializeComponent();
+            NewRequest = R;
+        }
+
+
+        private void Requests_Load(object sender, EventArgs e)
+        {
+            Username.Text = NewRequest.Username;
         }
     }
 }

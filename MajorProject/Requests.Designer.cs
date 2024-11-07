@@ -68,6 +68,7 @@
             this.Controls.Add(this.RequestNameText);
             this.Name = "Requests";
             this.Size = new System.Drawing.Size(250, 50);
+            this.Load += new System.EventHandler(this.Requests_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
