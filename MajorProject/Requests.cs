@@ -23,7 +23,7 @@ namespace MajorProject
 
         public void Requests_Load(object sender, EventArgs e)
         {
-            UsernameText.Text = NewRequest.UsernameText;
+            RequestNameText.Text = NewRequest.UsernameText;
         }
     }
 }
