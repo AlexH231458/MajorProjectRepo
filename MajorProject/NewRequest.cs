@@ -9,17 +9,17 @@ namespace MajorProject
 {
     public class NewRequest
     {
-        public string _Username;
+        public string _UsernameText;
 
-        public string Username
+        public string UsernameText
         {
-            get { return _Username; }
-            set { _Username = value; }
+            get { return _UsernameText; }
+            set { _UsernameText = value; }
         }
 
         public NewRequest(DataRow DR)
         {
-            _Username = DR["Username"].ToString();
+            _UsernameText = DR["Username"].ToString();
         }
     }
 }

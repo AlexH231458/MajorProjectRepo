@@ -21,9 +21,9 @@ namespace MajorProject
         }
 
 
-        private void Requests_Load(object sender, EventArgs e)
+        public void Requests_Load(object sender, EventArgs e)
         {
-            Username.Text = NewRequest.Username;
+            UsernameText.Text = NewRequest.UsernameText;
         }
     }
 }

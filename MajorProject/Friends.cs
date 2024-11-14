@@ -82,7 +82,7 @@ namespace MajorProject
         {
             FriendsRequestsPanel.Controls.Clear();
             int totalRequests = 0;
-            foreach (NewRequest R in )
+            foreach (NewRequest R in Requests)
             {
                 Requests NR = new Requests(R);
                 NR.Parent = FriendsRequestsPanel;
