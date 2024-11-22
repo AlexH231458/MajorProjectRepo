@@ -24,7 +24,7 @@ namespace MajorProject
             Information.SqlCon.Open();
 
             string currentUser = Information.userID.ToString();
-            string nameSQL = "SELECT Users.Username FROM Users, Friends WHERE Users.UserID = Friends.Friend1ID AND Friends.Status = REQUESTED AND Friends.Friend2ID =" + currentUser;
+            string nameSQL = "SELECT Users.Username FROM Users, Friends WHERE Users.UserID = Friends.Friend1 AND Friends.Status LIKE Requested AND Friends.Friend2 =" + currentUser;
 
             SqlDataAdapter DA = new SqlDataAdapter(nameSQL, Information.SqlCon);
             DataTable DT = new DataTable();

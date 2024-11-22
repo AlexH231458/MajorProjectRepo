@@ -14,6 +14,7 @@ namespace MajorProject
 {
     public partial class Friends : Form
     {
+        private FriendRequest friendRequest = new FriendRequest();
         public Friends()
         {
             InitializeComponent();
@@ -37,6 +38,9 @@ namespace MajorProject
                 count++;
             }
             Information.SqlCon.Close();
+
+            friendRequest.displayRequest(null);
+            displayRequests();
         }
 
         private void FriendReturnButton_Click(object sender, EventArgs e)
@@ -82,10 +86,11 @@ namespace MajorProject
         {
             FriendsRequestsPanel.Controls.Clear();
             int totalRequests = 0;
-            foreach (NewRequest R in Requests)
+            foreach (NewRequest R in friendRequest.RequestList)
             {
                 Requests NR = new Requests(R);
                 NR.Parent = FriendsRequestsPanel;
+                NR.Top = totalRequests * NR.Height;
                 totalRequests++;
             }
         }
@@ -93,6 +98,11 @@ namespace MajorProject
         private void Friends_Load(object sender, EventArgs e)
         {
             displayRequests();
+        }
+
+        private void FriendsRequestsPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -96,8 +96,9 @@
             this.FriendsRequestsPanel.AutoScroll = true;
             this.FriendsRequestsPanel.Location = new System.Drawing.Point(39, 181);
             this.FriendsRequestsPanel.Name = "FriendsRequestsPanel";
-            this.FriendsRequestsPanel.Size = new System.Drawing.Size(471, 146);
+            this.FriendsRequestsPanel.Size = new System.Drawing.Size(471, 330);
             this.FriendsRequestsPanel.TabIndex = 20;
+            this.FriendsRequestsPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.FriendsRequestsPanel_Paint);
             // 
             // Friends
             // 
