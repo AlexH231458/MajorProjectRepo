@@ -24,9 +24,16 @@ namespace MajorProject
             Information.SqlCon.Open();
 
             string currentUser = Information.userID.ToString();
-            string nameSQL = "SELECT Users.Username FROM Users, Friends WHERE Users.UserID = Friends.Friend1 AND Friends.Status LIKE Requested AND Friends.Friend2 =" + currentUser;
 
-            SqlDataAdapter DA = new SqlDataAdapter(nameSQL, Information.SqlCon);
+            //ChatGPT used
+            string nameSQL = "SELECT Users.Username FROM Users INNER JOIN Friends ON Users.UserID = Friends.Friend1 WHERE Friends.Status = @Status AND Friends.Friend2 = @Friend2";
+            SqlCommand cmd = new SqlCommand(nameSQL, Information.SqlCon);
+            cmd.Parameters.AddWithValue("@Status", "Requested");
+            cmd.Parameters.AddWithValue("@Friend2", Information.userID);
+
+            SqlDataAdapter DA = new SqlDataAdapter(cmd);
+
+
             DataTable DT = new DataTable();
             DA.Fill(DT);
             Information.SqlCon.Close();

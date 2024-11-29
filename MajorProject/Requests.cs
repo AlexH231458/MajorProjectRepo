@@ -18,6 +18,8 @@ namespace MajorProject
         {
             InitializeComponent();
             NewRequest = R;
+            //ChatGPT used
+            this.Load += Requests_Load;
         }
 
 
