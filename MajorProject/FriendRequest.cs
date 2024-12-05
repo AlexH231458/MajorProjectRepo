@@ -19,7 +19,12 @@ namespace MajorProject
             set { _RequestList = value; }
         }
 
-        public void displayRequest(DataRow RowIn)
+        public List<NewRequest> GetRequestList()
+        {
+            return RequestList;
+        }
+
+        public void displayRequest(DataRow RowIn, List<NewRequest> requestList)
         {
             Information.SqlCon.Open();
 
@@ -43,6 +48,8 @@ namespace MajorProject
                 NewRequest R = new NewRequest(DR);
                 RequestList.Add(R);
             }
+            Friends friendship = new Friends(RequestList);
+
         }
     }
 }

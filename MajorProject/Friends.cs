@@ -14,9 +14,12 @@ namespace MajorProject
 {
     public partial class Friends : Form
     {
-        public Friends()
+        public List<NewRequest> _RequestList = new List<NewRequest>();
+        public Friends(List<NewRequest> requestList)
         {
+            this._RequestList = _RequestList;
             InitializeComponent();
+        
 
             //open SQL connection
             Information.SqlCon.Open();
@@ -29,6 +32,7 @@ namespace MajorProject
             DataTable dt = new DataTable();
             adapter.Fill(dt);
             int count = 0;
+            
 
             //adds each username to the combobox
             foreach (DataRow dr in dt.Rows)
@@ -37,6 +41,7 @@ namespace MajorProject
                 count++;
             }
             Information.SqlCon.Close();
+            displayRequests();
         }
 
         private void FriendReturnButton_Click(object sender, EventArgs e)
@@ -84,18 +89,23 @@ namespace MajorProject
         public void displayRequests()
         {
             FriendsRequestsPanel.Controls.Clear();
+    
 
             //ChatGPT used
-            friendRequest.displayRequest(null);
+            //friendRequest.displayRequest(null);
+
+            //ChatGPT used
+            friendRequest.GetRequestList();
 
             int totalRequests = 0;
-            foreach (NewRequest R in Requests)
+            foreach (NewRequest R in _RequestList)
             {
                 Requests NR = new Requests(R);
                 NR.Parent = FriendsRequestsPanel;
                 NR.Top = totalRequests * NR.Height;
                 FriendsRequestsPanel.Controls.Add(NR);
                 totalRequests++;
+    
             }
 
             //ChatGPT used
@@ -106,7 +116,10 @@ namespace MajorProject
         {
             //ChatGPT used
             //Populates requestlist
-            friendRequest.displayRequest(null);
+            //friendRequest.displayRequest(null,
+            //ChatGPT used
+            //Populates requestlist
+            friendRequest.GetRequestList();
 
             displayRequests();
         }
@@ -115,12 +128,18 @@ namespace MajorProject
         private void Friends_Shown(object sender, EventArgs e)
         {
             // Ensure the form is visible, then populate data and display requests
-            friendRequest.displayRequest(null);
-            //
+            friendRequest.displayRequest(null,
+            // Ensure the form is visible, then populate data and display requests
+            friendRequest.GetRequestList());
             displayRequests();
         }
 
         private void FriendsRequestsPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

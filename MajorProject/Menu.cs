@@ -12,6 +12,8 @@ namespace MajorProject
 {
     public partial class Menu : Form
     {
+        private List<NewRequest> requestList;
+
         public Menu()
         {
             InitializeComponent();
@@ -33,7 +35,7 @@ namespace MajorProject
         private void MenuFriendsButton_Click(object sender, EventArgs e)
         {
             //switches to friends form on button click
-            Friends FriendsForm = new Friends();
+            Friends FriendsForm = new Friends(requestList);
             this.Hide();
             FriendsForm.Show();
         }
