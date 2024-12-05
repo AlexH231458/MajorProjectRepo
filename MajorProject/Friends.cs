@@ -116,6 +116,7 @@ namespace MajorProject
         {
             // Ensure the form is visible, then populate data and display requests
             friendRequest.displayRequest(null);
+            //
             displayRequests();
         }
 
