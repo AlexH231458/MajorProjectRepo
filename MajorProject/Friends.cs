@@ -22,6 +22,7 @@ namespace MajorProject
             //Assigns the passed list
             this._RequestList = requestList;
             InitializeComponent();
+        
 
             //open SQL connection
             Information.SqlCon.Open();
@@ -34,6 +35,7 @@ namespace MajorProject
             DataTable dt = new DataTable();
             adapter.Fill(dt);
             int count = 0;
+            
 
             //adds each username to the combobox
             foreach (DataRow dr in dt.Rows)
@@ -162,6 +164,11 @@ namespace MajorProject
         }
 
         private void FriendsRequestsPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
