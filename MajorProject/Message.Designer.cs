@@ -71,6 +71,7 @@
             this.Controls.Add(this.MessageText);
             this.Name = "Message";
             this.Size = new System.Drawing.Size(300, 150);
+            this.Load += new System.EventHandler(this.Message_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

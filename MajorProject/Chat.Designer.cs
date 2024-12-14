@@ -46,6 +46,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Chat";
             this.Text = "Chat";
+            this.Load += new System.EventHandler(this.Chat_Load);
             this.ResumeLayout(false);
 
         }

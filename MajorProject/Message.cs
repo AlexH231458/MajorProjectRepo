@@ -16,5 +16,10 @@ namespace MajorProject
         {
             InitializeComponent();
         }
+
+        private void Message_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

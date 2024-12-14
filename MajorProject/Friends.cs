@@ -14,8 +14,13 @@ namespace MajorProject
 {
     public partial class Friends : Form
     {
-        public Friends()
+        public List<NewRequest> _RequestList = new List<NewRequest>();
+        public string username;
+
+        public Friends(List<NewRequest> requestList)
         {
+            //Assigns the passed list
+            this._RequestList = requestList;
             InitializeComponent();
 
             //open SQL connection
@@ -37,6 +42,7 @@ namespace MajorProject
                 count++;
             }
             Information.SqlCon.Close();
+            displayRequests(_RequestList);
         }
 
         private void FriendReturnButton_Click(object sender, EventArgs e)
@@ -73,50 +79,86 @@ namespace MajorProject
             Cmd.Parameters.AddWithValue("@S", "Requested");
             Cmd.ExecuteNonQuery();
 
+
+            //finds relevant friend requests for that username
+            //string sql1 = "SELECT Users.Username FROM Users INNER JOIN Friends ON Users.UserID = Friends.Friend1 WHERE Friends.Status = @Status"; // AND Friends.Friend2 = @Friend2";
+            //string sql1 = "SELECT Username FROM Users WHERE UserID IN (SELECT Friend1 FROM Friends WHERE Status = @Status AND Friend2 = @Friend2)";
+            string sql1 = "SELECT * FROM Friends WHERE ReceiverUserID = @UserID";
+            SqlCommand Cmd1 = new SqlCommand(sql1, Information.SqlCon);
+            //Cmd1.Parameters.AddWithValue("@Status", "Requested");
+            //Cmd1.Parameters.AddWithValue("@Friend2", Information.userID);
+
+            cmd.Parameters.AddWithValue("@UserID", Information.userID);
+
+            //Cmd1.CommandType.ToString();
+            Cmd1.Parameters.AddWithValue("@U", FriendsRequestsPanel.Text);
+            Cmd1.Parameters.AddWithValue("@F1", FriendsRequestsPanel.Text);
+            Cmd1.Parameters.AddWithValue("@F2", FriendsRequestsPanel.Text);
+            Cmd1.Parameters.AddWithValue("@S", FriendsRequestsPanel.Text);
+            SqlDataAdapter adapter1 = new SqlDataAdapter(cmd);
+            DataTable DT1 = new DataTable();
+            adapter1.Fill(DT);
+
             Information.SqlCon.Close();
         }
 
         private List<NewRequest> Requests = new List<NewRequest>();
-
-        //ChatGPT used
         private FriendRequest friendRequest = new FriendRequest();
-
-        public void displayRequests()
+        
+        //display requests to return a list of friend requests
+        public void displayRequests(List<NewRequest> requestList)
         {
+            //Clear existing panel
             FriendsRequestsPanel.Controls.Clear();
-
-            //ChatGPT used
-            friendRequest.displayRequest(null);
-
-            int totalRequests = 0;
-            foreach (NewRequest R in Requests)
+            //Create a new _RequestList
+            List<NewRequest> currentRequestList = requestList ?? _RequestList;
+            
+            //Make sure the request list has data in it
+            if (currentRequestList == null || currentRequestList.Count == 0)
             {
-                Requests NR = new Requests(R);
-                NR.Parent = FriendsRequestsPanel;
-                NR.Top = totalRequests * NR.Height;
-                FriendsRequestsPanel.Controls.Add(NR);
-                totalRequests++;
+                //Try to get requests if none in list
+                friendRequest.displayRequest(null, new List<NewRequest>());
+                currentRequestList = friendRequest.GetRequestList();
             }
-
-            //ChatGPT used
-            FriendsRequestsPanel.Refresh();
+            if (currentRequestList != null && currentRequestList.Count > 0)
+            {
+                //Check if we have any requests
+                int totalRequests = 0;
+                foreach (NewRequest R in Requests)
+                {
+                    //Create a new Requests control for each friend request
+                    Requests NR = new Requests(R);
+                    NR.Parent = FriendsRequestsPanel;
+                    NR.Top = totalRequests * NR.Height;
+                    FriendsRequestsPanel.Controls.Add(NR);
+                    totalRequests++;
+                }
+                //Refresh the panel so it updates
+                FriendsRequestsPanel.Refresh();
+            }
+            else
+            {
+                //Add a label or message if no friend requests exist
+                Label noFRequests = new Label();
+                noFRequests.Text = "No friend requests have been found.";
+                noFRequests.Dock = DockStyle.Fill;
+                noFRequests.TextAlign = ContentAlignment.MiddleCenter;
+                FriendsRequestsPanel.Controls.Add(noFRequests);
+            }
         }
 
         private void Friends_Load(object sender, EventArgs e)
         {
-            //ChatGPT used
-            //Populates requestlist
-            friendRequest.displayRequest(null);
-
-            displayRequests();
+            //Populate and display requestlist
+            friendRequest.displayRequest(null, new List<NewRequest>());
+            _RequestList = friendRequest.GetRequestList();
+            displayRequests(_RequestList);
         }
 
-        //ChatGPT used
         private void Friends_Shown(object sender, EventArgs e)
         {
-            // Ensure the form is visible, then populate data and display requests
-            friendRequest.displayRequest(null);
-            displayRequests();
+            //Additional refresh if needed
+            displayRequests(_RequestList);
         }
 
         private void FriendsRequestsPanel_Paint(object sender, PaintEventArgs e)
