@@ -15,14 +15,12 @@ namespace MajorProject
     public partial class Friends : Form
     {
         public List<NewRequest> _RequestList = new List<NewRequest>();
-        public string username;
 
         public Friends(List<NewRequest> requestList)
         {
-            //Assigns the passed list
+            // Assign the passed list
             this._RequestList = requestList;
             InitializeComponent();
-        
 
             //open SQL connection
             Information.SqlCon.Open();
@@ -35,7 +33,7 @@ namespace MajorProject
             DataTable dt = new DataTable();
             adapter.Fill(dt);
             int count = 0;
-            
+
 
             //adds each username to the combobox
             foreach (DataRow dr in dt.Rows)
@@ -79,24 +77,25 @@ namespace MajorProject
             Cmd.Parameters.AddWithValue("@F1", Information.userID);
             Cmd.Parameters.AddWithValue("@F2", newFriend);
             Cmd.Parameters.AddWithValue("@S", "Requested");
+            //Cmd.Parameters.AddWithValue("@UN", Information.userName);
             Cmd.ExecuteNonQuery();
 
-
             //finds relevant friend requests for that username
+            string sql1 = "SELECT * FROM Friends WHERE Friend2 = @UserID";
             //string sql1 = "SELECT Users.Username FROM Users INNER JOIN Friends ON Users.UserID = Friends.Friend1 WHERE Friends.Status = @Status"; // AND Friends.Friend2 = @Friend2";
             //string sql1 = "SELECT Username FROM Users WHERE UserID IN (SELECT Friend1 FROM Friends WHERE Status = @Status AND Friend2 = @Friend2)";
-            string sql1 = "SELECT * FROM Friends WHERE ReceiverUserID = @UserID";
             SqlCommand Cmd1 = new SqlCommand(sql1, Information.SqlCon);
-            //Cmd1.Parameters.AddWithValue("@Status", "Requested");
-            //Cmd1.Parameters.AddWithValue("@Friend2", Information.userID);
+            Cmd1.Parameters.AddWithValue("@Status", "Requested");
+            Cmd1.Parameters.AddWithValue("@Friend2", Information.userID);
 
-            cmd.Parameters.AddWithValue("@UserID", Information.userID);
+            //SqlCommand Cmd1 = new SqlCommand(sql1, Information.SqlCon);
+            Cmd1.Parameters.AddWithValue("@UserID", Information.userID);
 
             //Cmd1.CommandType.ToString();
-            Cmd1.Parameters.AddWithValue("@U", FriendsRequestsPanel.Text);
-            Cmd1.Parameters.AddWithValue("@F1", FriendsRequestsPanel.Text);
-            Cmd1.Parameters.AddWithValue("@F2", FriendsRequestsPanel.Text);
-            Cmd1.Parameters.AddWithValue("@S", FriendsRequestsPanel.Text);
+            //Cmd1.Parameters.AddWithValue("@U", FriendsRequestsPanel.Text);
+            //Cmd1.Parameters.AddWithValue("@F1", FriendsRequestsPanel.Text);
+            //Cmd1.Parameters.AddWithValue("@F2", FriendsRequestsPanel.Text);
+            //Cmd1.Parameters.AddWithValue("@S", FriendsRequestsPanel.Text);
             SqlDataAdapter adapter1 = new SqlDataAdapter(cmd);
             DataTable DT1 = new DataTable();
             adapter1.Fill(DT);
@@ -106,41 +105,40 @@ namespace MajorProject
 
         private List<NewRequest> Requests = new List<NewRequest>();
         private FriendRequest friendRequest = new FriendRequest();
-        
-        //display requests to return a list of friend requests
+
+        // display requests to return a list of friend requests
         public void displayRequests(List<NewRequest> requestList)
         {
-            //Clear existing panel
+            // Clear existing  panel
             FriendsRequestsPanel.Controls.Clear();
-            //Create a new _RequestList
+            // Create a new _RequestList
             List<NewRequest> currentRequestList = requestList ?? _RequestList;
-            
-            //Make sure the request list has data in it
+            // Make suree the request list has data in it
             if (currentRequestList == null || currentRequestList.Count == 0)
             {
-                //Try to get requests if none in list
+                // Try to get requests if none in list
                 friendRequest.displayRequest(null, new List<NewRequest>());
                 currentRequestList = friendRequest.GetRequestList();
             }
+            // Check if we have any requests
             if (currentRequestList != null && currentRequestList.Count > 0)
             {
-                //Check if we have any requests
                 int totalRequests = 0;
-                foreach (NewRequest R in Requests)
+                foreach (NewRequest R in currentRequestList)
                 {
-                    //Create a new Requests control for each friend request
+                    // Create a new Requests control for each friend request
                     Requests NR = new Requests(R);
                     NR.Parent = FriendsRequestsPanel;
                     NR.Top = totalRequests * NR.Height;
                     FriendsRequestsPanel.Controls.Add(NR);
                     totalRequests++;
                 }
-                //Refresh the panel so it updates
+                // Refresh the panel so it updates
                 FriendsRequestsPanel.Refresh();
             }
             else
             {
-                //Add a label or message if no friend requests exist
+                // Add a label or message if no freind requests exist
                 Label noFRequests = new Label();
                 noFRequests.Text = "No friend requests have been found.";
                 noFRequests.Dock = DockStyle.Fill;
@@ -151,7 +149,8 @@ namespace MajorProject
 
         private void Friends_Load(object sender, EventArgs e)
         {
-            //Populate and display requestlist
+
+            // Populate and display requests
             friendRequest.displayRequest(null, new List<NewRequest>());
             _RequestList = friendRequest.GetRequestList();
             displayRequests(_RequestList);
@@ -159,16 +158,11 @@ namespace MajorProject
 
         private void Friends_Shown(object sender, EventArgs e)
         {
-            //Additional refresh if needed
+            // Additional refresh if needed
             displayRequests(_RequestList);
         }
 
         private void FriendsRequestsPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
         {
 
         }
