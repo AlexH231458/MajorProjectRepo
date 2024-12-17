@@ -49,6 +49,7 @@
             this.RequestAcceptButton.TabIndex = 1;
             this.RequestAcceptButton.Text = "Accept";
             this.RequestAcceptButton.UseVisualStyleBackColor = true;
+            this.RequestAcceptButton.Click += new System.EventHandler(this.RequestAcceptButton_Click);
             // 
             // RequestRemoveButton
             // 
@@ -58,6 +59,7 @@
             this.RequestRemoveButton.TabIndex = 2;
             this.RequestRemoveButton.Text = "Remove";
             this.RequestRemoveButton.UseVisualStyleBackColor = true;
+            this.RequestRemoveButton.Click += new System.EventHandler(this.RequestRemoveButton_Click);
             // 
             // Requests
             // 

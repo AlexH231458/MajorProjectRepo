@@ -10,7 +10,6 @@ namespace MajorProject
 {
     internal class FriendRequest
     {
-
         private List<NewRequest> _RequestList = new List<NewRequest>();
 
         internal List<NewRequest> RequestList
@@ -26,7 +25,7 @@ namespace MajorProject
 
             Information.SqlCon.Open();
             //string nameSQL = "SELECT Users.Username FROM Users INNER JOIN Friends ON Users.UserID = Friends.Friend1 WHERE Friends.Status = @Status"; // AND Friends.Friend2 = @Friend2";
-            string nameSQL = "SELECT Username FROM Users WHERE UserID IN (SELECT Friend1 FROM Friends WHERE Status = @Status AND Friend2 = @Friend2)";
+            string nameSQL = "SELECT Users.Username, Friends.Friend1 Username FROM Users, Friends WHERE UserID IN (SELECT Friend1 FROM Friends WHERE Status = @Status AND Friend2 = @Friend2)";
             SqlCommand cmd = new SqlCommand(nameSQL, Information.SqlCon);
             cmd.Parameters.AddWithValue("@Status", "Requested");
             cmd.Parameters.AddWithValue("@Friend2", Information.userID);
