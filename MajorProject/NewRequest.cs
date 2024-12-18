@@ -10,7 +10,6 @@ namespace MajorProject
     public class NewRequest
     {
         public string _UsernameText;
-
         public string UsernameText
         {
             get { return _UsernameText; }
