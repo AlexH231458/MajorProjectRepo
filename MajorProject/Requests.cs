@@ -15,7 +15,6 @@ namespace MajorProject
     {
         public NewRequest NewRequest;
         public string ID;
-        public List<NewRequest> _RequestList = new List<NewRequest>();
 
         public Requests(NewRequest R)
         {
@@ -39,24 +38,29 @@ namespace MajorProject
             adapter.Fill(dt);
             ID = dt.Rows[0]["UserID"].ToString();
             Information.SqlCon.Close();
-            this.BackColor = Color.Red;
         }
 
         private void RequestRemoveButton_Click(object sender, EventArgs e)
         {
-
+            Information.SqlCon.Open();
+            string sql = ("DELETE FROM Friends WHERE Friend1 = @F");
+            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            cmd.Parameters.AddWithValue("@F", ID);
+            cmd.ExecuteNonQuery();
+            Information.SqlCon.Close();
+            this.Hide();
         }
 
         private void RequestAcceptButton_Click(object sender, EventArgs e)
         {
             Information.SqlCon.Open();
-            string sql = ("UPDATE Friends SET Status = @S WHERE Friend1 = @F");
-            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-            cmd.Parameters.AddWithValue("@S", "Accepted");
-            cmd.Parameters.AddWithValue("@F", ID);
-            cmd.ExecuteNonQuery();
+            string sql1 = ("UPDATE Friends SET Status = @S WHERE Friend1 = @F");
+            SqlCommand cmd1 = new SqlCommand(sql1, Information.SqlCon);
+            cmd1.Parameters.AddWithValue("@S", "Accepted");
+            cmd1.Parameters.AddWithValue("@F", ID);
+            cmd1.ExecuteNonQuery();
             Information.SqlCon.Close();
-            this.BackColor = Color.Green;
+            this.Hide();
         }
     }
 }
