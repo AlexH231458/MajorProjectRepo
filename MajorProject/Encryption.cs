@@ -1,20 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MajorProject
 {
     internal class Encryption
     {
         public static Random rand = new Random();
-        public static void Encrypt()
+        public static string EncryptionMain(string msg)
         {
             int a = rand.Next(2, 8);
+            long q = rand.Next(Convert.ToInt32(Math.Pow(10, 20)), Convert.ToInt32(Math.Pow(10, 50)));
+            long g = rand.Next(2, Convert.ToInt32(q));
+
+            long privateKey = genKey(q);
+            long h = power(g, privateKey, q);
+
+            var result = encrypt(msg, q, h, g);
+            string encMsg = result.enc;
+            long p = result.p;
+            string decMsg = decrypt(encMsg, privateKey, privateKey, q);
+
+            return decMsg;
         }
 
-        public long gcd(long a, long b)
+        public static long gcd(long a, long b)
         {
             if (a < b)
             {
@@ -31,7 +45,7 @@ namespace MajorProject
         }
 
         //Generates large random numbers
-        public long genKey(long q)
+        public static long genKey(long q)
         {
             double power = Math.Pow(10, 20);
             long key = rand.Next(Convert.ToInt32(power) , Convert.ToInt32(q));
@@ -43,7 +57,7 @@ namespace MajorProject
         }
 
         //Modular exponentiation
-        public long power(long a, long b, long c)
+        public static long power(long a, long b, long c)
         {
             long x = 1;
             long y = a;
@@ -60,21 +74,37 @@ namespace MajorProject
         }
 
         // Asymmetric encyrption
-        public string encrypt(string msg, long q, long h, long g)
+        public static (string enc, long p) encrypt(string msg, long q, long h, long g)
         {
-            string encrypted = "";
+            string newMsg = "";
             long k = genKey(q); //Private key for sender
             long s = power(h, k, q);
             long p = power(g, k, q);
             for (int i = 0; i < msg.Length; i++)
             {
-                encrypted = encrypted + msg[i];
+                newMsg = newMsg + msg[i];
             }
-            for (int i = 0; i <= encrypted.Length; i++)
+            string encrypted = "";
+            for (int i = 0; i <= newMsg.Length; i++)
             {
-                encrypted[i] = s * Char.GetNumericValue(encrypted[i]);
+                //encrypted[i, 0] = 'h';
+                //encrypted.Substring(i, 0) = s * Char.GetNumericValue(encrypted[i]);
+
+                double newChar = s * Char.GetNumericValue(newMsg[i]);
+                encrypted = encrypted + newChar;
             }
-            //return en_msg, p;
+            return (encrypted, p);
+        }
+
+        public static string decrypt(string encyrpted, long p, long key, long q)
+        {
+            string decrypted = "";
+            long h = power(p, key, q);
+            for (int i = 0; i <= encyrpted.Length; i++)
+            {
+                decrypted = decrypted + char.ConvertFromUtf32(Convert.ToInt32(encyrpted[i] / h));
+            }
+            return decrypted;
         }
     }
 }
