@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EncryptionTest2
 {
-    internal class Program
+    /*internal class Program
     {
         static Random random = new Random();
 
@@ -90,9 +90,10 @@ namespace EncryptionTest2
             }
 
             return new string(dr_msg.ToArray());
-        }
+        }*/
 
-        static void Main()
+    /*
+        static void newmain()
         {
             Console.WriteLine("Original Message: ");
             string msg = Console.ReadLine();
@@ -116,7 +117,6 @@ namespace EncryptionTest2
             Console.WriteLine("Decrypted Message : " + dmsg);
             Console.ReadLine();
         }
-
         static BigInteger getLargeNumber(BigInteger min, BigInteger max)
         {
             byte[] bytes = max.ToByteArray();
@@ -129,5 +129,5 @@ namespace EncryptionTest2
             while (result < min || result >= max);
             return result;
         }
-    }
+    }*/
 }

@@ -15,6 +15,18 @@ namespace MajorProject
         public Settings()
         {
             InitializeComponent();
+            this.BackColor = Information.colour;
+            /*SettingsAutoshiftBox.Font = Information.font;
+            SettingsAutoshiftLabel.Font = Information.font;
+            SettingsColourButton.Font = Information.font;
+            SettingsExitButton.Font = Information.font;
+            SettingsFontButton.Font = Information.font;
+            SettingsReturnButton.Font = Information.font;
+            */
+            foreach (Control control in this.Controls)
+            {
+                control.Font = Information.font;
+            }
         }
 
         private void Settings_Load(object sender, EventArgs e)

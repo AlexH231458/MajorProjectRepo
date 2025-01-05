@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MajorProject
 {
-    internal class Encryption2
+    /*internal class Encryption2
     {
         static void Main(string[] args)
         {
@@ -122,5 +122,6 @@ namespace MajorProject
             return (x % c);
         }
     }
+}*/
 }
-}
+    

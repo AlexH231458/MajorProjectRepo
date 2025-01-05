@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace MajorProject
 {
-    internal class Encryption1
+    /*internal class Encryption1
     {
         public static Random rand = new Random();
         public static string EncryptionMain(string msg)
@@ -106,5 +106,5 @@ namespace MajorProject
             }
             return decrypted;
         }
-    }
+    }*/
 }

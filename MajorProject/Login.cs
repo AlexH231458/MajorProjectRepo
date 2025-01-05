@@ -79,10 +79,18 @@ namespace MajorProject
             {
                 if (DT1.Rows.Count == 1)
                 {
+                    System.ComponentModel.TypeConverter convert = System.ComponentModel.TypeDescriptor.GetConverter(typeof(Font));
+
                     //switches to menu form if details are valid
                     Menu MenuForm = new Menu();
                     Information.userName = DT1.Rows[0]["Username"].ToString();
                     Information.userID = Convert.ToInt32(DT1.Rows[0]["UserID"]);
+                    string fontName = DT1.Rows[0]["Font"].ToString();
+                    Information.font = (Font) convert.ConvertFromString(fontName);
+                    Information.autoShift = Convert.ToInt32(DT1.Rows[0]["Autoshift"]);
+                    string colourName = DT1.Rows[0]["Colour"].ToString();
+                    Information.colour = Color.FromName(colourName);
+
                     this.Hide();
                     MenuForm.Show();
                 }

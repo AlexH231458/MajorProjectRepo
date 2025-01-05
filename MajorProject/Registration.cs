@@ -159,10 +159,13 @@ namespace MajorProject
                 else
                 {
                     Information.SqlCon.Open();
-                    string isql = "INSERT INTO Users VALUES (@Username, @Password)";
+                    string isql = "INSERT INTO Users VALUES (@Username, @Password, @Autoshift, @Font, @Colour)";
                     SqlCommand cmd = new SqlCommand(isql, Information.SqlCon);
                     cmd.Parameters.AddWithValue("@Username", userName);
                     cmd.Parameters.AddWithValue("@Password", password);
+                    cmd.Parameters.AddWithValue("@Autoshift", 0);
+                    cmd.Parameters.AddWithValue("@Font", "Microsoft Sans Serif");
+                    cmd.Parameters.AddWithValue("@Colour", "Control");
                     cmd.ExecuteNonQuery();
                     Information.SqlCon.Close();
 
