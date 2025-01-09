@@ -3,22 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.StringSplitOptions;
+using System.Net.NetworkInformation;
 
 namespace MajorProject
 {
-    /*internal class Encryption2
+    internal class Encryption2
     {
-        static void Main(string[] args)
-        {
-            Console.Write("Enter message to encyrpt: ");
-            string msgToEnc = Console.ReadLine();
-            string result = (msgToEnc);
-            Console.WriteLine("Decrypted: " + result);
-            Console.ReadLine();
-        }
-
+        private const char SEP = 'A';
         public static Random rand = new Random();
-        public char[] tinyAlphabet = { 'G', 'a', 'e', 'L', '$', '-', 'S', '!', '#', 'C' };
+        static readonly char[] tinyAlphabet = { 'G', 'a', 'e', 'L', '$', '-', 'S', '!', '#', 'C' };
 
         public static string encode(int num)
         {
@@ -37,25 +31,32 @@ namespace MajorProject
             for (int i = 0; i < msg.Length; i++)
             {
                 int num = pub * msg[i];
-                encMsg = encMsg + encode(num);
+                encMsg = encMsg + $"{encode(num)}{SEP}";
             }
             return encMsg;
         }
 
         public static string decode(string block)
         {
-            string num;
+            string num = "";
             for (int i = 0; i < block.Length; i++)
             {
-                num = num + tinyAlphabet[i];
+                num = num + Array.IndexOf(tinyAlphabet, i);
             }
             return num;
         }
 
-        public static string decrypt(string msg)
+        public static string decrypt(string msg, int priKey)
         {
             string decMsg = "";
-
+            var blocks = msg.Split(new[] { SEP }, RemoveEmptyEntries);
+            foreach (var b in blocks)
+            {
+                int decBlock = int.Parse(decode(b));
+                int num = (char)(decBlock / priKey);
+                decMsg = decMsg + $"{num}";
+            }
+            return decMsg;
         }
 
         public static (int priv, int pub) genPubPrivKeys()
@@ -121,7 +122,21 @@ namespace MajorProject
             }
             return (x % c);
         }
+        static void Main(string[] args)
+        {
+            Console.Write("Enter message to encyrpt: ");
+            string msgToEnc = Console.ReadLine();
+            var keys = genPubPrivKeys();
+            int pub = keys.pub;
+            int priv = keys.priv;
+            string encrypted = encrypt(msgToEnc, pub);
+            Console.WriteLine("Encrypted message: " + encrypted);
+            Console.WriteLine("Public key: " + pub);
+            Console.WriteLine("Private key: " + priv);
+            string decrypted = decrypt(encrypted, priv);
+            Console.WriteLine("Decrypted: " + decrypted);
+            Console.ReadLine();
+        }
     }
-}*/
 }
     
