@@ -8,7 +8,7 @@ using System.Net.NetworkInformation;
 
 namespace MajorProject
 {
-    internal class Encryption2
+    /*internal class Encryption2
     {
         private const char SEP = 'A';
         public static Random rand = new Random();
@@ -137,6 +137,6 @@ namespace MajorProject
             Console.WriteLine("Decrypted: " + decrypted);
             Console.ReadLine();
         }
-    }
+    }*/
 }
     

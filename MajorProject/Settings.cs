@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MajorProject
 {
@@ -16,13 +17,6 @@ namespace MajorProject
         {
             InitializeComponent();
             this.BackColor = Information.colour;
-            /*SettingsAutoshiftBox.Font = Information.font;
-            SettingsAutoshiftLabel.Font = Information.font;
-            SettingsColourButton.Font = Information.font;
-            SettingsExitButton.Font = Information.font;
-            SettingsFontButton.Font = Information.font;
-            SettingsReturnButton.Font = Information.font;
-            */
             foreach (Control control in this.Controls)
             {
                 control.Font = Information.font;
@@ -36,7 +30,9 @@ namespace MajorProject
 
         private void SettingsColourButton_Click(object sender, EventArgs e)
         {
-            var colour = SettingsColourDialog.ShowDialog();
+            SettingsColourDialog.ShowDialog();
+            //TeSettingsColourDialog.Font = Information.font;
+            SettingsColourDialog.Color = Information.colour;
         }
 
         private void SettingsReturnButton_Click(object sender, EventArgs e)
@@ -57,7 +53,24 @@ namespace MajorProject
 
         private void SettingsFontButton_Click(object sender, EventArgs e)
         {
-            var font = SettingsFontDialog.ShowDialog();
+            DialogResult result = SettingsFontDialog.ShowDialog();
+            SettingsFontDialog.Font = Information.font;
+            SettingsFontDialog.Color = Information.colour;
+            if (result == DialogResult.OK)
+            {
+                newFont(this.SettingsFontButton, new System.EventArgs());
+            }
+        }
+
+        private void newFont(object sender,System.EventArgs e)
+        {
+            Information.font = SettingsFontDialog.Font;
+            label1.Text = Information.font.ToString();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -21,6 +21,11 @@ namespace MajorProject
             // Assign the passed list
             this._RequestList = requestList;
             InitializeComponent();
+            this.BackColor = Information.colour;
+            foreach (Control control in this.Controls)
+            {
+                control.Font = Information.font;
+            }
 
             //open SQL connection
             Information.SqlCon.Open();

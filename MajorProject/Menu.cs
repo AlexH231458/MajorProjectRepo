@@ -16,19 +16,15 @@ namespace MajorProject
         public Menu()
         {
             InitializeComponent();
-            label1.Text = Information.font.ToString();
-            //MenuFriendsButton.Font = new Font(Information.font, FontStyle.Regular);
-            //MenuSettingsButton.Font = Information.font;
-            this.BackColor = Information.colour;
-            foreach (Control control in this.Controls)
-            {
-//                control.Font = new Font(Information.font, FontStyle.Regular);
-            }
         }
 
         private void Menu_Load(object sender, EventArgs e)
         {
-
+            this.BackColor = Information.colour;
+            foreach (Control control in this.Controls)
+            {
+                control.Font = Information.font;
+            }
         }
 
         private void MenuSettingsButton_Click(object sender, EventArgs e)
