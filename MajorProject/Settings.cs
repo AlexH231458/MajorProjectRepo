@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,9 +33,22 @@ namespace MajorProject
 
         private void SettingsColourButton_Click(object sender, EventArgs e)
         {
-            SettingsColourDialog.ShowDialog();
-            //TeSettingsColourDialog.Font = Information.font;
-            SettingsColourDialog.Color = Information.colour;
+            DialogResult result = SettingsColourDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                Information.colour = SettingsColourDialog.Color;
+                this.BackColor = Information.colour;
+            }
+
+            string colourName = Information.colour.Name.ToString();
+
+            Information.SqlCon.Open();
+            string sql = "UPDATE Users SET Colour = @Colour WHERE UserID = @ID";
+            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            cmd.Parameters.AddWithValue("@Colour", colourName);
+            cmd.Parameters.AddWithValue("@ID", Information.userID);
+            cmd.ExecuteNonQuery();
+            Information.SqlCon.Close();
         }
 
         private void SettingsReturnButton_Click(object sender, EventArgs e)
@@ -53,33 +67,33 @@ namespace MajorProject
             LoginForm.Show();
         }
 
-        private FontDialog fontDialog = new FontDialog();
         private void SettingsFontButton_Click(object sender, EventArgs e)
         {
-            label1.Text = "Hello";
             SettingsFontDialog.MaxSize = 8;
             SettingsFontDialog.MinSize = 8;
-            //SettingsFontDialog.
-            SettingsFontDialog.Color = Information.colour;
             DialogResult result = SettingsFontDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                Information.font = SettingsFontDialog.Font;
+                System.Drawing.Font newFont = SettingsFontDialog.Font;
+                newFont = new System.Drawing.Font(newFont, FontStyle.Regular);
+                Information.font = newFont;
+
+                foreach (Control control in this.Controls)
+                {
+                    control.Font = Information.font;
+                }
 
                 System.ComponentModel.TypeConverter convert = System.ComponentModel.TypeDescriptor.GetConverter(typeof(Font));
                 string fontName = (string)convert.ConvertToString(Information.font);
 
                 Information.SqlCon.Open();
-                string sql = "";
+                string sql = "UPDATE Users SET Font = @Font WHERE UserID = @ID";
                 SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-                cmd.Parameters.AddWithValue("", );
+                cmd.Parameters.AddWithValue("@Font", fontName);
+                cmd.Parameters.AddWithValue("@ID", Information.userID);
+                cmd.ExecuteNonQuery();
                 Information.SqlCon.Close();
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -38,7 +38,6 @@
             this.SettingsExitButton = new System.Windows.Forms.Button();
             this.SettingsFontDialog = new System.Windows.Forms.FontDialog();
             this.SettingsFontButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // SettingsAutoshiftLabel
@@ -143,22 +142,11 @@
             this.SettingsFontButton.UseVisualStyleBackColor = false;
             this.SettingsFontButton.Click += new System.EventHandler(this.SettingsFontButton_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(69, 255);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.SettingsFontButton);
             this.Controls.Add(this.SettingsExitButton);
             this.Controls.Add(this.SettingsReturnButton);
@@ -188,6 +176,5 @@
         private System.Windows.Forms.Button SettingsExitButton;
         private System.Windows.Forms.FontDialog SettingsFontDialog;
         private System.Windows.Forms.Button SettingsFontButton;
-        private System.Windows.Forms.Label label1;
     }
 }
