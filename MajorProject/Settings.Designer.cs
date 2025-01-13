@@ -127,8 +127,6 @@
             // 
             this.SettingsFontDialog.AllowScriptChange = false;
             this.SettingsFontDialog.AllowSimulations = false;
-            this.SettingsFontDialog.AllowVectorFonts = false;
-            this.SettingsFontDialog.AllowVerticalFonts = false;
             this.SettingsFontDialog.FixedPitchOnly = true;
             this.SettingsFontDialog.FontMustExist = true;
             this.SettingsFontDialog.ShowEffects = false;

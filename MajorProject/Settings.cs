@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace MajorProject
 {
@@ -51,21 +53,28 @@ namespace MajorProject
             LoginForm.Show();
         }
 
+        private FontDialog fontDialog = new FontDialog();
         private void SettingsFontButton_Click(object sender, EventArgs e)
         {
-            DialogResult result = SettingsFontDialog.ShowDialog();
-            SettingsFontDialog.Font = Information.font;
+            label1.Text = "Hello";
+            SettingsFontDialog.MaxSize = 8;
+            SettingsFontDialog.MinSize = 8;
+            //SettingsFontDialog.
             SettingsFontDialog.Color = Information.colour;
+            DialogResult result = SettingsFontDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                newFont(this.SettingsFontButton, new System.EventArgs());
-            }
-        }
+                Information.font = SettingsFontDialog.Font;
 
-        private void newFont(object sender,System.EventArgs e)
-        {
-            Information.font = SettingsFontDialog.Font;
-            label1.Text = Information.font.ToString();
+                System.ComponentModel.TypeConverter convert = System.ComponentModel.TypeDescriptor.GetConverter(typeof(Font));
+                string fontName = (string)convert.ConvertToString(Information.font);
+
+                Information.SqlCon.Open();
+                string sql = "";
+                SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+                cmd.Parameters.AddWithValue("", );
+                Information.SqlCon.Close();
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
