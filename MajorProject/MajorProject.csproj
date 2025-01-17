@@ -73,6 +73,7 @@
     <Compile Include="Encryption2.cs" />
     <Compile Include="Encryption3.cs" />
     <Compile Include="Encryption4.cs" />
+    <Compile Include="Encryption5.cs" />
     <Compile Include="FriendRequest.cs" />
     <Compile Include="Friends.cs">
       <SubType>Form</SubType>
