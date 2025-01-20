@@ -34,6 +34,7 @@
             this.FriendSearchLabel = new System.Windows.Forms.Label();
             this.FriendRequestButton = new System.Windows.Forms.Button();
             this.FriendsRequestsPanel = new System.Windows.Forms.Panel();
+            this.FriendsFriendsPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // FriendReturnButton
@@ -94,17 +95,27 @@
             // FriendsRequestsPanel
             // 
             this.FriendsRequestsPanel.AutoScroll = true;
-            this.FriendsRequestsPanel.Location = new System.Drawing.Point(39, 181);
+            this.FriendsRequestsPanel.Location = new System.Drawing.Point(38, 161);
             this.FriendsRequestsPanel.Name = "FriendsRequestsPanel";
-            this.FriendsRequestsPanel.Size = new System.Drawing.Size(471, 330);
+            this.FriendsRequestsPanel.Size = new System.Drawing.Size(471, 131);
             this.FriendsRequestsPanel.TabIndex = 20;
             this.FriendsRequestsPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.FriendsRequestsPanel_Paint);
+            // 
+            // FriendsFriendsPanel
+            // 
+            this.FriendsFriendsPanel.AutoScroll = true;
+            this.FriendsFriendsPanel.Location = new System.Drawing.Point(38, 328);
+            this.FriendsFriendsPanel.Name = "FriendsFriendsPanel";
+            this.FriendsFriendsPanel.Size = new System.Drawing.Size(471, 131);
+            this.FriendsFriendsPanel.TabIndex = 21;
+            this.FriendsFriendsPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.FriendsFriendsPanel_Paint);
             // 
             // Friends
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 761);
+            this.Controls.Add(this.FriendsFriendsPanel);
             this.Controls.Add(this.FriendsRequestsPanel);
             this.Controls.Add(this.FriendRequestButton);
             this.Controls.Add(this.FriendSearchLabel);
@@ -127,5 +138,6 @@
         private System.Windows.Forms.Label FriendSearchLabel;
         private System.Windows.Forms.Button FriendRequestButton;
         private System.Windows.Forms.Panel FriendsRequestsPanel;
+        private System.Windows.Forms.Panel FriendsFriendsPanel;
     }
 }

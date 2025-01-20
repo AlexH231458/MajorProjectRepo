@@ -74,6 +74,13 @@
     <Compile Include="Encryption3.cs" />
     <Compile Include="Encryption4.cs" />
     <Compile Include="Encryption5.cs" />
+    <Compile Include="FriendControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FriendControl.Designer.cs">
+      <DependentUpon>FriendControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FriendDisplay.cs" />
     <Compile Include="FriendRequest.cs" />
     <Compile Include="Friends.cs">
       <SubType>Form</SubType>
@@ -100,6 +107,7 @@
     <Compile Include="Message.Designer.cs">
       <DependentUpon>Message.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewFriend.cs" />
     <Compile Include="NewRequest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -123,6 +131,9 @@
     </Compile>
     <EmbeddedResource Include="Chat.resx">
       <DependentUpon>Chat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FriendControl.resx">
+      <DependentUpon>FriendControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Friends.resx">
       <DependentUpon>Friends.cs</DependentUpon>

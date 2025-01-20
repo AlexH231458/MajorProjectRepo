@@ -15,6 +15,7 @@ namespace MajorProject
     public partial class Friends : Form
     {
         public List<NewRequest> _RequestList = new List<NewRequest>();
+        public List<NewFriend> _FriendsList = new List<NewFriend>();
 
         public Friends(List<NewRequest> requestList)
         {
@@ -82,30 +83,44 @@ namespace MajorProject
             Cmd.Parameters.AddWithValue("@F1", Information.userID);
             Cmd.Parameters.AddWithValue("@F2", newFriend);
             Cmd.Parameters.AddWithValue("@S", "Requested");
-            //Cmd.Parameters.AddWithValue("@UN", Information.userName);
             Cmd.ExecuteNonQuery();
 
-            //finds relevant friend requests for that username
-            string sql1 = "SELECT * FROM Friends WHERE Friend2 = @UserID";
-            //string sql1 = "SELECT Users.Username FROM Users INNER JOIN Friends ON Users.UserID = Friends.Friend1 WHERE Friends.Status = @Status"; // AND Friends.Friend2 = @Friend2";
-            //string sql1 = "SELECT Username FROM Users WHERE UserID IN (SELECT Friend1 FROM Friends WHERE Status = @Status AND Friend2 = @Friend2)";
-            SqlCommand Cmd1 = new SqlCommand(sql1, Information.SqlCon);
-            Cmd1.Parameters.AddWithValue("@Status", "Requested");
-            Cmd1.Parameters.AddWithValue("@Friend2", Information.userID);
-
-            //SqlCommand Cmd1 = new SqlCommand(sql1, Information.SqlCon);
-            Cmd1.Parameters.AddWithValue("@UserID", Information.userID);
-
-            //Cmd1.CommandType.ToString();
-            //Cmd1.Parameters.AddWithValue("@U", FriendsRequestsPanel.Text);
-            //Cmd1.Parameters.AddWithValue("@F1", FriendsRequestsPanel.Text);
-            //Cmd1.Parameters.AddWithValue("@F2", FriendsRequestsPanel.Text);
-            //Cmd1.Parameters.AddWithValue("@S", FriendsRequestsPanel.Text);
-            SqlDataAdapter adapter1 = new SqlDataAdapter(cmd);
-            DataTable DT1 = new DataTable();
-            adapter1.Fill(DT);
-
             Information.SqlCon.Close();
+        }
+
+        private List<NewFriend> UserFriends = new List<NewFriend>();
+        private FriendDisplay individualFriend = new FriendDisplay();
+
+        public void displayFriends(List<NewFriend> friendsList)
+        {
+            FriendsFriendsPanel.Controls.Clear();
+            List<NewFriend> currentFriendsList = friendsList ?? _FriendsList;
+            if (currentFriendsList == null || currentFriendsList.Count == 0)
+            {
+                individualFriend.displayFriend(null, new List<NewFriend>());
+                currentFriendsList = individualFriend.GetFriendsList();
+            }
+            if (currentFriendsList != null && currentFriendsList.Count > 0)
+            {
+                int totalFriends = 0;
+                foreach (NewFriend friend in currentFriendsList)
+                {
+                    FriendControl NF = new FriendControl(friend);
+                    NF.Parent = FriendsFriendsPanel;
+                    NF.Top = totalFriends * NF.Height;
+                    FriendsFriendsPanel.Controls.Add(NF);
+                    totalFriends++;
+                }
+                FriendsFriendsPanel.Refresh();
+            }
+            else
+            {
+                Label noFriends = new Label();
+                noFriends.Text = "You have no friends :(";
+                noFriends.Dock = DockStyle.Fill;
+                noFriends.TextAlign = ContentAlignment.MiddleCenter;
+                FriendsRequestsPanel.Controls.Add(noFriends);
+            }
         }
 
         private List<NewRequest> Requests = new List<NewRequest>();
@@ -118,7 +133,7 @@ namespace MajorProject
             FriendsRequestsPanel.Controls.Clear();
             // Create a new _RequestList
             List<NewRequest> currentRequestList = requestList ?? _RequestList;
-            // Make suree the request list has data in it
+            // Make sure the request list has data in it
             if (currentRequestList == null || currentRequestList.Count == 0)
             {
                 // Try to get requests if none in list
@@ -159,17 +174,46 @@ namespace MajorProject
             friendRequest.displayRequest(null, new List<NewRequest>());
             _RequestList = friendRequest.GetRequestList();
             displayRequests(_RequestList);
+
+            individualFriend.displayFriend(null, new List<NewFriend>());
+            _FriendsList = individualFriend.GetFriendsList();
+            displayFriends(_FriendsList);
         }
 
         private void Friends_Shown(object sender, EventArgs e)
         {
             // Additional refresh if needed
-            displayRequests(_RequestList);
+            //displayRequests(_RequestList);
         }
 
         private void FriendsRequestsPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
+        private void FriendsFriendsPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
+//Cmd.Parameters.AddWithValue("@UN", Information.userName);
+//string sql1 = "SELECT Users.Username FROM Users INNER JOIN Friends ON Users.UserID = Friends.Friend1 WHERE Friends.Status = @Status"; // AND Friends.Friend2 = @Friend2";
+//string sql1 = "SELECT Username FROM Users WHERE UserID IN (SELECT Friend1 FROM Friends WHERE Status = @Status AND Friend2 = @Friend2)";
+//Cmd1.CommandType.ToString();
+//Cmd1.Parameters.AddWithValue("@U", FriendsRequestsPanel.Text);
+//Cmd1.Parameters.AddWithValue("@F1", FriendsRequestsPanel.Text);
+//Cmd1.Parameters.AddWithValue("@F2", FriendsRequestsPanel.Text);
+//Cmd1.Parameters.AddWithValue("@S", FriendsRequestsPanel.Text);
+////finds relevant friend requests for that username
+//string sql1 = "SELECT * FROM Friends WHERE Friend2 = @UserID";
+//SqlCommand Cmd1 = new SqlCommand(sql1, Information.SqlCon);
+//Cmd1.Parameters.AddWithValue("@Status", "Requested");
+//Cmd1.Parameters.AddWithValue("@Friend2", Information.userID);
+
+////SqlCommand Cmd1 = new SqlCommand(sql1, Information.SqlCon);
+//Cmd1.Parameters.AddWithValue("@UserID", Information.userID);
+
+//SqlDataAdapter adapter1 = new SqlDataAdapter(cmd);
+//DataTable DT1 = new DataTable();
+//adapter1.Fill(DT);
