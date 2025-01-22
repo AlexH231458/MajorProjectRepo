@@ -23,10 +23,10 @@ namespace MajorProject
             FriendsList.Clear();
 
             Information.SqlCon.Open();
-            string sql = "SELECT Username FROM Users WHERE UserID IN(SELECT Friend1 FROM Friends WHERE Status = @Status AND Friend2 = @Friend2)";
+            string sql = "SELECT Username FROM Users WHERE UserID IN((SELECT Friend1 FROM Friends WHERE Status = @Status AND Friend2 = @User) OR (SELECT Friend2 FROM Friends WHERE Status = @Status AND Friend1 = @User))";
             SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
             cmd.Parameters.AddWithValue("@Status", "Accepted");
-            cmd.Parameters.AddWithValue("@Friend2", Information.userID);
+            cmd.Parameters.AddWithValue("@User", Information.userID);
 
             SqlDataAdapter DA = new SqlDataAdapter(cmd);
             DataTable DT = new DataTable();
