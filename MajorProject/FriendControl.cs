@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -36,14 +37,15 @@ namespace MajorProject
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void FCRemoveButton_Click(object sender, EventArgs e)
         {
-
+            Information.SqlCon.Open();
+            string sql = ("DELETE FROM Friends WHERE Friend1 = @F");
+            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            cmd.Parameters.AddWithValue("@F", ID);
+            cmd.ExecuteNonQuery();
+            Information.SqlCon.Close();
+            this.Hide();
         }
 
         private void FCPinButton_Click(object sender, EventArgs e)
@@ -52,6 +54,11 @@ namespace MajorProject
         }
 
         private void FCNameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FCChangeButton_Click(object sender, EventArgs e)
         {
 
         }

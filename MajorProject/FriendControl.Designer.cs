@@ -29,37 +29,25 @@
         private void InitializeComponent()
         {
             this.FCPinButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.FCNameLabel = new System.Windows.Forms.Label();
             this.FCNicknameLabel = new System.Windows.Forms.Label();
             this.FCNicknameBox = new System.Windows.Forms.TextBox();
             this.FCRemoveButton = new System.Windows.Forms.Button();
+            this.FCChangeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // FCPinButton
             // 
-            this.FCPinButton.BackColor = System.Drawing.Color.Yellow;
+            this.FCPinButton.BackColor = System.Drawing.Color.Gold;
             this.FCPinButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FCPinButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FCPinButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FCPinButton.Location = new System.Drawing.Point(177, 3);
             this.FCPinButton.Name = "FCPinButton";
             this.FCPinButton.Size = new System.Drawing.Size(30, 30);
             this.FCPinButton.TabIndex = 0;
-            this.FCPinButton.Text = "✩";
+            this.FCPinButton.Text = "📌";
             this.FCPinButton.UseVisualStyleBackColor = false;
             this.FCPinButton.Click += new System.EventHandler(this.FCPinButton_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Lime;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(177, 39);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(70, 30);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Change";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // FCNameLabel
             // 
@@ -90,9 +78,9 @@
             // 
             // FCRemoveButton
             // 
-            this.FCRemoveButton.BackColor = System.Drawing.Color.Red;
+            this.FCRemoveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.FCRemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FCRemoveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FCRemoveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FCRemoveButton.Location = new System.Drawing.Point(217, 3);
             this.FCRemoveButton.Name = "FCRemoveButton";
             this.FCRemoveButton.Size = new System.Drawing.Size(30, 30);
@@ -101,15 +89,27 @@
             this.FCRemoveButton.UseVisualStyleBackColor = false;
             this.FCRemoveButton.Click += new System.EventHandler(this.FCRemoveButton_Click);
             // 
+            // FCChangeButton
+            // 
+            this.FCChangeButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.FCChangeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FCChangeButton.Location = new System.Drawing.Point(177, 39);
+            this.FCChangeButton.Name = "FCChangeButton";
+            this.FCChangeButton.Size = new System.Drawing.Size(70, 30);
+            this.FCChangeButton.TabIndex = 6;
+            this.FCChangeButton.Text = "Change";
+            this.FCChangeButton.UseVisualStyleBackColor = false;
+            this.FCChangeButton.Click += new System.EventHandler(this.FCChangeButton_Click);
+            // 
             // FriendControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.FCChangeButton);
             this.Controls.Add(this.FCRemoveButton);
             this.Controls.Add(this.FCNicknameBox);
             this.Controls.Add(this.FCNicknameLabel);
             this.Controls.Add(this.FCNameLabel);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.FCPinButton);
             this.Name = "FriendControl";
             this.Size = new System.Drawing.Size(250, 75);
@@ -122,10 +122,10 @@
         #endregion
 
         private System.Windows.Forms.Button FCPinButton;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label FCNameLabel;
         private System.Windows.Forms.Label FCNicknameLabel;
         private System.Windows.Forms.TextBox FCNicknameBox;
         private System.Windows.Forms.Button FCRemoveButton;
+        private System.Windows.Forms.Button FCChangeButton;
     }
 }

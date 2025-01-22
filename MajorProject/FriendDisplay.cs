@@ -23,8 +23,9 @@ namespace MajorProject
             FriendsList.Clear();
 
             Information.SqlCon.Open();
-            string sql = "SELECT Username FROM Users WHERE UserID IN((SELECT Friend1 FROM Friends WHERE Status = @Status AND Friend2 = @User) OR (SELECT Friend2 FROM Friends WHERE Status = @Status AND Friend1 = @User))";
-            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            // ChatGPT used
+            string sql2 = "SELECT Username FROM Users WHERE UserID IN((SELECT Friend1 FROM Friends WHERE Status = @Status AND Friend2 = @User) UNION (SELECT Friend2 FROM Friends WHERE Status = @Status AND Friend1 = @User))";
+            SqlCommand cmd = new SqlCommand(sql2, Information.SqlCon);
             cmd.Parameters.AddWithValue("@Status", "Accepted");
             cmd.Parameters.AddWithValue("@User", Information.userID);
 
