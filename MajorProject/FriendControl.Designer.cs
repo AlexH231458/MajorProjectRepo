@@ -41,7 +41,7 @@
             this.FCPinButton.BackColor = System.Drawing.Color.Gold;
             this.FCPinButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FCPinButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FCPinButton.Location = new System.Drawing.Point(177, 3);
+            this.FCPinButton.Location = new System.Drawing.Point(425, 10);
             this.FCPinButton.Name = "FCPinButton";
             this.FCPinButton.Size = new System.Drawing.Size(30, 30);
             this.FCPinButton.TabIndex = 0;
@@ -52,7 +52,7 @@
             // FCNameLabel
             // 
             this.FCNameLabel.AutoSize = true;
-            this.FCNameLabel.Location = new System.Drawing.Point(63, 16);
+            this.FCNameLabel.Location = new System.Drawing.Point(30, 20);
             this.FCNameLabel.Name = "FCNameLabel";
             this.FCNameLabel.Size = new System.Drawing.Size(0, 13);
             this.FCNameLabel.TabIndex = 2;
@@ -61,7 +61,7 @@
             // FCNicknameLabel
             // 
             this.FCNicknameLabel.AutoSize = true;
-            this.FCNicknameLabel.Location = new System.Drawing.Point(3, 43);
+            this.FCNicknameLabel.Location = new System.Drawing.Point(245, 5);
             this.FCNicknameLabel.Name = "FCNicknameLabel";
             this.FCNicknameLabel.Size = new System.Drawing.Size(58, 13);
             this.FCNicknameLabel.TabIndex = 3;
@@ -70,7 +70,7 @@
             // 
             // FCNicknameBox
             // 
-            this.FCNicknameBox.Location = new System.Drawing.Point(66, 43);
+            this.FCNicknameBox.Location = new System.Drawing.Point(245, 20);
             this.FCNicknameBox.Name = "FCNicknameBox";
             this.FCNicknameBox.Size = new System.Drawing.Size(100, 20);
             this.FCNicknameBox.TabIndex = 4;
@@ -81,7 +81,7 @@
             this.FCRemoveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.FCRemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FCRemoveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FCRemoveButton.Location = new System.Drawing.Point(217, 3);
+            this.FCRemoveButton.Location = new System.Drawing.Point(460, 10);
             this.FCRemoveButton.Name = "FCRemoveButton";
             this.FCRemoveButton.Size = new System.Drawing.Size(30, 30);
             this.FCRemoveButton.TabIndex = 5;
@@ -93,7 +93,7 @@
             // 
             this.FCChangeButton.BackColor = System.Drawing.Color.LimeGreen;
             this.FCChangeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FCChangeButton.Location = new System.Drawing.Point(177, 39);
+            this.FCChangeButton.Location = new System.Drawing.Point(350, 10);
             this.FCChangeButton.Name = "FCChangeButton";
             this.FCChangeButton.Size = new System.Drawing.Size(70, 30);
             this.FCChangeButton.TabIndex = 6;
@@ -112,7 +112,7 @@
             this.Controls.Add(this.FCNameLabel);
             this.Controls.Add(this.FCPinButton);
             this.Name = "FriendControl";
-            this.Size = new System.Drawing.Size(250, 75);
+            this.Size = new System.Drawing.Size(498, 50);
             this.Load += new System.EventHandler(this.FriendControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

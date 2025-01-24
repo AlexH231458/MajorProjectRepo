@@ -30,6 +30,16 @@ namespace MajorProject
         private void FriendControl_Load(object sender, EventArgs e)
         {
             FCNameLabel.Text = newFriend.UsernameText;
+            Information.SqlCon.Open();
+            string sql = ("SELECT Friend1, Friend2 FROM Friends WHERE Status = @S AND (Friend1 = @U OR Friend2 = @U)");
+            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            cmd.Parameters.AddWithValue("@S", "Accepted");
+            cmd.Parameters.AddWithValue("@U", Information.userID);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+
+            Information.SqlCon.Close();
         }
 
         private void FCNicknameLabel_Click(object sender, EventArgs e)

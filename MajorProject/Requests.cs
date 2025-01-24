@@ -43,9 +43,10 @@ namespace MajorProject
         private void RequestRemoveButton_Click(object sender, EventArgs e)
         {
             Information.SqlCon.Open();
-            string sql = ("DELETE FROM Friends WHERE Friend1 = @F");
+            string sql = ("DELETE FROM Friends WHERE Friend1 = @F1 AND Friend2 = @F2");
             SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-            cmd.Parameters.AddWithValue("@F", ID);
+            cmd.Parameters.AddWithValue("@F1", ID);
+            cmd.Parameters.AddWithValue("@F2", Information.userID);
             cmd.ExecuteNonQuery();
             Information.SqlCon.Close();
             this.Hide();

@@ -121,7 +121,7 @@ namespace MajorProject
                 noFriends.Text = "You have no friends :(";
                 noFriends.Dock = DockStyle.Fill;
                 noFriends.TextAlign = ContentAlignment.MiddleCenter;
-                FriendsRequestsPanel.Controls.Add(noFriends);
+                FriendsFriendsPanel.Controls.Add(noFriends);
             }
         }
 
