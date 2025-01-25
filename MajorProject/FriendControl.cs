@@ -14,7 +14,7 @@ namespace MajorProject
     public partial class FriendControl : UserControl
     {
         public NewFriend newFriend;
-        public string ID;
+        //public int ID;
         public FriendControl(NewFriend F)
         {
             InitializeComponent();
@@ -30,16 +30,16 @@ namespace MajorProject
         private void FriendControl_Load(object sender, EventArgs e)
         {
             FCNameLabel.Text = newFriend.UsernameText;
-            Information.SqlCon.Open();
-            string sql = ("SELECT Friend1, Friend2 FROM Friends WHERE Status = @S AND (Friend1 = @U OR Friend2 = @U)");
-            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-            cmd.Parameters.AddWithValue("@S", "Accepted");
-            cmd.Parameters.AddWithValue("@U", Information.userID);
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
+            //Information.SqlCon.Open();
+            //string sql = ("SELECT Friend1, Friend2 FROM Friends WHERE Status = @S AND (Friend1 = @U OR Friend2 = @U)");
+            //SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            //cmd.Parameters.AddWithValue("@S", "Accepted");
+            //cmd.Parameters.AddWithValue("@U", Information.userID);
+            //SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            //DataTable dt = new DataTable();
+            //adapter.Fill(dt);
 
-            Information.SqlCon.Close();
+            //Information.SqlCon.Close();
         }
 
         private void FCNicknameLabel_Click(object sender, EventArgs e)
@@ -50,9 +50,19 @@ namespace MajorProject
         private void FCRemoveButton_Click(object sender, EventArgs e)
         {
             Information.SqlCon.Open();
-            string sql = ("DELETE FROM Friends WHERE Friend1 = @F");
+            string sql = ("DELETE FROM Friends WHERE Friend1 = @F1 AND Friend2 = @F2");
             SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-            cmd.Parameters.AddWithValue("@F", ID);
+
+            if (newFriend.IsFirstFriend == true)
+            {
+                cmd.Parameters.AddWithValue("@F1", newFriend.FriendID);
+                cmd.Parameters.AddWithValue("@F2", Information.userID);
+            }
+            if (newFriend.IsFirstFriend == false)
+            {
+                cmd.Parameters.AddWithValue("@F2", newFriend.FriendID);
+                cmd.Parameters.AddWithValue("@F1", Information.userID);
+            }
             cmd.ExecuteNonQuery();
             Information.SqlCon.Close();
             this.Hide();
