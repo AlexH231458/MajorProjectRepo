@@ -23,39 +23,29 @@ namespace MajorProject
             FriendsList.Clear();
 
             Information.SqlCon.Open();
-            // ChatGPT used
-            string sql1 = "SELECT Users.Username, Friends.Friend1, Friends.Friend2 FROM Users, Friends WHERE Users.UserID IN(SELECT Friend1 FROM Friends WHERE Status = @Status AND Friend2 = @User)";
-            SqlCommand cmd = new SqlCommand(sql1, Information.SqlCon);
-            cmd.Parameters.AddWithValue("@Status", "Accepted");
-            cmd.Parameters.AddWithValue("@User", Information.userID);
-
-            SqlDataAdapter DA = new SqlDataAdapter(cmd);
-            DataTable DT = new DataTable();
-            DA.Fill(DT);
-
-            foreach (DataRow DR in DT.Rows)
-            {
-                NewFriend F = new NewFriend(DR, true, Convert.ToInt32(DR["Friend1"]));
-                FriendsList.Add(F);
-            }
-
-            string sql2 = "SELECT Users.Username, Friends.Friend2 FROM Users, Friends WHERE Users.UserID IN(SELECT Friend2 FROM Friends WHERE Status = @Status AND Friend1 = @User)";
-            cmd = new SqlCommand(sql1, Information.SqlCon);
-            cmd.Parameters.AddWithValue("@Status", "Accepted");
-            cmd.Parameters.AddWithValue("@User", Information.userID);
-
-            DA = new SqlDataAdapter(cmd);
-            DT = new DataTable();
-            DA.Fill(DT);
-
-            foreach (DataRow DR in DT.Rows)
-            {
-                NewFriend F = new NewFriend(DR, false, Convert.ToInt32(DR["Friend2"]));
-                FriendsList.Add(F);
-            }
-
-
+            string sql1 = "SELECT FriendshipID, Friend1, Friend2 FROM Friends WHERE Status = @s AND (Friend1 = @u OR Friend2 = @u)";
+            SqlCommand cmd1 = new SqlCommand(sql1, Information.SqlCon);
+            cmd1.Parameters.AddWithValue("@s", "Accepted");
+            cmd1.Parameters.AddWithValue("@u", Information.userID);
+            SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
+            DataTable dt1 = new DataTable();
+            da1.Fill(dt1);
             Information.SqlCon.Close();
+
+            foreach (DataRow row in dt1.Rows)
+            {
+                if (Convert.ToInt32(row["Friend1"]) == Information.userID)
+                {
+                    NewFriend F = new NewFriend(false, Convert.ToInt32(row["Friend2"]), Convert.ToInt32(row["FriendshipID"]));
+                    FriendsList.Add(F);
+                }
+                else
+                {
+                    NewFriend F = new NewFriend(true, Convert.ToInt32(row["Friend1"]), Convert.ToInt32(row["FriendshipID"]));
+                    FriendsList.Add(F);
+                }
+            }
+
             return FriendsList;
         }
 

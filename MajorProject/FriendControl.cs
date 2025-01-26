@@ -14,7 +14,6 @@ namespace MajorProject
     public partial class FriendControl : UserControl
     {
         public NewFriend newFriend;
-        //public int ID;
         public FriendControl(NewFriend F)
         {
             InitializeComponent();
@@ -29,17 +28,32 @@ namespace MajorProject
 
         private void FriendControl_Load(object sender, EventArgs e)
         {
-            FCNameLabel.Text = newFriend.UsernameText;
-            //Information.SqlCon.Open();
-            //string sql = ("SELECT Friend1, Friend2 FROM Friends WHERE Status = @S AND (Friend1 = @U OR Friend2 = @U)");
-            //SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-            //cmd.Parameters.AddWithValue("@S", "Accepted");
-            //cmd.Parameters.AddWithValue("@U", Information.userID);
-            //SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            //DataTable dt = new DataTable();
-            //adapter.Fill(dt);
+            Information.SqlCon.Open();
 
-            //Information.SqlCon.Close();
+            if (newFriend.IsFirstFriend == true)
+            {
+                string sql = "SELECT NameFor1 FROM Friends WHERE FriendshipID = @friend";
+                SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+                cmd.Parameters.AddWithValue("@friend", newFriend.FriendshipID);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                FCNicknameBox.Text = dt.Rows[0]["NameFor1"].ToString();
+            }
+            else
+            {
+                string sql = "SELECT NameFor2 FROM Friends WHERE FriendshipID = @friend";
+                SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+                cmd.Parameters.AddWithValue("@friend", newFriend.FriendshipID);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                FCNicknameBox.Text = dt.Rows[0]["NameFor2"].ToString();
+            }
+            Information.SqlCon.Close();
+
+            FCNameLabel.Text = newFriend.UsernameText;
+
         }
 
         private void FCNicknameLabel_Click(object sender, EventArgs e)
@@ -58,7 +72,7 @@ namespace MajorProject
                 cmd.Parameters.AddWithValue("@F1", newFriend.FriendID);
                 cmd.Parameters.AddWithValue("@F2", Information.userID);
             }
-            if (newFriend.IsFirstFriend == false)
+            else
             {
                 cmd.Parameters.AddWithValue("@F2", newFriend.FriendID);
                 cmd.Parameters.AddWithValue("@F1", Information.userID);
@@ -80,7 +94,21 @@ namespace MajorProject
 
         private void FCChangeButton_Click(object sender, EventArgs e)
         {
-
+            Information.SqlCon.Open();
+            string sql = "UPDATE Friends SET @name = @nickname WHERE FriendshipID = @friendship";
+            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            cmd.Parameters.AddWithValue("@friendship", newFriend.FriendshipID);
+            cmd.Parameters.AddWithValue("@nickname", FCNicknameBox.Text);
+            if (newFriend.IsFirstFriend == true)
+            {
+                cmd.Parameters.AddWithValue("@name", "NameFor1");
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@name", "NameFor2");
+            }
+            cmd.ExecuteNonQuery();
+            Information.SqlCon.Close();
         }
     }
 }

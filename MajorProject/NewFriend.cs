@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Runtime.Remoting.Messaging;
+using System.Data.SqlClient;
 
 namespace MajorProject
 {
@@ -13,6 +14,13 @@ namespace MajorProject
         public string _UsernameText;
         public int _FriendID;
         public bool _IsFirstFriend;
+        public int _FriendshipID;
+
+        public int FriendshipID
+        {
+            get { return _FriendshipID; }
+            set { _FriendshipID = value; }
+        }
 
         public int FriendID
         {
@@ -30,10 +38,21 @@ namespace MajorProject
             set { _UsernameText = value; }
         }
 
-        public NewFriend(DataRow DR, bool first, int id)
+        public NewFriend(bool first, int id, int friendship)
         {
-            _UsernameText = DR["Username"].ToString();
+            _FriendshipID = friendship;
             _FriendID = id;
+
+            Information.SqlCon.Open();
+            string sql = "SELECT Username FROM Users WHERE UserID = @u";
+            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            cmd.Parameters.AddWithValue("@u", id);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            Information.SqlCon.Close();
+
+            _UsernameText = dt.Rows[0]["Username"].ToString();
             if (first == true)
             {
                 _IsFirstFriend = true;
