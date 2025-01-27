@@ -84,7 +84,13 @@ namespace MajorProject
 
         private void FCPinButton_Click(object sender, EventArgs e)
         {
-
+            Information.SqlCon.Open();
+            string sql = "UPDATE Users SET PinnedUser = @friend WHERE UserID = @user";
+            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            cmd.Parameters.AddWithValue("@friend", newFriend.FriendshipID);
+            cmd.Parameters.AddWithValue("@user", Information.userID);
+            cmd.ExecuteNonQuery();
+            Information.SqlCon.Close();
         }
 
         private void FCNameLabel_Click(object sender, EventArgs e)
@@ -95,18 +101,19 @@ namespace MajorProject
         private void FCChangeButton_Click(object sender, EventArgs e)
         {
             Information.SqlCon.Open();
-            string sql = "UPDATE Friends SET @name = @nickname WHERE FriendshipID = @friendship";
-            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-            cmd.Parameters.AddWithValue("@friendship", newFriend.FriendshipID);
-            cmd.Parameters.AddWithValue("@nickname", FCNicknameBox.Text);
+            string sql;
             if (newFriend.IsFirstFriend == true)
             {
-                cmd.Parameters.AddWithValue("@name", "NameFor1");
+                sql = "UPDATE Friends SET NameFor1 = @nickname WHERE FriendshipID = @friendship";
             }
             else
             {
-                cmd.Parameters.AddWithValue("@name", "NameFor2");
+                sql = "UPDATE Friends SET NameFor2 = @nickname WHERE FriendshipID = @friendship";
             }
+            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            cmd.Parameters.AddWithValue("@name", "NameFor1");
+            cmd.Parameters.AddWithValue("@friendship", newFriend.FriendshipID);
+            cmd.Parameters.AddWithValue("@nickname", FCNicknameBox.Text);
             cmd.ExecuteNonQuery();
             Information.SqlCon.Close();
         }
