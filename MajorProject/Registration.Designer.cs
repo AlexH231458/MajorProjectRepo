@@ -44,6 +44,7 @@
             // 
             this.RegUsernameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegUsernameBox.Location = new System.Drawing.Point(250, 80);
+            this.RegUsernameBox.MaxLength = 19;
             this.RegUsernameBox.Name = "RegUsernameBox";
             this.RegUsernameBox.Size = new System.Drawing.Size(200, 26);
             this.RegUsernameBox.TabIndex = 1;
@@ -53,6 +54,7 @@
             // 
             this.RegPasswordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegPasswordBox.Location = new System.Drawing.Point(250, 130);
+            this.RegPasswordBox.MaxLength = 19;
             this.RegPasswordBox.Name = "RegPasswordBox";
             this.RegPasswordBox.Size = new System.Drawing.Size(200, 26);
             this.RegPasswordBox.TabIndex = 2;
@@ -105,6 +107,8 @@
             // 
             this.RegDateBox.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.RegDateBox.Location = new System.Drawing.Point(250, 180);
+            this.RegDateBox.MaxDate = new System.DateTime(2099, 12, 31, 0, 0, 0, 0);
+            this.RegDateBox.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.RegDateBox.Name = "RegDateBox";
             this.RegDateBox.Size = new System.Drawing.Size(200, 20);
             this.RegDateBox.TabIndex = 12;

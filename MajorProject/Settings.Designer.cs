@@ -38,13 +38,17 @@
             this.SettingsExitButton = new System.Windows.Forms.Button();
             this.SettingsFontDialog = new System.Windows.Forms.FontDialog();
             this.SettingsFontButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.SettingsPassButton = new System.Windows.Forms.Button();
+            this.SettingsOldBox = new System.Windows.Forms.TextBox();
+            this.SettingsNewBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // SettingsAutoshiftLabel
             // 
             this.SettingsAutoshiftLabel.AutoSize = true;
             this.SettingsAutoshiftLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SettingsAutoshiftLabel.Location = new System.Drawing.Point(100, 80);
+            this.SettingsAutoshiftLabel.Location = new System.Drawing.Point(100, 25);
             this.SettingsAutoshiftLabel.Name = "SettingsAutoshiftLabel";
             this.SettingsAutoshiftLabel.Size = new System.Drawing.Size(86, 24);
             this.SettingsAutoshiftLabel.TabIndex = 3;
@@ -54,7 +58,7 @@
             // 
             this.SettingsFontLabel.AutoSize = true;
             this.SettingsFontLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SettingsFontLabel.Location = new System.Drawing.Point(100, 130);
+            this.SettingsFontLabel.Location = new System.Drawing.Point(100, 75);
             this.SettingsFontLabel.Name = "SettingsFontLabel";
             this.SettingsFontLabel.Size = new System.Drawing.Size(53, 24);
             this.SettingsFontLabel.TabIndex = 4;
@@ -64,7 +68,7 @@
             // 
             this.SettingsColourLabel.AutoSize = true;
             this.SettingsColourLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SettingsColourLabel.Location = new System.Drawing.Point(100, 180);
+            this.SettingsColourLabel.Location = new System.Drawing.Point(100, 125);
             this.SettingsColourLabel.Name = "SettingsColourLabel";
             this.SettingsColourLabel.Size = new System.Drawing.Size(117, 24);
             this.SettingsColourLabel.TabIndex = 5;
@@ -78,7 +82,7 @@
             this.SettingsAutoshiftBox.Items.AddRange(new object[] {
             "On",
             "Off"});
-            this.SettingsAutoshiftBox.Location = new System.Drawing.Point(250, 80);
+            this.SettingsAutoshiftBox.Location = new System.Drawing.Point(250, 25);
             this.SettingsAutoshiftBox.Name = "SettingsAutoshiftBox";
             this.SettingsAutoshiftBox.Size = new System.Drawing.Size(200, 28);
             this.SettingsAutoshiftBox.TabIndex = 6;
@@ -88,7 +92,7 @@
             // 
             this.SettingsColourButton.BackColor = System.Drawing.Color.Silver;
             this.SettingsColourButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SettingsColourButton.Location = new System.Drawing.Point(250, 180);
+            this.SettingsColourButton.Location = new System.Drawing.Point(250, 125);
             this.SettingsColourButton.Name = "SettingsColourButton";
             this.SettingsColourButton.Size = new System.Drawing.Size(200, 28);
             this.SettingsColourButton.TabIndex = 8;
@@ -101,7 +105,7 @@
             this.SettingsReturnButton.BackColor = System.Drawing.Color.DarkRed;
             this.SettingsReturnButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SettingsReturnButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SettingsReturnButton.Location = new System.Drawing.Point(250, 230);
+            this.SettingsReturnButton.Location = new System.Drawing.Point(250, 265);
             this.SettingsReturnButton.Name = "SettingsReturnButton";
             this.SettingsReturnButton.Size = new System.Drawing.Size(95, 50);
             this.SettingsReturnButton.TabIndex = 15;
@@ -114,7 +118,7 @@
             this.SettingsExitButton.BackColor = System.Drawing.Color.Silver;
             this.SettingsExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SettingsExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SettingsExitButton.Location = new System.Drawing.Point(355, 230);
+            this.SettingsExitButton.Location = new System.Drawing.Point(355, 265);
             this.SettingsExitButton.Name = "SettingsExitButton";
             this.SettingsExitButton.Size = new System.Drawing.Size(95, 50);
             this.SettingsExitButton.TabIndex = 16;
@@ -134,7 +138,7 @@
             // 
             this.SettingsFontButton.BackColor = System.Drawing.Color.Silver;
             this.SettingsFontButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SettingsFontButton.Location = new System.Drawing.Point(250, 130);
+            this.SettingsFontButton.Location = new System.Drawing.Point(250, 75);
             this.SettingsFontButton.Name = "SettingsFontButton";
             this.SettingsFontButton.Size = new System.Drawing.Size(200, 28);
             this.SettingsFontButton.TabIndex = 17;
@@ -142,11 +146,56 @@
             this.SettingsFontButton.UseVisualStyleBackColor = false;
             this.SettingsFontButton.Click += new System.EventHandler(this.SettingsFontButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(89, 249);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "label1";
+            // 
+            // SettingsPassButton
+            // 
+            this.SettingsPassButton.BackColor = System.Drawing.Color.Silver;
+            this.SettingsPassButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SettingsPassButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettingsPassButton.Location = new System.Drawing.Point(456, 190);
+            this.SettingsPassButton.Name = "SettingsPassButton";
+            this.SettingsPassButton.Size = new System.Drawing.Size(95, 38);
+            this.SettingsPassButton.TabIndex = 19;
+            this.SettingsPassButton.Text = "Log Out";
+            this.SettingsPassButton.UseVisualStyleBackColor = false;
+            // 
+            // SettingsOldBox
+            // 
+            this.SettingsOldBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettingsOldBox.Location = new System.Drawing.Point(250, 175);
+            this.SettingsOldBox.MaxLength = 19;
+            this.SettingsOldBox.Name = "SettingsOldBox";
+            this.SettingsOldBox.Size = new System.Drawing.Size(200, 26);
+            this.SettingsOldBox.TabIndex = 20;
+            this.SettingsOldBox.UseSystemPasswordChar = true;
+            // 
+            // SettingsNewBox
+            // 
+            this.SettingsNewBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettingsNewBox.Location = new System.Drawing.Point(250, 215);
+            this.SettingsNewBox.MaxLength = 19;
+            this.SettingsNewBox.Name = "SettingsNewBox";
+            this.SettingsNewBox.Size = new System.Drawing.Size(200, 26);
+            this.SettingsNewBox.TabIndex = 21;
+            this.SettingsNewBox.UseSystemPasswordChar = true;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.SettingsNewBox);
+            this.Controls.Add(this.SettingsOldBox);
+            this.Controls.Add(this.SettingsPassButton);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.SettingsFontButton);
             this.Controls.Add(this.SettingsExitButton);
             this.Controls.Add(this.SettingsReturnButton);
@@ -176,5 +225,9 @@
         private System.Windows.Forms.Button SettingsExitButton;
         private System.Windows.Forms.FontDialog SettingsFontDialog;
         private System.Windows.Forms.Button SettingsFontButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button SettingsPassButton;
+        private System.Windows.Forms.TextBox SettingsOldBox;
+        private System.Windows.Forms.TextBox SettingsNewBox;
     }
 }
