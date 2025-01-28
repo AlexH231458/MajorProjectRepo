@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -19,6 +20,28 @@ namespace MajorProject
         public Settings()
         {
             InitializeComponent();
+
+            Information.SqlCon.Open();
+
+            string sql = "SELECT Autoshift FROM Users WHERE UserID = @u";
+            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            cmd.Parameters.AddWithValue("@u", Information.userID);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable DT1 = new DataTable();
+            adapter.Fill(DT1);
+            bool shift = Convert.ToBoolean(DT1.Rows[0]["Autoshift"]);
+
+            Information.SqlCon.Close();
+
+            if (shift == true)
+            {
+                SettingsAutoshiftBox.Text = "On";
+            }
+            else
+            {
+                SettingsAutoshiftBox.Text = "Off";
+            }
+
             this.BackColor = Information.colour;
             foreach (Control control in this.Controls)
             {
@@ -94,6 +117,126 @@ namespace MajorProject
                 cmd.ExecuteNonQuery();
                 Information.SqlCon.Close();
             }
+        }
+
+        private void SettingsShowCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SettingsShowCheck.Checked == true)
+            {
+                SettingsOldBox.UseSystemPasswordChar = false;
+                SettingsNewBox.UseSystemPasswordChar = false;
+            }
+            if (SettingsShowCheck.Checked == false)
+            {
+                SettingsOldBox.UseSystemPasswordChar = true;
+                SettingsNewBox.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void SettingsErrorLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public bool checkPassword(string text)
+        {
+            bool allNumbers;
+            int tempNumber;
+            try
+            {
+                tempNumber = int.Parse(text);
+                allNumbers = true;
+            }
+            catch
+            {
+                allNumbers = false;
+            }
+
+            if (text.ToUpper() != text && text.ToLower() != text)
+            {
+                bool numberFound = false;
+                foreach (char C in text)
+                {
+                    try
+                    {
+                        tempNumber = int.Parse(C.ToString());
+                        numberFound = true;
+                    }
+                    catch
+                    {
+
+                    }
+                }
+                if (numberFound == true && allNumbers == false)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void SettingsPassButton_Click(object sender, EventArgs e)
+        {
+            Information.SqlCon.Open();
+
+            string sql = "SELECT Password FROM Users WHERE UserID = @u";
+            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            cmd.Parameters.AddWithValue("@u", Information.userID);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            string password = dt.Rows[0]["Password"].ToString();
+
+            if (password == SettingsOldBox.Text)
+            {
+                password = SettingsNewBox.Text;
+                if (checkPassword(password) == false)
+                {
+                    SettingsErrorLabel.Text = "Error:\nPassword is not secure";
+                    SettingsErrorLabel.Show();
+                }
+                else
+                {
+                    string sql1 = "UPDATE Users SET Password = @p WHERE UserID = @u";
+                    SqlCommand cmd1 = new SqlCommand(sql1, Information.SqlCon);
+                    cmd1.Parameters.AddWithValue("@p", password);
+                    cmd1.Parameters.AddWithValue("@u", Information.userID);
+                    cmd1.ExecuteNonQuery();
+                }
+            }
+            else
+            {
+                SettingsErrorLabel.Text = "Error:\nIncorrect password";
+                SettingsErrorLabel.Show();
+            }
+
+            Information.SqlCon.Close();
+        }
+
+        private void SettingsAutoshiftBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Information.SqlCon.Open();
+
+            string sql = "UPDATE Users SET Autoshift = @a WHERE UserID = @u";
+            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            cmd.Parameters.AddWithValue("@u", Information.userID);
+            if (SettingsAutoshiftBox.Text == "On")
+            {
+                cmd.Parameters.AddWithValue("@a", true);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@a", false);
+            }
+            cmd.ExecuteNonQuery();
+            Information.SqlCon.Close();
         }
     }
 }
