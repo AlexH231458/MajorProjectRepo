@@ -135,7 +135,6 @@ namespace MajorProject
                 {
                     userFound = true;
                     RegErrorText.Text = "Error: Username already exists";
-                    RegErrorText.Show();
                 }
             }
 
@@ -145,14 +144,12 @@ namespace MajorProject
                 if (checkPassword(password) == false)
                 {
                     RegErrorText.Text = "Error: Password is not secure";
-                    RegErrorText.Show();
                 }
 
                 //checks that the user is over 13 years old
                 else if (DoB.AddYears(13) >= DateTime.Today)
                 {
                     RegErrorText.Text = "Error: Users must be over 13";
-                    RegErrorText.Show();
                 }
 
                 //adds the new user to the databse then returns to the login form

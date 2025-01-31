@@ -96,7 +96,6 @@ namespace MajorProject
                 }
             }
             LoginErrorText.Text = "Error: invalid login details";
-            LoginErrorText.Show();
         }
     }
 }

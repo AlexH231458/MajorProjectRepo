@@ -23,7 +23,10 @@ namespace MajorProject
             this.BackColor = Information.colour;
             foreach (Control control in this.Controls)
             {
-                control.Font = Information.font;
+                float size = control.Font.Size;
+                string fName = Information.font.Name.ToString(); ;
+                Font font = new Font(fName, size);
+                control.Font = font;
             }
         }
 

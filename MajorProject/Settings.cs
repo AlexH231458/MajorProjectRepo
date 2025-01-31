@@ -45,7 +45,10 @@ namespace MajorProject
             this.BackColor = Information.colour;
             foreach (Control control in this.Controls)
             {
-                control.Font = Information.font;
+                float size = control.Font.Size;
+                string fName = Information.font.Name.ToString(); ;
+                Font font = new Font(fName, size);
+                control.Font = font;
             }
         }
 
@@ -103,12 +106,14 @@ namespace MajorProject
 
                 foreach (Control control in this.Controls)
                 {
-                    control.Font = Information.font;
+                    float size = control.Font.Size;
+                    string fName = Information.font.Name.ToString(); ;
+                    Font font = new Font(fName, size);
+                    control.Font = font;
                 }
 
                 System.ComponentModel.TypeConverter convert = System.ComponentModel.TypeDescriptor.GetConverter(typeof(Font));
                 string fontName = (string)convert.ConvertToString(Information.font);
-
                 Information.SqlCon.Open();
                 string sql = "UPDATE Users SET Font = @Font WHERE UserID = @ID";
                 SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
@@ -184,6 +189,7 @@ namespace MajorProject
 
         private void SettingsPassButton_Click(object sender, EventArgs e)
         {
+            SettingsErrorLabel.Text = "";
             Information.SqlCon.Open();
 
             string sql = "SELECT Password FROM Users WHERE UserID = @u";
@@ -200,7 +206,6 @@ namespace MajorProject
                 if (checkPassword(password) == false)
                 {
                     SettingsErrorLabel.Text = "Error:\nPassword is not secure";
-                    SettingsErrorLabel.Show();
                 }
                 else
                 {
@@ -214,7 +219,6 @@ namespace MajorProject
             else
             {
                 SettingsErrorLabel.Text = "Error:\nIncorrect password";
-                SettingsErrorLabel.Show();
             }
 
             Information.SqlCon.Close();
