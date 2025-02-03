@@ -15,9 +15,9 @@ namespace MajorProject
     {
         //SQL connection for relevant location of server
 
-        //static public SqlConnection SqlCon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Right Click\source\repos\MajorProjectRepo\MajorProject\AppData\Database.mdf;Integrated Security=True");
+        static public SqlConnection SqlCon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Right Click\source\repos\MajorProjectRepo\MajorProject\AppData\Database.mdf;Integrated Security=True");
         //static public SqlConnection SqlCon = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=C:\Users\alexh\source\repos\MajorProjectRepo\MajorProject\AppData\Database.mdf;Integrated Security = True");
-        static public SqlConnection SqlCon = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=C:\Users\AQ231458\source\repos\AlexH231458\MajorProjectRepo\MajorProject\AppData\Database.mdf;Integrated Security = True");
+        //static public SqlConnection SqlCon = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=C:\Users\AQ231458\source\repos\AlexH231458\MajorProjectRepo\MajorProject\AppData\Database.mdf;Integrated Security = True");
 
         static public string userName;
         static public int userID;

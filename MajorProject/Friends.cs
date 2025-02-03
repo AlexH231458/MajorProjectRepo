@@ -19,6 +19,8 @@ namespace MajorProject
 
         public Friends(List<NewRequest> requestList)
         {
+            //check parameters... not needed?
+
             // Assign the passed list
             this._RequestList = requestList;
             InitializeComponent();
@@ -31,27 +33,7 @@ namespace MajorProject
                 control.Font = font;
             }
 
-            //open SQL connection
-            Information.SqlCon.Open();
-            string sql = ("SELECT Username FROM [Users] WHERE Users.UserID != @I");
-            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-            cmd.CommandType.ToString();
-            cmd.Parameters.AddWithValue("@I", Information.userID);
-
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            int count = 0;
-
-
-            //adds each username to the combobox
-            foreach (DataRow dr in dt.Rows)
-            {
-                FriendSearchCombo.Items.Add(dt.Rows[count]["Username"].ToString());
-                count++;
-            }
-            Information.SqlCon.Close();
-            displayRequests(_RequestList);
+            //displayRequests(_RequestList);
         }
 
         private void FriendReturnButton_Click(object sender, EventArgs e)
@@ -62,35 +44,38 @@ namespace MajorProject
             MenuForm.Show();
         }
 
-        private void FriendSearchCombo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
         private void FriendRequestButton_Click(object sender, EventArgs e)
         {
-            Information.SqlCon.Open();
+            try
+            {
+                Information.SqlCon.Open();
 
-            //finds relevant userID for selected username
-            string sql = ("SELECT UserID FROM Users WHERE Username = @U");
-            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-            cmd.CommandType.ToString();
-            cmd.Parameters.AddWithValue("@U", FriendSearchCombo.Text);
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable DT = new DataTable();
-            adapter.Fill(DT);
-            int newFriend = Convert.ToInt32(DT.Rows[0]["UserID"]);
+                //finds relevant userID for selected username
+                string sql = ("SELECT UserID FROM Users WHERE Username = @U");
+                SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+                cmd.CommandType.ToString();
+                cmd.Parameters.AddWithValue("@U", FriendsSearchBox.Text);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable DT = new DataTable();
+                adapter.Fill(DT);
+                int newFriend = Convert.ToInt32(DT.Rows[0]["UserID"]);
 
-            //inserts new frienship data into Friends table
-            string insert = "INSERT INTO Friends VALUES (@F1, @F2, @N1, @N2, @S)";
-            SqlCommand Cmd = new SqlCommand(insert, Information.SqlCon);
-            Cmd.Parameters.AddWithValue("@F1", Information.userID);
-            Cmd.Parameters.AddWithValue("@N1", Information.userName);
-            Cmd.Parameters.AddWithValue("N2", FriendSearchCombo.Text);
-            Cmd.Parameters.AddWithValue("@F2", newFriend);
-            Cmd.Parameters.AddWithValue("@S", "Requested");
-            Cmd.ExecuteNonQuery();
+                //inserts new frienship data into Friends table
+                string insert = "INSERT INTO Friends VALUES (@F1, @F2, @N1, @N2, @S)";
+                SqlCommand Cmd = new SqlCommand(insert, Information.SqlCon);
+                Cmd.Parameters.AddWithValue("@F1", Information.userID);
+                Cmd.Parameters.AddWithValue("@N1", Information.userName);
+                Cmd.Parameters.AddWithValue("N2", FriendsSearchBox.Text);
+                Cmd.Parameters.AddWithValue("@F2", newFriend);
+                Cmd.Parameters.AddWithValue("@S", "Requested");
+                Cmd.ExecuteNonQuery();
 
-            Information.SqlCon.Close();
+                Information.SqlCon.Close();
+            }
+            catch
+            {
+                FriendsErrorLabel.Text = "Error: no user selected";
+            }
         }
 
         private List<NewFriend> UserFriends = new List<NewFriend>();
@@ -174,7 +159,6 @@ namespace MajorProject
 
         private void Friends_Load(object sender, EventArgs e)
         {
-
             // Populate and display requests
             friendRequest.displayRequest(null, new List<NewRequest>());
             _RequestList = friendRequest.GetRequestList();
@@ -197,6 +181,16 @@ namespace MajorProject
         }
 
         private void FriendsFriendsPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void FriendsErrorLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FriendsSearchBox_TextChanged(object sender, EventArgs e)
         {
 
         }

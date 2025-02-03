@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.FriendReturnButton = new System.Windows.Forms.Button();
-            this.FriendSearchCombo = new System.Windows.Forms.ComboBox();
             this.FriendTitleLabel = new System.Windows.Forms.Label();
             this.FriendSearchLabel = new System.Windows.Forms.Label();
             this.FriendRequestButton = new System.Windows.Forms.Button();
             this.FriendsRequestsPanel = new System.Windows.Forms.Panel();
             this.FriendsFriendsPanel = new System.Windows.Forms.Panel();
+            this.FriendsErrorLabel = new System.Windows.Forms.Label();
+            this.FriendsSearchBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // FriendReturnButton
@@ -49,15 +50,6 @@
             this.FriendReturnButton.Text = "Return";
             this.FriendReturnButton.UseVisualStyleBackColor = false;
             this.FriendReturnButton.Click += new System.EventHandler(this.FriendReturnButton_Click);
-            // 
-            // FriendSearchCombo
-            // 
-            this.FriendSearchCombo.FormattingEnabled = true;
-            this.FriendSearchCombo.Location = new System.Drawing.Point(218, 100);
-            this.FriendSearchCombo.Name = "FriendSearchCombo";
-            this.FriendSearchCombo.Size = new System.Drawing.Size(150, 21);
-            this.FriendSearchCombo.TabIndex = 16;
-            this.FriendSearchCombo.SelectedIndexChanged += new System.EventHandler(this.FriendSearchCombo_SelectedIndexChanged);
             // 
             // FriendTitleLabel
             // 
@@ -112,19 +104,42 @@
             this.FriendsFriendsPanel.TabIndex = 21;
             this.FriendsFriendsPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.FriendsFriendsPanel_Paint);
             // 
+            // FriendsErrorLabel
+            // 
+            this.FriendsErrorLabel.AutoSize = true;
+            this.FriendsErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.FriendsErrorLabel.Location = new System.Drawing.Point(416, 40);
+            this.FriendsErrorLabel.Name = "FriendsErrorLabel";
+            this.FriendsErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.FriendsErrorLabel.TabIndex = 22;
+            this.FriendsErrorLabel.Click += new System.EventHandler(this.FriendsErrorLabel_Click);
+            // 
+            // FriendsSearchBox
+            // 
+            this.FriendsSearchBox.Location = new System.Drawing.Point(260, 100);
+            this.FriendsSearchBox.MaxLength = 29;
+            this.FriendsSearchBox.Name = "FriendsSearchBox";
+            this.FriendsSearchBox.Size = new System.Drawing.Size(150, 20);
+            this.FriendsSearchBox.TabIndex = 23;
+            this.FriendsSearchBox.TextChanged += new System.EventHandler(this.FriendsSearchBox_TextChanged);
+            // 
             // Friends
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 761);
+            this.Controls.Add(this.FriendsSearchBox);
+            this.Controls.Add(this.FriendsErrorLabel);
             this.Controls.Add(this.FriendsFriendsPanel);
             this.Controls.Add(this.FriendsRequestsPanel);
             this.Controls.Add(this.FriendRequestButton);
             this.Controls.Add(this.FriendSearchLabel);
             this.Controls.Add(this.FriendTitleLabel);
-            this.Controls.Add(this.FriendSearchCombo);
             this.Controls.Add(this.FriendReturnButton);
+            this.MaximumSize = new System.Drawing.Size(600, 800);
+            this.MinimumSize = new System.Drawing.Size(600, 800);
             this.Name = "Friends";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Friends";
             this.Load += new System.EventHandler(this.Friends_Load);
             this.ResumeLayout(false);
@@ -135,11 +150,12 @@
         #endregion
 
         private System.Windows.Forms.Button FriendReturnButton;
-        private System.Windows.Forms.ComboBox FriendSearchCombo;
         private System.Windows.Forms.Label FriendTitleLabel;
         private System.Windows.Forms.Label FriendSearchLabel;
         private System.Windows.Forms.Button FriendRequestButton;
         private System.Windows.Forms.Panel FriendsRequestsPanel;
         private System.Windows.Forms.Panel FriendsFriendsPanel;
+        private System.Windows.Forms.Label FriendsErrorLabel;
+        private System.Windows.Forms.TextBox FriendsSearchBox;
     }
 }

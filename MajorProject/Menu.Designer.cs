@@ -34,6 +34,7 @@
             // 
             // MenuSettingsButton
             // 
+            this.MenuSettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MenuSettingsButton.Location = new System.Drawing.Point(12, 12);
             this.MenuSettingsButton.Name = "MenuSettingsButton";
             this.MenuSettingsButton.Size = new System.Drawing.Size(75, 23);
@@ -44,6 +45,7 @@
             // 
             // MenuFriendsButton
             // 
+            this.MenuFriendsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MenuFriendsButton.Location = new System.Drawing.Point(118, 12);
             this.MenuFriendsButton.Name = "MenuFriendsButton";
             this.MenuFriendsButton.Size = new System.Drawing.Size(75, 23);

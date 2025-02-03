@@ -43,7 +43,7 @@
             // 
             // RequestAcceptButton
             // 
-            this.RequestAcceptButton.Location = new System.Drawing.Point(347, 17);
+            this.RequestAcceptButton.Location = new System.Drawing.Point(326, 17);
             this.RequestAcceptButton.Name = "RequestAcceptButton";
             this.RequestAcceptButton.Size = new System.Drawing.Size(55, 23);
             this.RequestAcceptButton.TabIndex = 1;
@@ -53,7 +53,7 @@
             // 
             // RequestRemoveButton
             // 
-            this.RequestRemoveButton.Location = new System.Drawing.Point(420, 17);
+            this.RequestRemoveButton.Location = new System.Drawing.Point(412, 17);
             this.RequestRemoveButton.Name = "RequestRemoveButton";
             this.RequestRemoveButton.Size = new System.Drawing.Size(65, 23);
             this.RequestRemoveButton.TabIndex = 2;
@@ -69,7 +69,7 @@
             this.Controls.Add(this.RequestAcceptButton);
             this.Controls.Add(this.RequestNameText);
             this.Name = "Requests";
-            this.Size = new System.Drawing.Size(500, 50);
+            this.Size = new System.Drawing.Size(480, 50);
             this.Load += new System.EventHandler(this.Requests_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -13,6 +13,7 @@ namespace MajorProject
     public partial class Menu : Form
     {
         private List<NewRequest> requestList;
+        private List<NewFriend> friendsList;
         public Menu()
         {
             InitializeComponent();
