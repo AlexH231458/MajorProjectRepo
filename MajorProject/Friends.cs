@@ -61,13 +61,14 @@ namespace MajorProject
                 int newFriend = Convert.ToInt32(DT.Rows[0]["UserID"]);
 
                 //inserts new frienship data into Friends table
-                string insert = "INSERT INTO Friends VALUES (@F1, @F2, @N1, @N2, @S)";
+                string insert = "INSERT INTO Friends VALUES (@F1, @F2, @N1, @N2, @S, @L)";
                 SqlCommand Cmd = new SqlCommand(insert, Information.SqlCon);
                 Cmd.Parameters.AddWithValue("@F1", Information.userID);
                 Cmd.Parameters.AddWithValue("@N1", Information.userName);
                 Cmd.Parameters.AddWithValue("N2", FriendsSearchBox.Text);
                 Cmd.Parameters.AddWithValue("@F2", newFriend);
                 Cmd.Parameters.AddWithValue("@S", "Requested");
+                Cmd.Parameters.AddWithValue("@L", System.DBNull.Value);
                 Cmd.ExecuteNonQuery();
 
                 Information.SqlCon.Close();

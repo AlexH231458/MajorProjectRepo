@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,10 @@ namespace MajorProject
     public partial class Menu : Form
     {
         private List<NewRequest> requestList;
-        private List<NewFriend> friendsList;
+        public List<NewFriend> _FriendsList = new List<NewFriend>();
+        private List<NewFriend> UserFriends = new List<NewFriend>();
+        private FriendDisplay individualFriend = new FriendDisplay();
+        //private List<NewFriend> friendsList;
         public Menu()
         {
             InitializeComponent();
@@ -29,6 +33,10 @@ namespace MajorProject
                 Font font = new Font(fName, size);
                 control.Font = font;
             }
+
+            individualFriend.displayFriend(null, new List<NewFriend>());
+            _FriendsList = individualFriend.GetFriendsList();
+            displayFriends(_FriendsList);
         }
 
         private void MenuSettingsButton_Click(object sender, EventArgs e)
@@ -45,6 +53,80 @@ namespace MajorProject
             Friends FriendsForm = new Friends(requestList);
             this.Hide();
             FriendsForm.Show();
+        }
+
+
+        public void displayFriends(List<NewFriend> friendsList)
+        {
+            Information.SqlCon.Open();
+            string sql = "SELECT PinnedUser FROM Users WHERE UserID = @U";
+            SqlCommand cmd1 = new SqlCommand(sql, Information.SqlCon);
+            cmd1.Parameters.AddWithValue("@U", Information.userID);
+            SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
+            DataTable dt1 = new DataTable();
+            da1.Fill(dt1);
+            int pin = 0;
+            try
+            {
+                pin = Convert.ToInt32(dt1.Rows[0]["PinnedUser"]);
+            }
+            catch
+            {
+                Label noPin = new Label();
+                noPin.Text = "Pin a user in Friends";
+                noPin.Dock = DockStyle.Fill;
+                noPin.TextAlign = ContentAlignment.MiddleCenter;
+                MenuPinnedPanel.Controls.Add(noPin);
+            }
+
+            Information.SqlCon.Close();
+
+
+            MenuAllPanel.Controls.Clear();
+            List<NewFriend> currentFriendsList = friendsList ?? _FriendsList;
+            if (currentFriendsList == null || currentFriendsList.Count == 0)
+            {
+                individualFriend.displayFriend(null, new List<NewFriend>());
+                currentFriendsList = individualFriend.GetFriendsList();
+            }
+            if (currentFriendsList != null && currentFriendsList.Count > 0)
+            {
+                int totalFriends = 0;
+                foreach (NewFriend friend in currentFriendsList)
+                {
+                    MenuFriend NF = new MenuFriend(friend);
+                    if (friend.FriendshipID == pin)
+                    {
+                        NF.Parent = MenuPinnedPanel;
+                    }
+                    else
+                    {
+                        NF.Parent = MenuAllPanel;
+                        NF.Top = totalFriends * NF.Height;
+                        MenuAllPanel.Controls.Add(NF);
+                        totalFriends++;
+                    }
+                }
+                MenuAllPanel.Refresh();
+            }
+            else
+            {
+                Label noFriends = new Label();
+                noFriends.Text = "You have no friends :(";
+                noFriends.Dock = DockStyle.Fill;
+                noFriends.TextAlign = ContentAlignment.MiddleCenter;
+                MenuAllPanel.Controls.Add(noFriends);
+            }
+        }
+
+        private void MenuAllPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void MenuPinnedPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -55,7 +55,7 @@
             // 
             this.FriendTitleLabel.AutoSize = true;
             this.FriendTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FriendTitleLabel.Location = new System.Drawing.Point(128, 24);
+            this.FriendTitleLabel.Location = new System.Drawing.Point(203, 24);
             this.FriendTitleLabel.Name = "FriendTitleLabel";
             this.FriendTitleLabel.Size = new System.Drawing.Size(95, 29);
             this.FriendTitleLabel.TabIndex = 17;
@@ -65,7 +65,7 @@
             // 
             this.FriendSearchLabel.AutoSize = true;
             this.FriendSearchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FriendSearchLabel.Location = new System.Drawing.Point(90, 95);
+            this.FriendSearchLabel.Location = new System.Drawing.Point(35, 96);
             this.FriendSearchLabel.Name = "FriendSearchLabel";
             this.FriendSearchLabel.Size = new System.Drawing.Size(106, 24);
             this.FriendSearchLabel.TabIndex = 18;
@@ -76,9 +76,9 @@
             this.FriendRequestButton.BackColor = System.Drawing.Color.ForestGreen;
             this.FriendRequestButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FriendRequestButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FriendRequestButton.Location = new System.Drawing.Point(419, 82);
+            this.FriendRequestButton.Location = new System.Drawing.Point(379, 82);
             this.FriendRequestButton.Name = "FriendRequestButton";
-            this.FriendRequestButton.Size = new System.Drawing.Size(94, 50);
+            this.FriendRequestButton.Size = new System.Drawing.Size(95, 50);
             this.FriendRequestButton.TabIndex = 19;
             this.FriendRequestButton.Text = "Request";
             this.FriendRequestButton.UseVisualStyleBackColor = false;
@@ -88,7 +88,7 @@
             // 
             this.FriendsRequestsPanel.AutoScroll = true;
             this.FriendsRequestsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FriendsRequestsPanel.Location = new System.Drawing.Point(40, 160);
+            this.FriendsRequestsPanel.Location = new System.Drawing.Point(15, 159);
             this.FriendsRequestsPanel.Name = "FriendsRequestsPanel";
             this.FriendsRequestsPanel.Size = new System.Drawing.Size(500, 150);
             this.FriendsRequestsPanel.TabIndex = 20;
@@ -98,7 +98,7 @@
             // 
             this.FriendsFriendsPanel.AutoScroll = true;
             this.FriendsFriendsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FriendsFriendsPanel.Location = new System.Drawing.Point(40, 330);
+            this.FriendsFriendsPanel.Location = new System.Drawing.Point(15, 330);
             this.FriendsFriendsPanel.Name = "FriendsFriendsPanel";
             this.FriendsFriendsPanel.Size = new System.Drawing.Size(500, 150);
             this.FriendsFriendsPanel.TabIndex = 21;
@@ -108,7 +108,7 @@
             // 
             this.FriendsErrorLabel.AutoSize = true;
             this.FriendsErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.FriendsErrorLabel.Location = new System.Drawing.Point(416, 40);
+            this.FriendsErrorLabel.Location = new System.Drawing.Point(376, 40);
             this.FriendsErrorLabel.Name = "FriendsErrorLabel";
             this.FriendsErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.FriendsErrorLabel.TabIndex = 22;
@@ -116,7 +116,7 @@
             // 
             // FriendsSearchBox
             // 
-            this.FriendsSearchBox.Location = new System.Drawing.Point(260, 100);
+            this.FriendsSearchBox.Location = new System.Drawing.Point(185, 100);
             this.FriendsSearchBox.MaxLength = 29;
             this.FriendsSearchBox.Name = "FriendsSearchBox";
             this.FriendsSearchBox.Size = new System.Drawing.Size(150, 20);
@@ -127,7 +127,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 761);
+            this.ClientSize = new System.Drawing.Size(534, 661);
             this.Controls.Add(this.FriendsSearchBox);
             this.Controls.Add(this.FriendsErrorLabel);
             this.Controls.Add(this.FriendsFriendsPanel);
@@ -136,8 +136,8 @@
             this.Controls.Add(this.FriendSearchLabel);
             this.Controls.Add(this.FriendTitleLabel);
             this.Controls.Add(this.FriendReturnButton);
-            this.MaximumSize = new System.Drawing.Size(600, 800);
-            this.MinimumSize = new System.Drawing.Size(600, 800);
+            this.MaximumSize = new System.Drawing.Size(550, 700);
+            this.MinimumSize = new System.Drawing.Size(550, 700);
             this.Name = "Friends";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Friends";
