@@ -21,5 +21,25 @@ namespace MajorProject
         {
 
         }
+
+        private void MessageTime_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MessageDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MessageText_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MessageUser_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

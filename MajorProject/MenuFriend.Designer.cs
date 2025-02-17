@@ -49,6 +49,7 @@
             this.MFChatButton.TabIndex = 4;
             this.MFChatButton.Text = "Chat";
             this.MFChatButton.UseVisualStyleBackColor = true;
+            this.MFChatButton.Click += new System.EventHandler(this.MFChatButton_Click);
             // 
             // MenuFriend
             // 

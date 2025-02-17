@@ -49,7 +49,7 @@ namespace MajorProject
         private void LoginNewButton_Click(object sender, EventArgs e)
         {
             //switches to registration form on button click
-            Registration temp = new Registration();
+            //Registration temp = new Registration();
             Registration RegForm = new Registration();
             this.Hide();
             RegForm.Show();

@@ -49,5 +49,13 @@ namespace MajorProject
 
             MFNameLabel.Text = newFriend.UsernameText;
         }
+
+        private void MFChatButton_Click(object sender, EventArgs e)
+        {
+            Chat ChatForm = new Chat(newFriend);
+            Control MenuForm = this.Parent.Parent;
+            MenuForm.Hide();
+            ChatForm.Show();
+        }
     }
 }

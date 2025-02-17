@@ -28,19 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.ChatMessagesPanel = new System.Windows.Forms.Panel();
             this.ChatSendButton = new System.Windows.Forms.Button();
             this.ChatReturnButton = new System.Windows.Forms.Button();
             this.ChatNameLabel = new System.Windows.Forms.Label();
             this.ChatMessageBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // panel1
+            // ChatMessagesPanel
             // 
-            this.panel1.Location = new System.Drawing.Point(22, 50);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 500);
-            this.panel1.TabIndex = 0;
+            this.ChatMessagesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ChatMessagesPanel.Location = new System.Drawing.Point(22, 50);
+            this.ChatMessagesPanel.Name = "ChatMessagesPanel";
+            this.ChatMessagesPanel.Size = new System.Drawing.Size(500, 500);
+            this.ChatMessagesPanel.TabIndex = 0;
+            this.ChatMessagesPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ChatMessagesPanel_Paint);
             // 
             // ChatSendButton
             // 
@@ -52,6 +54,7 @@
             this.ChatSendButton.TabIndex = 1;
             this.ChatSendButton.Text = "Send";
             this.ChatSendButton.UseVisualStyleBackColor = false;
+            this.ChatSendButton.Click += new System.EventHandler(this.ChatSendButton_Click);
             // 
             // ChatReturnButton
             // 
@@ -64,15 +67,17 @@
             this.ChatReturnButton.TabIndex = 2;
             this.ChatReturnButton.Text = "Return";
             this.ChatReturnButton.UseVisualStyleBackColor = false;
+            this.ChatReturnButton.Click += new System.EventHandler(this.ChatReturnButton_Click);
             // 
             // ChatNameLabel
             // 
             this.ChatNameLabel.AutoSize = true;
-            this.ChatNameLabel.Location = new System.Drawing.Point(212, 24);
+            this.ChatNameLabel.Location = new System.Drawing.Point(232, 17);
             this.ChatNameLabel.Name = "ChatNameLabel";
             this.ChatNameLabel.Size = new System.Drawing.Size(55, 13);
             this.ChatNameLabel.TabIndex = 3;
             this.ChatNameLabel.Text = "TempText";
+            this.ChatNameLabel.Click += new System.EventHandler(this.ChatNameLabel_Click);
             // 
             // ChatMessageBox
             // 
@@ -81,6 +86,7 @@
             this.ChatMessageBox.Name = "ChatMessageBox";
             this.ChatMessageBox.Size = new System.Drawing.Size(400, 26);
             this.ChatMessageBox.TabIndex = 4;
+            this.ChatMessageBox.TextChanged += new System.EventHandler(this.ChatMessageBox_TextChanged);
             // 
             // Chat
             // 
@@ -91,10 +97,11 @@
             this.Controls.Add(this.ChatNameLabel);
             this.Controls.Add(this.ChatReturnButton);
             this.Controls.Add(this.ChatSendButton);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.ChatMessagesPanel);
             this.MaximumSize = new System.Drawing.Size(550, 700);
             this.MinimumSize = new System.Drawing.Size(550, 700);
             this.Name = "Chat";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chat";
             this.Load += new System.EventHandler(this.Chat_Load);
             this.ResumeLayout(false);
@@ -104,7 +111,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel ChatMessagesPanel;
         private System.Windows.Forms.Button ChatSendButton;
         private System.Windows.Forms.Button ChatReturnButton;
         private System.Windows.Forms.Label ChatNameLabel;
