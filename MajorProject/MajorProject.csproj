@@ -74,6 +74,7 @@
     <Compile Include="Encryption3.cs" />
     <Compile Include="Encryption4.cs" />
     <Compile Include="Encryption5.cs" />
+    <Compile Include="FriendChat.cs" />
     <Compile Include="FriendControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -113,6 +114,7 @@
     <Compile Include="Message.Designer.cs">
       <DependentUpon>Message.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewChat.cs" />
     <Compile Include="NewFriend.cs" />
     <Compile Include="NewRequest.cs" />
     <Compile Include="Program.cs" />

@@ -14,8 +14,8 @@ namespace MajorProject
     public partial class Menu : Form
     {
         private List<NewRequest> requestList;
-        public List<NewFriend> _FriendsList = new List<NewFriend>();
-        private List<NewFriend> UserFriends = new List<NewFriend>();
+        public List<NewFriend> FriendsList = new List<NewFriend>();
+        //private List<NewFriend> UserFriends = new List<NewFriend>();
         private FriendDisplay individualFriend = new FriendDisplay();
         //private List<NewFriend> friendsList;
         public Menu()
@@ -35,8 +35,8 @@ namespace MajorProject
             }
 
             individualFriend.displayFriend(null, new List<NewFriend>());
-            _FriendsList = individualFriend.GetFriendsList();
-            displayFriends(_FriendsList);
+            FriendsList = individualFriend.GetFriendsList();
+            displayFriends(FriendsList);
         }
 
         private void MenuSettingsButton_Click(object sender, EventArgs e)
@@ -83,7 +83,7 @@ namespace MajorProject
 
 
             MenuAllPanel.Controls.Clear();
-            List<NewFriend> currentFriendsList = friendsList ?? _FriendsList;
+            List<NewFriend> currentFriendsList = friendsList ?? FriendsList;
             if (currentFriendsList == null || currentFriendsList.Count == 0)
             {
                 individualFriend.displayFriend(null, new List<NewFriend>());

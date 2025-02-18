@@ -14,6 +14,7 @@ namespace MajorProject
     public partial class MenuFriend : UserControl
     {
         public NewFriend newFriend;
+        private List<NewChat> chatList;
         public MenuFriend(NewFriend F)
         {
             InitializeComponent();
@@ -52,7 +53,7 @@ namespace MajorProject
 
         private void MFChatButton_Click(object sender, EventArgs e)
         {
-            Chat ChatForm = new Chat(newFriend);
+            Chat ChatForm = new Chat(chatList, newFriend);
             Control MenuForm = this.Parent.Parent;
             MenuForm.Hide();
             ChatForm.Show();

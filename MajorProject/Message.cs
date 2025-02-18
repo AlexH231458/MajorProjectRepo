@@ -12,9 +12,12 @@ namespace MajorProject
 {
     public partial class Message : UserControl
     {
-        public Message()
+        public NewChat NewMsg;
+        public Message(NewChat C)
         {
             InitializeComponent();
+            NewMsg = C;
+            this.Load += Message_Load;
         }
 
         private void Message_Load(object sender, EventArgs e)
