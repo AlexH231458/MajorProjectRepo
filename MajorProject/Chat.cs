@@ -7,17 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
+using System.Data.SqlClient;
 
 namespace MajorProject
 {
     public partial class Chat : Form
     {
         public List<NewChat> _ChatList = new List<NewChat>();
-        public int friendID;
-        public Chat(List<NewChat> chatList, NewFriend friend)
+        public NewFriend friend;
+        public Chat(List<NewChat> chatList, NewFriend Friend)
         {
             //check this may not work
-            friendID = friend.FriendID;
+            //friendID = friend.FriendshipID;
+            friend = Friend;
             this._ChatList = chatList;
             InitializeComponent();
             this.BackColor = Information.colour;
@@ -40,7 +43,7 @@ namespace MajorProject
             List<NewChat> currentChatList = chatList ?? _ChatList;
             if (currentChatList == null || currentChatList.Count == 0)
             {
-                friendChat.displayChat(null, new List<NewChat>(), friendID);
+                friendChat.displayChat(null, new List<NewChat>(), friend);
                 currentChatList = friendChat.GetChatList();
             }
             if (currentChatList != null && currentChatList.Count > 0)
@@ -68,7 +71,7 @@ namespace MajorProject
 
         private void Chat_Load(object sender, EventArgs e)
         {
-            friendChat.displayChat(null, new List<NewChat>(), friendID);
+            friendChat.displayChat(null, new List<NewChat>(), friend);
             _ChatList = friendChat.GetChatList();
             displayChats(_ChatList);
         }
@@ -97,7 +100,27 @@ namespace MajorProject
 
         private void ChatSendButton_Click(object sender, EventArgs e)
         {
+            DateTime CurrentTime = DateTime.Now;
+            string text = ChatMessageBox.Text;
+            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(2048))
+            {
+                string publicKey = rsa.ToXmlString(false);
+                string privateKey = rsa.ToXmlString(true);
+                byte[] msgArray = Encoding.UTF8.GetBytes(text);
+                byte[] encrypted = rsa.Encrypt(msgArray, false);
+                string newMessage = Convert.ToBase64String(encrypted);
 
+                Information.SqlCon.Open();
+                string sql = "INSERT into Messages VALUES (@T, @K, @DT, @F, @S)";
+                SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+                cmd.Parameters.AddWithValue("@T", newMessage);
+                cmd.Parameters.AddWithValue("@K", );
+                cmd.Parameters.AddWithValue();
+                cmd.Parameters.AddWithValue();
+                cmd.Parameters.AddWithValue();
+                cmd.ExecuteNonQuery();
+                Information.SqlCon.Close();
+            }
         }
     }
 }

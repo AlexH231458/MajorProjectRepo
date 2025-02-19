@@ -19,8 +19,10 @@ namespace MajorProject
             set { _ChatList = value; }
         }
 
-        public List<NewChat> displayChat(DataRow RowIn, List<NewChat> chatList, int friendID)
+        public List<NewChat> displayChat(DataRow RowIn, List<NewChat> chatList, NewFriend friend)
         {
+            int friendID = friend.FriendshipID;
+
             ChatList.Clear();
 
             Information.SqlCon.Open();
@@ -35,7 +37,7 @@ namespace MajorProject
 
             foreach (DataRow DR in DT.Rows)
             {
-                NewChat C = new NewChat(DR);
+                NewChat C = new NewChat(DR, friend);
                 ChatList.Add(C);
             }
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace MajorProject
 {
@@ -22,7 +23,7 @@ namespace MajorProject
 
         private void Message_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void MessageTime_Click(object sender, EventArgs e)
