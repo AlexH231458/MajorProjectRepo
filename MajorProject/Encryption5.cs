@@ -9,6 +9,7 @@ namespace EncryptionTest
 {
     internal class Program
     {
+        //https://www.csharp.com/article/best-algorithm-for-encrypting-and-decrypting-a-string-in-c-sharp/
         static void Main(string[] args)
         {
             try
