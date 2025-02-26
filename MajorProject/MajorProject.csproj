@@ -69,6 +69,7 @@
     <Compile Include="Chat.Designer.cs">
       <DependentUpon>Chat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Enc6.cs" />
     <Compile Include="Encryption1.cs" />
     <Compile Include="Encryption2.cs" />
     <Compile Include="Encryption3.cs" />

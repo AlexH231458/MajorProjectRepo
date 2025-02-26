@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Runtime.Remoting.Messaging;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.IO;
 
 namespace MajorProject
 {
@@ -28,6 +30,30 @@ namespace MajorProject
         {
             _Time = Convert.ToDateTime(DR["TimeStamp"]);
             _Friend = f;
+        }
+
+        static string Decrypt(byte[] encrypted, byte[] aesKey, byte[] aesVector)
+        {
+            string decryptedText;
+
+            using (Aes AES = Aes.Create())
+            {
+                AES.Key = aesKey;
+                AES.IV = aesVector;
+
+                using (MemoryStream memory = new MemoryStream(encrypted))
+                {
+                    using (CryptoStream crypto = new CryptoStream(memory, AES.CreateDecryptor(), CryptoStreamMode.Read))
+                    {
+                        using (StreamReader reader = new StreamReader(crypto))
+                        {
+                            decryptedText = reader.ReadToEnd();
+                        }
+                    }
+                }
+            }
+
+            return decryptedText;
         }
     }
 }

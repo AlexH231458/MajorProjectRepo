@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.IO;
 using System.Data.SqlClient;
 
 namespace MajorProject
@@ -102,25 +103,54 @@ namespace MajorProject
         {
             DateTime CurrentTime = DateTime.Now;
             string text = ChatMessageBox.Text;
-            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(2048))
-            {
-                string publicKey = rsa.ToXmlString(false);
-                string privateKey = rsa.ToXmlString(true);
-                byte[] msgArray = Encoding.UTF8.GetBytes(text);
-                byte[] encrypted = rsa.Encrypt(msgArray, false);
-                string newMessage = Convert.ToBase64String(encrypted);
+            string encryptedText;
+            string keyString;
+            string vectorString;
 
-                Information.SqlCon.Open();
-                string sql = "INSERT into Messages VALUES (@T, @K, @DT, @F, @S)";
-                SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-                cmd.Parameters.AddWithValue("@T", newMessage);
-                cmd.Parameters.AddWithValue("@K", );
-                cmd.Parameters.AddWithValue();
-                cmd.Parameters.AddWithValue();
-                cmd.Parameters.AddWithValue();
-                cmd.ExecuteNonQuery();
-                Information.SqlCon.Close();
+            using (Aes AES = Aes.Create())
+            {
+                encryptedText = Convert.ToBase64String(Encrypt(text, AES.Key, AES.IV));
+                keyString = Convert.ToBase64String(AES.Key);
+                vectorString = Convert.ToBase64String(AES.IV);
             }
+
+            Information.SqlCon.Open();
+            string sql = "INSERT into Messages VALUES (@T, @K, @V, @DT, @F, @S)";
+            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            cmd.Parameters.AddWithValue("@T", encryptedText);
+            cmd.Parameters.AddWithValue("@K", keyString);
+            cmd.Parameters.AddWithValue("@V", vectorString);
+            cmd.Parameters.AddWithValue("@DT", CurrentTime.TimeOfDay);
+            cmd.Parameters.AddWithValue(@"F", friend.FriendshipID);
+            cmd.Parameters.AddWithValue("@S", Information.userID);
+            cmd.ExecuteNonQuery();
+            Information.SqlCon.Close();
+        }
+
+        static byte[] Encrypt(string text, byte[] aesKey, byte[] aesVector)
+        {
+            byte[] encryptedText;
+
+            using (Aes AES = Aes.Create())
+            {
+                AES.Key = aesKey;
+                AES.IV = aesVector;
+
+                using (MemoryStream memory = new MemoryStream())
+                {
+                    using (CryptoStream crypto = new CryptoStream(memory, AES.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter writer = new StreamWriter(crypto))
+                        {
+                            writer.Write(text);
+                        }
+
+                        encryptedText = memory.ToArray();
+                    }
+                }
+            }
+
+            return encryptedText;
         }
     }
 }
