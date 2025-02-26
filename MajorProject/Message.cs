@@ -23,7 +23,9 @@ namespace MajorProject
 
         private void Message_Load(object sender, EventArgs e)
         {
-            
+            MessageTime.Text = NewMsg.Time.ToString("t");
+            MessageUser.Text = NewMsg.Name;
+            MessageText.Text = NewMsg.Text;
         }
 
         private void MessageTime_Click(object sender, EventArgs e)

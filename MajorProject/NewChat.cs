@@ -15,6 +15,8 @@ namespace MajorProject
     {
         public DateTime _Time;
         public NewFriend _Friend;
+        public string _Name;
+        public string _Text;
         public DateTime Time
         {
             get { return _Time; }
@@ -25,11 +27,27 @@ namespace MajorProject
             get { return _Friend; }
             set { _Friend = value; }
         }
+        public string Name
+        {
+            get { return _Name; }
+            set { _Name = value; }
+        }
+        public string Text
+        {
+            get { return _Text; }
+            set { _Text = value; }
+        }
 
         public NewChat(DataRow DR, NewFriend f)
         {
             _Time = Convert.ToDateTime(DR["TimeStamp"]);
             _Friend = f;
+            _Name = Convert.ToString(DR["Sender"]);
+
+            byte[] encryptedMsg = Convert.FromBase64String(Convert.ToString(DR["Text"]));
+            byte[] aesKey = Convert.FromBase64String(Convert.ToString(DR["Key"]));
+            byte[] aesVector = Convert.FromBase64String(Convert.ToString(DR["Vector"]));
+            _Text = Decrypt(encryptedMsg, aesKey, aesVector);
         }
 
         static string Decrypt(byte[] encrypted, byte[] aesKey, byte[] aesVector)

@@ -101,11 +101,16 @@ namespace MajorProject
 
         private void ChatSendButton_Click(object sender, EventArgs e)
         {
-            DateTime CurrentTime = DateTime.Now;
+            DateTime currentTime = DateTime.Now;
             string text = ChatMessageBox.Text;
             string encryptedText;
             string keyString;
             string vectorString;
+
+            ChatMessageBox.Text = "";
+            friendChat.displayChat(null, new List<NewChat>(), friend);
+            _ChatList = friendChat.GetChatList();
+            displayChats(_ChatList);
 
             using (Aes AES = Aes.Create())
             {
@@ -115,15 +120,23 @@ namespace MajorProject
             }
 
             Information.SqlCon.Open();
+
             string sql = "INSERT into Messages VALUES (@T, @K, @V, @DT, @F, @S)";
             SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
             cmd.Parameters.AddWithValue("@T", encryptedText);
             cmd.Parameters.AddWithValue("@K", keyString);
             cmd.Parameters.AddWithValue("@V", vectorString);
-            cmd.Parameters.AddWithValue("@DT", CurrentTime.TimeOfDay);
+            cmd.Parameters.AddWithValue("@DT", currentTime);
             cmd.Parameters.AddWithValue(@"F", friend.FriendshipID);
             cmd.Parameters.AddWithValue("@S", Information.userID);
             cmd.ExecuteNonQuery();
+
+            string sql2 = "UPDATE Friends SET LastMessage = @time WHERE FriendshipID = @ID";
+            SqlCommand cmd2 = new SqlCommand(sql2, Information.SqlCon);
+            cmd2.Parameters.AddWithValue("@time", currentTime);
+            cmd2.Parameters.AddWithValue("@ID", friend.FriendshipID);
+            cmd2.ExecuteNonQuery();
+            
             Information.SqlCon.Close();
         }
 
