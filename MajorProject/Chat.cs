@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.IO;
+using System.IO.Ports;
 using System.Data.SqlClient;
 
 namespace MajorProject
@@ -32,6 +33,7 @@ namespace MajorProject
                 Font font = new Font(fName, size);
                 control.Font = font;
             }
+            ChatNameLabel.Text = Friend.UsernameText;
             this.Load += Chat_Load;
         }
 
@@ -107,11 +109,6 @@ namespace MajorProject
             string keyString;
             string vectorString;
 
-            ChatMessageBox.Text = "";
-            friendChat.displayChat(null, new List<NewChat>(), friend);
-            _ChatList = friendChat.GetChatList();
-            displayChats(_ChatList);
-
             using (Aes AES = Aes.Create())
             {
                 encryptedText = Convert.ToBase64String(Encrypt(text, AES.Key, AES.IV));
@@ -138,6 +135,10 @@ namespace MajorProject
             cmd2.ExecuteNonQuery();
             
             Information.SqlCon.Close();
+
+            Chat ChatForm = new Chat(_ChatList, friend);
+            this.Hide();
+            ChatForm.Show();
         }
 
         static byte[] Encrypt(string text, byte[] aesKey, byte[] aesVector)

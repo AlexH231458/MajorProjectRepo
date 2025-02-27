@@ -42,7 +42,15 @@ namespace MajorProject
         {
             _Time = Convert.ToDateTime(DR["TimeStamp"]);
             _Friend = f;
-            _Name = Convert.ToString(DR["Sender"]);
+            int id = Convert.ToInt32(DR["Sender"]);
+            if (id == Information.userID)
+            {
+                _Name = "Me";
+            }
+            else
+            {
+                _Name = f.UsernameText;
+            }
 
             byte[] encryptedMsg = Convert.FromBase64String(Convert.ToString(DR["Text"]));
             byte[] aesKey = Convert.FromBase64String(Convert.ToString(DR["Key"]));

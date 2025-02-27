@@ -37,8 +37,9 @@
             // 
             // ChatMessagesPanel
             // 
+            this.ChatMessagesPanel.AutoScroll = true;
             this.ChatMessagesPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChatMessagesPanel.Location = new System.Drawing.Point(22, 50);
+            this.ChatMessagesPanel.Location = new System.Drawing.Point(20, 50);
             this.ChatMessagesPanel.Name = "ChatMessagesPanel";
             this.ChatMessagesPanel.Size = new System.Drawing.Size(500, 500);
             this.ChatMessagesPanel.TabIndex = 0;
@@ -48,7 +49,7 @@
             // 
             this.ChatSendButton.BackColor = System.Drawing.Color.Green;
             this.ChatSendButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ChatSendButton.Location = new System.Drawing.Point(452, 590);
+            this.ChatSendButton.Location = new System.Drawing.Point(450, 590);
             this.ChatSendButton.Name = "ChatSendButton";
             this.ChatSendButton.Size = new System.Drawing.Size(70, 26);
             this.ChatSendButton.TabIndex = 1;
@@ -61,7 +62,7 @@
             this.ChatReturnButton.BackColor = System.Drawing.Color.Red;
             this.ChatReturnButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ChatReturnButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ChatReturnButton.Location = new System.Drawing.Point(22, 12);
+            this.ChatReturnButton.Location = new System.Drawing.Point(20, 15);
             this.ChatReturnButton.Name = "ChatReturnButton";
             this.ChatReturnButton.Size = new System.Drawing.Size(75, 23);
             this.ChatReturnButton.TabIndex = 2;
@@ -72,7 +73,7 @@
             // ChatNameLabel
             // 
             this.ChatNameLabel.AutoSize = true;
-            this.ChatNameLabel.Location = new System.Drawing.Point(232, 17);
+            this.ChatNameLabel.Location = new System.Drawing.Point(230, 20);
             this.ChatNameLabel.Name = "ChatNameLabel";
             this.ChatNameLabel.Size = new System.Drawing.Size(55, 13);
             this.ChatNameLabel.TabIndex = 3;
@@ -82,7 +83,7 @@
             // ChatMessageBox
             // 
             this.ChatMessageBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChatMessageBox.Location = new System.Drawing.Point(22, 590);
+            this.ChatMessageBox.Location = new System.Drawing.Point(20, 590);
             this.ChatMessageBox.Name = "ChatMessageBox";
             this.ChatMessageBox.Size = new System.Drawing.Size(400, 26);
             this.ChatMessageBox.TabIndex = 4;

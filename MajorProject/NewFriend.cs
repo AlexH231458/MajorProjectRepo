@@ -38,21 +38,22 @@ namespace MajorProject
             set { _UsernameText = value; }
         }
 
-        public NewFriend(bool first, int id, int friendship)
+        public NewFriend(bool first, int id, int friendship, string nickname)
         {
             _FriendshipID = friendship;
             _FriendID = id;
+            _UsernameText = nickname;
 
-            Information.SqlCon.Open();
-            string sql = "SELECT Username FROM Users WHERE UserID = @u";
-            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-            cmd.Parameters.AddWithValue("@u", id);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            Information.SqlCon.Close();
+            //Information.SqlCon.Open();
+            //string sql = "SELECT Username FROM Users WHERE UserID = @u";
+            //SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            //cmd.Parameters.AddWithValue("@u", id);
+            //SqlDataAdapter da = new SqlDataAdapter(cmd);
+            //DataTable dt = new DataTable();
+            //da.Fill(dt);
+            //Information.SqlCon.Close();
 
-            _UsernameText = dt.Rows[0]["Username"].ToString();
+            //_UsernameText = dt.Rows[0]["Username"].ToString();
             if (first == true)
             {
                 _IsFirstFriend = true;
