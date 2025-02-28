@@ -32,27 +32,35 @@ namespace MajorProject
 
             if (newFriend.IsFirstFriend == true)
             {
-                string sql = "SELECT NameFor1 FROM Friends WHERE FriendshipID = @friend";
-                SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-                cmd.Parameters.AddWithValue("@friend", newFriend.FriendshipID);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                FCNicknameBox.Text = dt.Rows[0]["NameFor1"].ToString();
+                //string sql = "SELECT NameFor1 FROM Friends WHERE FriendshipID = @friend";
+                //SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+                //cmd.Parameters.AddWithValue("@friend", newFriend.FriendshipID);
+                //SqlDataAdapter da = new SqlDataAdapter(cmd);
+                //DataTable dt = new DataTable();
+                //da.Fill(dt);
+                //FCNicknameBox.Text = dt.Rows[0]["NameFor1"].ToString();
             }
             else
             {
-                string sql = "SELECT NameFor2 FROM Friends WHERE FriendshipID = @friend";
-                SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-                cmd.Parameters.AddWithValue("@friend", newFriend.FriendshipID);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                FCNicknameBox.Text = dt.Rows[0]["NameFor2"].ToString();
+                //string sql = "SELECT NameFor2 FROM Friends WHERE FriendshipID = @friend";
+                //SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+                //cmd.Parameters.AddWithValue("@friend", newFriend.FriendshipID);
+                //SqlDataAdapter da = new SqlDataAdapter(cmd);
+                //DataTable dt = new DataTable();
+                //da.Fill(dt);
+                //FCNicknameBox.Text = dt.Rows[0]["NameFor2"].ToString();
             }
+
+            string sql = "SELECT Username FROM Users WHERE UserID = @user";
+            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            cmd.Parameters.AddWithValue("@user", newFriend.FriendID);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            FCNameLabel.Text = dt.Rows[0]["Username"].ToString();
             Information.SqlCon.Close();
 
-            FCNameLabel.Text = newFriend.UsernameText;
+            FCNicknameBox.Text = newFriend.UsernameText;
 
         }
 

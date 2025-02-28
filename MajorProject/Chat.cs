@@ -105,6 +105,34 @@ namespace MajorProject
         {
             DateTime currentTime = DateTime.Now;
             string text = ChatMessageBox.Text;
+
+            //Console.Write("Enter text: ");
+            //string temp = Console.ReadLine().ToLower();
+            //string ban = "table";
+            //string replacement = temp.Replace(ban, "****");
+
+            //Console.WriteLine(replacement);
+            //Console.ReadLine();
+
+            if (Information.autoShift == 1 && text.Length > 2)
+            {
+                string original = ChatMessageBox.Text;
+                string newText = original.Substring(0, 1).ToUpper() + original.Substring(1, 1);
+
+                for (int i = 2; i < original.Length; i++)
+                {
+                    if (original.Substring(i - 2, 2) == ". " || original.Substring(i - 2, 2) == "? " || original.Substring(i - 2, 2) == "! ")
+                    {
+                        newText = newText + original.Substring(i, 1).ToUpper();
+                    }
+                    else
+                    {
+                        newText = newText + original.Substring(i, 1);
+                    }
+                }
+                text = newText;
+            }
+
             string encryptedText;
             string keyString;
             string vectorString;
