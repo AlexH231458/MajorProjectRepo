@@ -17,6 +17,7 @@ namespace MajorProject
         public NewFriend _Friend;
         public string _Name;
         public string _Text;
+        public int _msgID;
         public DateTime Time
         {
             get { return _Time; }
@@ -37,11 +38,17 @@ namespace MajorProject
             get { return _Text; }
             set { _Text = value; }
         }
+        public int msgID
+        {
+            get { return _msgID; }
+            set { _msgID = value; }
+        }
 
         public NewChat(DataRow DR, NewFriend f)
         {
             _Time = Convert.ToDateTime(DR["TimeStamp"]);
             _Friend = f;
+            _msgID = Convert.ToInt32(DR["MessageID"]);
             int id = Convert.ToInt32(DR["Sender"]);
             if (id == Information.userID)
             {

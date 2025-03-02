@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.Data.SqlClient;
 
 namespace MajorProject
 {
@@ -35,7 +36,13 @@ namespace MajorProject
 
         private void MessageDelete_Click(object sender, EventArgs e)
         {
-
+            Information.SqlCon.Open();
+            string sql = "DELETE FROM Messages WHERE MessageID = @m";
+            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            cmd.Parameters.AddWithValue("@m", NewMsg.msgID);
+            cmd.ExecuteNonQuery();
+            Information.SqlCon.Close();
+            this.Hide();
         }
 
         private void MessageText_Click(object sender, EventArgs e)

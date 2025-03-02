@@ -199,5 +199,30 @@ namespace MajorProject
 
             return encryptedText;
         }
+
+        private void ChatSmile_Click(object sender, EventArgs e)
+        {
+            ChatMessageBox.Text = ChatMessageBox.Text + "😀";
+        }
+
+        private void ChatFrown_Click(object sender, EventArgs e)
+        {
+            ChatMessageBox.Text = ChatMessageBox.Text + "🙁";
+        }
+
+        private void ChatSilly_Click(object sender, EventArgs e)
+        {
+            ChatMessageBox.Text = ChatMessageBox.Text + "😜";
+        }
+
+        private void ChatHeart_Click(object sender, EventArgs e)
+        {
+            ChatMessageBox.Text = ChatMessageBox.Text + "😍";
+        }
+
+        private void ChatAngry_Click(object sender, EventArgs e)
+        {
+            ChatMessageBox.Text = ChatMessageBox.Text + "😠";
+        }
     }
 }
