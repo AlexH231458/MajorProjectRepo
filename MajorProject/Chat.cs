@@ -106,17 +106,22 @@ namespace MajorProject
             DateTime currentTime = DateTime.Now;
             string text = ChatMessageBox.Text;
 
-            //Console.Write("Enter text: ");
-            //string temp = Console.ReadLine().ToLower();
-            //string ban = "table";
-            //string replacement = temp.Replace(ban, "****");
+            List<string> banned = new List<string>();
+            System.IO.StreamReader file = new System.IO.StreamReader("Words.txt");
+            while (file.EndOfStream == false)
+            {
+                banned.Add(file.ReadLine());
+            }
+            file.Close();
 
-            //Console.WriteLine(replacement);
-            //Console.ReadLine();
+            foreach (string ban in banned)
+            {
+                text = text.Replace(ban, "****");
+            }
 
             if (Information.autoShift == 1 && text.Length > 2)
             {
-                string original = ChatMessageBox.Text;
+                string original = text;
                 string newText = original.Substring(0, 1).ToUpper() + original.Substring(1, 1);
 
                 for (int i = 2; i < original.Length; i++)
