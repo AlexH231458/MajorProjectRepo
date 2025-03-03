@@ -36,6 +36,7 @@
             this.FriendsFriendsPanel = new System.Windows.Forms.Panel();
             this.FriendsErrorLabel = new System.Windows.Forms.Label();
             this.FriendsSearchBox = new System.Windows.Forms.TextBox();
+            this.FriendsRecLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // FriendReturnButton
@@ -88,7 +89,7 @@
             // 
             this.FriendsRequestsPanel.AutoScroll = true;
             this.FriendsRequestsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FriendsRequestsPanel.Location = new System.Drawing.Point(15, 159);
+            this.FriendsRequestsPanel.Location = new System.Drawing.Point(15, 209);
             this.FriendsRequestsPanel.Name = "FriendsRequestsPanel";
             this.FriendsRequestsPanel.Size = new System.Drawing.Size(500, 150);
             this.FriendsRequestsPanel.TabIndex = 20;
@@ -98,7 +99,7 @@
             // 
             this.FriendsFriendsPanel.AutoScroll = true;
             this.FriendsFriendsPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FriendsFriendsPanel.Location = new System.Drawing.Point(15, 330);
+            this.FriendsFriendsPanel.Location = new System.Drawing.Point(15, 374);
             this.FriendsFriendsPanel.Name = "FriendsFriendsPanel";
             this.FriendsFriendsPanel.Size = new System.Drawing.Size(500, 150);
             this.FriendsFriendsPanel.TabIndex = 21;
@@ -123,11 +124,23 @@
             this.FriendsSearchBox.TabIndex = 23;
             this.FriendsSearchBox.TextChanged += new System.EventHandler(this.FriendsSearchBox_TextChanged);
             // 
+            // FriendsRecLabel
+            // 
+            this.FriendsRecLabel.AutoSize = true;
+            this.FriendsRecLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FriendsRecLabel.Location = new System.Drawing.Point(35, 149);
+            this.FriendsRecLabel.Name = "FriendsRecLabel";
+            this.FriendsRecLabel.Size = new System.Drawing.Size(152, 24);
+            this.FriendsRecLabel.TabIndex = 25;
+            this.FriendsRecLabel.Text = "Recommended: ";
+            this.FriendsRecLabel.Click += new System.EventHandler(this.FriendsRecLabel_Click);
+            // 
             // Friends
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 661);
+            this.Controls.Add(this.FriendsRecLabel);
             this.Controls.Add(this.FriendsSearchBox);
             this.Controls.Add(this.FriendsErrorLabel);
             this.Controls.Add(this.FriendsFriendsPanel);
@@ -157,5 +170,6 @@
         private System.Windows.Forms.Panel FriendsFriendsPanel;
         private System.Windows.Forms.Label FriendsErrorLabel;
         private System.Windows.Forms.TextBox FriendsSearchBox;
+        private System.Windows.Forms.Label FriendsRecLabel;
     }
 }

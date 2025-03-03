@@ -22,7 +22,7 @@ namespace MajorProject
             //check parameters... not needed?
 
             // Assign the passed list
-            this._RequestList = requestList;
+            //this._RequestList = requestList;
             InitializeComponent();
             this.BackColor = Information.colour;
             foreach (Control control in this.Controls)
@@ -168,6 +168,40 @@ namespace MajorProject
             individualFriend.displayFriend(null, new List<NewFriend>());
             _FriendsList = individualFriend.GetFriendsList();
             displayFriends(_FriendsList);
+
+            try
+            {
+                List<int> userFriends = new List<int>();
+                foreach (NewFriend friend in _FriendsList)
+                {
+                    userFriends.Add(friend.FriendID);
+                }
+
+                List<string> users = new List<string>();
+                Information.SqlCon.Open();
+                string sql = "SELECT UserID, Username FROM Users WHERE UserID != @u";
+                SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+                cmd.Parameters.AddWithValue("@u", Information.userID);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (!userFriends.Contains(Convert.ToInt32(dr["UserID"])))
+                    {
+                        users.Add(Convert.ToString(dr["Username"]));
+                    }
+                }
+                Information.SqlCon.Close();
+
+                Random rnd = new Random();
+                int number = rnd.Next(users.Count);
+                FriendsRecLabel.Text = "Recommended: " + users[number];
+            }
+            catch
+            {
+                FriendsRecLabel.Text = "Recommended: No users found";
+            }
         }
 
         private void Friends_Shown(object sender, EventArgs e)
@@ -192,6 +226,11 @@ namespace MajorProject
         }
 
         private void FriendsSearchBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FriendsRecLabel_Click(object sender, EventArgs e)
         {
 
         }
