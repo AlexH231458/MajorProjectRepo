@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Friends));
             this.FriendReturnButton = new System.Windows.Forms.Button();
             this.FriendTitleLabel = new System.Windows.Forms.Label();
             this.FriendSearchLabel = new System.Windows.Forms.Label();
@@ -149,6 +150,7 @@
             this.Controls.Add(this.FriendSearchLabel);
             this.Controls.Add(this.FriendTitleLabel);
             this.Controls.Add(this.FriendReturnButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(550, 700);
             this.MinimumSize = new System.Drawing.Size(550, 700);
             this.Name = "Friends";

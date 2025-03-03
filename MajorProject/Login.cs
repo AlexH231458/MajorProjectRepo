@@ -97,5 +97,15 @@ namespace MajorProject
             }
             LoginErrorText.Text = "Error: invalid login details";
         }
+
+        private void LoginUsernameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginPasswordLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

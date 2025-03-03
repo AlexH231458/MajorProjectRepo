@@ -128,5 +128,15 @@ namespace MajorProject
         {
 
         }
+
+        private void MenuPinnedLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MenuAllLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Chat));
             this.ChatMessagesPanel = new System.Windows.Forms.Panel();
             this.ChatSendButton = new System.Windows.Forms.Button();
             this.ChatReturnButton = new System.Windows.Forms.Button();
@@ -164,6 +165,7 @@
             this.Controls.Add(this.ChatReturnButton);
             this.Controls.Add(this.ChatSendButton);
             this.Controls.Add(this.ChatMessagesPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(550, 700);
             this.MinimumSize = new System.Drawing.Size(550, 700);
             this.Name = "Chat";

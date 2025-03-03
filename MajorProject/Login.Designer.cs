@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.LoginUsernameBox = new System.Windows.Forms.TextBox();
             this.LoginPasswordBox = new System.Windows.Forms.TextBox();
             this.LoginUsernameLabel = new System.Windows.Forms.Label();
@@ -68,6 +69,7 @@
             this.LoginUsernameLabel.Size = new System.Drawing.Size(102, 24);
             this.LoginUsernameLabel.TabIndex = 2;
             this.LoginUsernameLabel.Text = "Username:";
+            this.LoginUsernameLabel.Click += new System.EventHandler(this.LoginUsernameLabel_Click);
             // 
             // LoginPasswordLabel
             // 
@@ -78,12 +80,13 @@
             this.LoginPasswordLabel.Size = new System.Drawing.Size(97, 24);
             this.LoginPasswordLabel.TabIndex = 3;
             this.LoginPasswordLabel.Text = "Password:";
+            this.LoginPasswordLabel.Click += new System.EventHandler(this.LoginPasswordLabel_Click);
             // 
             // LoginEnterButton
             // 
             this.LoginEnterButton.BackColor = System.Drawing.Color.ForestGreen;
             this.LoginEnterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoginEnterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginEnterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginEnterButton.Location = new System.Drawing.Point(355, 180);
             this.LoginEnterButton.Name = "LoginEnterButton";
             this.LoginEnterButton.Size = new System.Drawing.Size(95, 50);
@@ -109,9 +112,10 @@
             // 
             this.LoginShowCheck.AutoSize = true;
             this.LoginShowCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoginShowCheck.Location = new System.Drawing.Point(470, 135);
+            this.LoginShowCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginShowCheck.Location = new System.Drawing.Point(470, 130);
             this.LoginShowCheck.Name = "LoginShowCheck";
-            this.LoginShowCheck.Size = new System.Drawing.Size(50, 17);
+            this.LoginShowCheck.Size = new System.Drawing.Size(56, 20);
             this.LoginShowCheck.TabIndex = 6;
             this.LoginShowCheck.Text = "Show";
             this.LoginShowCheck.UseVisualStyleBackColor = true;
@@ -121,7 +125,7 @@
             // 
             this.LoginErrorText.AutoSize = true;
             this.LoginErrorText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoginErrorText.ForeColor = System.Drawing.Color.Red;
+            this.LoginErrorText.ForeColor = System.Drawing.Color.DarkRed;
             this.LoginErrorText.Location = new System.Drawing.Point(250, 250);
             this.LoginErrorText.Name = "LoginErrorText";
             this.LoginErrorText.Size = new System.Drawing.Size(15, 24);
@@ -142,6 +146,9 @@
             this.Controls.Add(this.LoginUsernameLabel);
             this.Controls.Add(this.LoginPasswordBox);
             this.Controls.Add(this.LoginUsernameBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(600, 400);
+            this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";

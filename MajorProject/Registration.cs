@@ -173,5 +173,25 @@ namespace MajorProject
                 }
             }
         }
+
+        private void RegUsernameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RegPasswordLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RegDateLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RegErrorText_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
