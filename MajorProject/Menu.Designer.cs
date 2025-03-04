@@ -43,7 +43,7 @@
             this.MenuSettingsButton.BackColor = System.Drawing.Color.Silver;
             this.MenuSettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MenuSettingsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuSettingsButton.Location = new System.Drawing.Point(15, 12);
+            this.MenuSettingsButton.Location = new System.Drawing.Point(15, 15);
             this.MenuSettingsButton.Name = "MenuSettingsButton";
             this.MenuSettingsButton.Size = new System.Drawing.Size(95, 50);
             this.MenuSettingsButton.TabIndex = 0;
@@ -56,7 +56,7 @@
             this.MenuFriendsButton.BackColor = System.Drawing.Color.Silver;
             this.MenuFriendsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MenuFriendsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuFriendsButton.Location = new System.Drawing.Point(420, 12);
+            this.MenuFriendsButton.Location = new System.Drawing.Point(420, 15);
             this.MenuFriendsButton.Name = "MenuFriendsButton";
             this.MenuFriendsButton.Size = new System.Drawing.Size(95, 50);
             this.MenuFriendsButton.TabIndex = 1;

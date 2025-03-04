@@ -224,5 +224,10 @@ namespace MajorProject
         {
             ChatMessageBox.Text = ChatMessageBox.Text + "😠";
         }
+
+        private void ChatCool_Click(object sender, EventArgs e)
+        {
+            ChatMessageBox.Text = ChatMessageBox.Text + "😎";
+        }
     }
 }

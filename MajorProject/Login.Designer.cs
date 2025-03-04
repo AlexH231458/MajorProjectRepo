@@ -43,7 +43,7 @@
             // 
             this.LoginUsernameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginUsernameBox.Location = new System.Drawing.Point(250, 80);
-            this.LoginUsernameBox.MaxLength = 19;
+            this.LoginUsernameBox.MaxLength = 25;
             this.LoginUsernameBox.Name = "LoginUsernameBox";
             this.LoginUsernameBox.Size = new System.Drawing.Size(200, 26);
             this.LoginUsernameBox.TabIndex = 0;
@@ -84,7 +84,7 @@
             // 
             // LoginEnterButton
             // 
-            this.LoginEnterButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.LoginEnterButton.BackColor = System.Drawing.Color.LimeGreen;
             this.LoginEnterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoginEnterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginEnterButton.Location = new System.Drawing.Point(355, 180);

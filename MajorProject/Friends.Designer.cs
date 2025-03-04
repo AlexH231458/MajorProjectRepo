@@ -42,7 +42,7 @@
             // 
             // FriendReturnButton
             // 
-            this.FriendReturnButton.BackColor = System.Drawing.Color.DarkRed;
+            this.FriendReturnButton.BackColor = System.Drawing.Color.Firebrick;
             this.FriendReturnButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FriendReturnButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FriendReturnButton.Location = new System.Drawing.Point(15, 15);
@@ -75,7 +75,7 @@
             // 
             // FriendRequestButton
             // 
-            this.FriendRequestButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.FriendRequestButton.BackColor = System.Drawing.Color.LimeGreen;
             this.FriendRequestButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FriendRequestButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FriendRequestButton.Location = new System.Drawing.Point(379, 82);

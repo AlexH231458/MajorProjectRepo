@@ -40,10 +40,10 @@
             // 
             this.FCPinButton.BackColor = System.Drawing.Color.Gold;
             this.FCPinButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FCPinButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FCPinButton.Location = new System.Drawing.Point(410, 10);
+            this.FCPinButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FCPinButton.Location = new System.Drawing.Point(405, 7);
             this.FCPinButton.Name = "FCPinButton";
-            this.FCPinButton.Size = new System.Drawing.Size(30, 30);
+            this.FCPinButton.Size = new System.Drawing.Size(30, 35);
             this.FCPinButton.TabIndex = 0;
             this.FCPinButton.Text = "📌";
             this.FCPinButton.UseVisualStyleBackColor = false;
@@ -52,9 +52,10 @@
             // FCNameLabel
             // 
             this.FCNameLabel.AutoSize = true;
+            this.FCNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FCNameLabel.Location = new System.Drawing.Point(30, 20);
             this.FCNameLabel.Name = "FCNameLabel";
-            this.FCNameLabel.Size = new System.Drawing.Size(0, 13);
+            this.FCNameLabel.Size = new System.Drawing.Size(0, 20);
             this.FCNameLabel.TabIndex = 2;
             this.FCNameLabel.Click += new System.EventHandler(this.FCNameLabel_Click);
             // 
@@ -70,20 +71,21 @@
             // 
             // FCNicknameBox
             // 
-            this.FCNicknameBox.Location = new System.Drawing.Point(230, 20);
+            this.FCNicknameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FCNicknameBox.Location = new System.Drawing.Point(210, 17);
             this.FCNicknameBox.Name = "FCNicknameBox";
-            this.FCNicknameBox.Size = new System.Drawing.Size(100, 20);
+            this.FCNicknameBox.Size = new System.Drawing.Size(100, 22);
             this.FCNicknameBox.TabIndex = 4;
             this.FCNicknameBox.TextChanged += new System.EventHandler(this.FCNicknameBox_TextChanged);
             // 
             // FCRemoveButton
             // 
-            this.FCRemoveButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.FCRemoveButton.BackColor = System.Drawing.Color.Firebrick;
             this.FCRemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FCRemoveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FCRemoveButton.Location = new System.Drawing.Point(445, 10);
+            this.FCRemoveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FCRemoveButton.Location = new System.Drawing.Point(440, 7);
             this.FCRemoveButton.Name = "FCRemoveButton";
-            this.FCRemoveButton.Size = new System.Drawing.Size(30, 30);
+            this.FCRemoveButton.Size = new System.Drawing.Size(30, 35);
             this.FCRemoveButton.TabIndex = 5;
             this.FCRemoveButton.Text = "X";
             this.FCRemoveButton.UseVisualStyleBackColor = false;
@@ -93,9 +95,10 @@
             // 
             this.FCChangeButton.BackColor = System.Drawing.Color.LimeGreen;
             this.FCChangeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FCChangeButton.Location = new System.Drawing.Point(335, 10);
+            this.FCChangeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FCChangeButton.Location = new System.Drawing.Point(325, 7);
             this.FCChangeButton.Name = "FCChangeButton";
-            this.FCChangeButton.Size = new System.Drawing.Size(70, 30);
+            this.FCChangeButton.Size = new System.Drawing.Size(75, 35);
             this.FCChangeButton.TabIndex = 6;
             this.FCChangeButton.Text = "Change";
             this.FCChangeButton.UseVisualStyleBackColor = false;

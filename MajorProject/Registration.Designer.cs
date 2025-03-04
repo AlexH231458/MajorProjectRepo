@@ -45,7 +45,7 @@
             // 
             this.RegUsernameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegUsernameBox.Location = new System.Drawing.Point(250, 80);
-            this.RegUsernameBox.MaxLength = 19;
+            this.RegUsernameBox.MaxLength = 28;
             this.RegUsernameBox.Name = "RegUsernameBox";
             this.RegUsernameBox.Size = new System.Drawing.Size(200, 26);
             this.RegUsernameBox.TabIndex = 1;
@@ -122,7 +122,7 @@
             // 
             // RegEnterButton
             // 
-            this.RegEnterButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.RegEnterButton.BackColor = System.Drawing.Color.LimeGreen;
             this.RegEnterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RegEnterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegEnterButton.Location = new System.Drawing.Point(355, 230);

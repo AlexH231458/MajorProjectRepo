@@ -35,20 +35,22 @@
             // MFNameLabel
             // 
             this.MFNameLabel.AutoSize = true;
-            this.MFNameLabel.Location = new System.Drawing.Point(31, 17);
+            this.MFNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MFNameLabel.Location = new System.Drawing.Point(10, 15);
             this.MFNameLabel.Name = "MFNameLabel";
-            this.MFNameLabel.Size = new System.Drawing.Size(0, 13);
+            this.MFNameLabel.Size = new System.Drawing.Size(0, 20);
             this.MFNameLabel.TabIndex = 3;
             // 
             // MFChatButton
             // 
+            this.MFChatButton.BackColor = System.Drawing.Color.Silver;
             this.MFChatButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MFChatButton.Location = new System.Drawing.Point(392, 8);
+            this.MFChatButton.Location = new System.Drawing.Point(395, 10);
             this.MFChatButton.Name = "MFChatButton";
             this.MFChatButton.Size = new System.Drawing.Size(75, 30);
             this.MFChatButton.TabIndex = 4;
             this.MFChatButton.Text = "Chat";
-            this.MFChatButton.UseVisualStyleBackColor = true;
+            this.MFChatButton.UseVisualStyleBackColor = false;
             this.MFChatButton.Click += new System.EventHandler(this.MFChatButton_Click);
             // 
             // MenuFriend

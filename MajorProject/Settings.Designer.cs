@@ -109,7 +109,7 @@
             // 
             // SettingsReturnButton
             // 
-            this.SettingsReturnButton.BackColor = System.Drawing.Color.DarkRed;
+            this.SettingsReturnButton.BackColor = System.Drawing.Color.Firebrick;
             this.SettingsReturnButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SettingsReturnButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SettingsReturnButton.Location = new System.Drawing.Point(250, 265);
@@ -165,7 +165,7 @@
             // 
             // SettingsPassButton
             // 
-            this.SettingsPassButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.SettingsPassButton.BackColor = System.Drawing.Color.LimeGreen;
             this.SettingsPassButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SettingsPassButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SettingsPassButton.Location = new System.Drawing.Point(465, 215);
