@@ -19,6 +19,9 @@ namespace MajorProject
         {
             InitializeComponent();
             NewMsg = C;
+            this.Load += Message_Load;
+
+            //changes font to user setting
             foreach (Control control in this.Controls)
             {
                 float size = control.Font.Size;
@@ -26,11 +29,11 @@ namespace MajorProject
                 Font font = new Font(fName, size);
                 control.Font = font;
             }
-            this.Load += Message_Load;
         }
 
         private void Message_Load(object sender, EventArgs e)
         {
+            //fills message user control with data from the current message
             MessageUser.Font = new Font(MessageUser.Font, FontStyle.Bold);
             MessageTime.Text = NewMsg.Time.ToString("t");
             MessageUser.Text = NewMsg.Name;
@@ -52,6 +55,7 @@ namespace MajorProject
 
         private void MessageDelete_Click(object sender, EventArgs e)
         {
+            //removes current message from the database
             Information.SqlCon.Open();
             string sql = "DELETE FROM Messages WHERE MessageID = @m";
             SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);

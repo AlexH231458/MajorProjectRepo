@@ -18,13 +18,14 @@ namespace MajorProject
     {
         public List<NewChat> _ChatList = new List<NewChat>();
         public NewFriend friend;
-        public Chat(List<NewChat> chatList, NewFriend Friend)
+        public Chat(NewFriend Friend)
         {
-            //check this may not work
-            //friendID = friend.FriendshipID;
             friend = Friend;
-            this._ChatList = chatList;
+            //_ChatList = chatList;
             InitializeComponent();
+            this.Load += Chat_Load;
+
+            //changes colour and font to user setting
             this.BackColor = Information.colour;
             foreach (Control control in this.Controls)
             {
@@ -33,8 +34,9 @@ namespace MajorProject
                 Font font = new Font(fName, size);
                 control.Font = font;
             }
+
+            //sets the text to the name of the friend
             ChatNameLabel.Text = Friend.UsernameText;
-            this.Load += Chat_Load;
         }
 
         private List<NewChat> Chats = new List<NewChat>();
@@ -42,6 +44,7 @@ namespace MajorProject
 
         public void displayChats(List<NewChat> chatList)
         {
+            //clears panel, checks for chats then displays all chats or relevant message
             ChatMessagesPanel.Controls.Clear();
             List<NewChat> currentChatList = chatList ?? _ChatList;
             if (currentChatList == null || currentChatList.Count == 0)
@@ -75,6 +78,7 @@ namespace MajorProject
 
         private void Chat_Load(object sender, EventArgs e)
         {
+            //populate and display chats
             friendChat.displayChat(null, new List<NewChat>(), friend);
             _ChatList = friendChat.GetChatList();
             displayChats(_ChatList);
@@ -92,6 +96,7 @@ namespace MajorProject
 
         private void ChatReturnButton_Click(object sender, EventArgs e)
         {
+            //switches to menu form on button click
             Menu MenuForm = new Menu();
             this.Hide();
             MenuForm.Show();
@@ -104,9 +109,11 @@ namespace MajorProject
 
         private void ChatSendButton_Click(object sender, EventArgs e)
         {
+            //stores current time and text in text box
             DateTime currentTime = DateTime.Now;
             string text = ChatMessageBox.Text;
 
+            //reads and stores a list of banned words from a text file
             List<string> banned = new List<string>();
             System.IO.StreamReader file = new System.IO.StreamReader("Words.txt");
             while (file.EndOfStream == false)
@@ -115,11 +122,13 @@ namespace MajorProject
             }
             file.Close();
 
+            //replaces banned words with ****
             foreach (string ban in banned)
             {
                 text = text.Replace(ban, "****");
             }
 
+            //autoshift capitalise the start of sentences if turned on from settings
             if (Information.autoShift == 1 && text.Length > 2)
             {
                 string original = text;
@@ -139,10 +148,10 @@ namespace MajorProject
                 text = newText;
             }
 
+            //encrypts text using AES encryption
             string encryptedText;
             string keyString;
             string vectorString;
-
             using (Aes AES = Aes.Create())
             {
                 encryptedText = Convert.ToBase64String(Encrypt(text, AES.Key, AES.IV));
@@ -150,8 +159,8 @@ namespace MajorProject
                 vectorString = Convert.ToBase64String(AES.IV);
             }
 
+            //adds encrypted message to the database
             Information.SqlCon.Open();
-
             string sql = "INSERT into Messages VALUES (@T, @K, @V, @DT, @F, @S)";
             SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
             cmd.Parameters.AddWithValue("@T", encryptedText);
@@ -162,15 +171,16 @@ namespace MajorProject
             cmd.Parameters.AddWithValue("@S", Information.userID);
             cmd.ExecuteNonQuery();
 
+            //updates last message time in friends table to current time
             string sql2 = "UPDATE Friends SET LastMessage = @time WHERE FriendshipID = @ID";
             SqlCommand cmd2 = new SqlCommand(sql2, Information.SqlCon);
             cmd2.Parameters.AddWithValue("@time", currentTime);
             cmd2.Parameters.AddWithValue("@ID", friend.FriendshipID);
             cmd2.ExecuteNonQuery();
-            
             Information.SqlCon.Close();
 
-            Chat ChatForm = new Chat(_ChatList, friend);
+            //refreshes the chat form to show new chat
+            Chat ChatForm = new Chat(friend);
             this.Hide();
             ChatForm.Show();
         }
@@ -178,29 +188,32 @@ namespace MajorProject
         static byte[] Encrypt(string text, byte[] aesKey, byte[] aesVector)
         {
             byte[] encryptedText;
-
             using (Aes AES = Aes.Create())
             {
+                //assigns key and initialisation vector
                 AES.Key = aesKey;
                 AES.IV = aesVector;
 
+                //memory stream stores encrypted data
                 using (MemoryStream memory = new MemoryStream())
                 {
+                    //cyrpto stream encrypts the data
                     using (CryptoStream crypto = new CryptoStream(memory, AES.CreateEncryptor(), CryptoStreamMode.Write))
                     {
+                        //streamwriter writes plain text to the cryptostream
                         using (StreamWriter writer = new StreamWriter(crypto))
                         {
                             writer.Write(text);
                         }
-
+                        //converts to a byte array
                         encryptedText = memory.ToArray();
                     }
                 }
             }
-
             return encryptedText;
         }
 
+        //each button adds a different emoji to the text box
         private void ChatSmile_Click(object sender, EventArgs e)
         {
             ChatMessageBox.Text = ChatMessageBox.Text + "😀";

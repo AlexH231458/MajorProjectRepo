@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace MajorProject
 {
+    //class stores data for each new friend request
     public class NewRequest
     {
         public string _UsernameText;
@@ -18,6 +19,7 @@ namespace MajorProject
 
         public NewRequest(DataRow DR)
         {
+            //assigns username from database
             _UsernameText = DR["Username"].ToString();
         }
     }

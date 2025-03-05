@@ -13,7 +13,6 @@ namespace MajorProject
 {
     public partial class Menu : Form
     {
-        private List<NewRequest> requestList;
         public List<NewFriend> FriendsList = new List<NewFriend>();
         private FriendDisplay individualFriend = new FriendDisplay();
         public Menu()
@@ -33,6 +32,7 @@ namespace MajorProject
                 control.Font = font;
             }
 
+            //populate and display friends
             individualFriend.displayFriend(null, new List<NewFriend>());
             FriendsList = individualFriend.GetFriendsList();
             displayFriends(FriendsList);
@@ -49,7 +49,7 @@ namespace MajorProject
         private void MenuFriendsButton_Click(object sender, EventArgs e)
         {
             //switches to friends form on button click
-            Friends FriendsForm = new Friends(requestList);
+            Friends FriendsForm = new Friends();
             this.Hide();
             FriendsForm.Show();
         }
@@ -72,6 +72,7 @@ namespace MajorProject
             }
             catch
             {
+                //message displayed if no pinned user can be found
                 Label noPin = new Label();
                 noPin.Font = new Font(Information.font.Name, 12);
                 noPin.Text = "Pin a user in Friends";
@@ -81,7 +82,7 @@ namespace MajorProject
             }
             Information.SqlCon.Close();
 
-            //displays all other friends below in the main panel
+            //clears panel, checks for friends then displays all current friends or relevant message
             MenuAllPanel.Controls.Clear();
             List<NewFriend> currentFriendsList = friendsList ?? FriendsList;
             if (currentFriendsList == null || currentFriendsList.Count == 0)

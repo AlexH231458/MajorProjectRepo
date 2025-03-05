@@ -20,8 +20,8 @@ namespace MajorProject
 
         public List<NewFriend> displayFriend(DataRow RowIn, List<NewFriend> friendsList)
         {
+            //clears list then finds any users that are friends with the current user and adds them to the list
             FriendsList.Clear();
-
             Information.SqlCon.Open();
             string sql1 = "SELECT FriendshipID, Friend1, Friend2, NameFor1, NameFor2 FROM Friends WHERE Status = @s AND (Friend1 = @u OR Friend2 = @u) ORDER BY LastMessage DESC";
             SqlCommand cmd1 = new SqlCommand(sql1, Information.SqlCon);
@@ -31,7 +31,6 @@ namespace MajorProject
             DataTable dt1 = new DataTable();
             da1.Fill(dt1);
             Information.SqlCon.Close();
-
             foreach (DataRow row in dt1.Rows)
             {
                 if (Convert.ToInt32(row["Friend1"]) == Information.userID)
@@ -46,6 +45,7 @@ namespace MajorProject
                 }
             }
 
+            //returns the populated friends list
             return FriendsList;
         }
 

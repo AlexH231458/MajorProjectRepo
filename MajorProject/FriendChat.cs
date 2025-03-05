@@ -21,26 +21,24 @@ namespace MajorProject
 
         public List<NewChat> displayChat(DataRow RowIn, List<NewChat> chatList, NewFriend friend)
         {
+            //clears list then finds any messages for the current friendship and adds them to the list
             int friendID = friend.FriendshipID;
-
             ChatList.Clear();
-
             Information.SqlCon.Open();
             string sql = "SELECT * FROM Messages WHERE Friendship = @F";
             SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
             cmd.Parameters.AddWithValue("@F", friendID);
-
             SqlDataAdapter DA = new SqlDataAdapter(cmd);
             DataTable DT = new DataTable();
             DA.Fill(DT);
             Information.SqlCon.Close();
-
             foreach (DataRow DR in DT.Rows)
             {
                 NewChat C = new NewChat(DR, friend);
                 ChatList.Add(C);
             }
 
+            //returns the populated message list
             return ChatList;
         }
 
