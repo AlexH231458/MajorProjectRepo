@@ -36,29 +36,36 @@
             // RequestNameText
             // 
             this.RequestNameText.AutoSize = true;
-            this.RequestNameText.Location = new System.Drawing.Point(33, 17);
+            this.RequestNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RequestNameText.Location = new System.Drawing.Point(10, 15);
             this.RequestNameText.Name = "RequestNameText";
-            this.RequestNameText.Size = new System.Drawing.Size(0, 13);
+            this.RequestNameText.Size = new System.Drawing.Size(0, 20);
             this.RequestNameText.TabIndex = 0;
             // 
             // RequestAcceptButton
             // 
-            this.RequestAcceptButton.Location = new System.Drawing.Point(326, 17);
+            this.RequestAcceptButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.RequestAcceptButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RequestAcceptButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RequestAcceptButton.Location = new System.Drawing.Point(310, 7);
             this.RequestAcceptButton.Name = "RequestAcceptButton";
-            this.RequestAcceptButton.Size = new System.Drawing.Size(55, 23);
+            this.RequestAcceptButton.Size = new System.Drawing.Size(80, 35);
             this.RequestAcceptButton.TabIndex = 1;
             this.RequestAcceptButton.Text = "Accept";
-            this.RequestAcceptButton.UseVisualStyleBackColor = true;
+            this.RequestAcceptButton.UseVisualStyleBackColor = false;
             this.RequestAcceptButton.Click += new System.EventHandler(this.RequestAcceptButton_Click);
             // 
             // RequestRemoveButton
             // 
-            this.RequestRemoveButton.Location = new System.Drawing.Point(412, 17);
+            this.RequestRemoveButton.BackColor = System.Drawing.Color.Firebrick;
+            this.RequestRemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RequestRemoveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RequestRemoveButton.Location = new System.Drawing.Point(395, 7);
             this.RequestRemoveButton.Name = "RequestRemoveButton";
-            this.RequestRemoveButton.Size = new System.Drawing.Size(65, 23);
+            this.RequestRemoveButton.Size = new System.Drawing.Size(80, 35);
             this.RequestRemoveButton.TabIndex = 2;
             this.RequestRemoveButton.Text = "Remove";
-            this.RequestRemoveButton.UseVisualStyleBackColor = true;
+            this.RequestRemoveButton.UseVisualStyleBackColor = false;
             this.RequestRemoveButton.Click += new System.EventHandler(this.RequestRemoveButton_Click);
             // 
             // Requests

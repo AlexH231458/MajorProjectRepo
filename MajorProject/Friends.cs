@@ -234,6 +234,16 @@ namespace MajorProject
         {
 
         }
+
+        private void FriendsRequestsLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FriendsFriendsLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 //Cmd.Parameters.AddWithValue("@UN", Information.userName);

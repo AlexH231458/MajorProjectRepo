@@ -88,7 +88,7 @@
             this.MenuPinnedPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MenuPinnedPanel.Location = new System.Drawing.Point(17, 105);
             this.MenuPinnedPanel.Name = "MenuPinnedPanel";
-            this.MenuPinnedPanel.Size = new System.Drawing.Size(500, 50);
+            this.MenuPinnedPanel.Size = new System.Drawing.Size(500, 55);
             this.MenuPinnedPanel.TabIndex = 4;
             this.MenuPinnedPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuPinnedPanel_Paint);
             // 
@@ -96,7 +96,7 @@
             // 
             this.MenuPinnedLabel.AutoSize = true;
             this.MenuPinnedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuPinnedLabel.Location = new System.Drawing.Point(15, 80);
+            this.MenuPinnedLabel.Location = new System.Drawing.Point(15, 85);
             this.MenuPinnedLabel.Name = "MenuPinnedLabel";
             this.MenuPinnedLabel.Size = new System.Drawing.Size(96, 20);
             this.MenuPinnedLabel.TabIndex = 5;
@@ -107,7 +107,7 @@
             // 
             this.MenuAllLabel.AutoSize = true;
             this.MenuAllLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MenuAllLabel.Location = new System.Drawing.Point(15, 160);
+            this.MenuAllLabel.Location = new System.Drawing.Point(15, 165);
             this.MenuAllLabel.Name = "MenuAllLabel";
             this.MenuAllLabel.Size = new System.Drawing.Size(72, 20);
             this.MenuAllLabel.TabIndex = 6;

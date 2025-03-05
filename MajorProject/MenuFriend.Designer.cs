@@ -45,9 +45,10 @@
             // 
             this.MFChatButton.BackColor = System.Drawing.Color.Silver;
             this.MFChatButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MFChatButton.Location = new System.Drawing.Point(395, 10);
+            this.MFChatButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MFChatButton.Location = new System.Drawing.Point(395, 7);
             this.MFChatButton.Name = "MFChatButton";
-            this.MFChatButton.Size = new System.Drawing.Size(75, 30);
+            this.MFChatButton.Size = new System.Drawing.Size(75, 35);
             this.MFChatButton.TabIndex = 4;
             this.MFChatButton.Text = "Chat";
             this.MFChatButton.UseVisualStyleBackColor = false;

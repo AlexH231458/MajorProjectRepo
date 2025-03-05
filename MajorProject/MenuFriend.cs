@@ -19,34 +19,46 @@ namespace MajorProject
         {
             InitializeComponent();
             newFriend = F;
+            foreach (Control control in this.Controls)
+            {
+                float size = control.Font.Size;
+                string fName = Information.font.Name.ToString(); ;
+                Font font = new Font(fName, size);
+                control.Font = font;
+            }
             this.Load += MenuFriend_Load;
+            //float size = this.Font.Size;
+            //string fName = Information.font.Name.ToString(); ;
+            //Font font = new Font(fName, size);
+            //MFNameLabel.Font = font;
+            //MFChatButton.Font = font;
         }
 
         private void MenuFriend_Load(object sender, EventArgs e)
         {
-            Information.SqlCon.Open();
+            //Information.SqlCon.Open();
 
-            if (newFriend.IsFirstFriend == true)
-            {
-                string sql = "SELECT NameFor1 FROM Friends WHERE FriendshipID = @friend";
-                SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-                cmd.Parameters.AddWithValue("@friend", newFriend.FriendshipID);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                MFNameLabel.Text = dt.Rows[0]["NameFor1"].ToString();
-            }
-            else
-            {
-                string sql = "SELECT NameFor2 FROM Friends WHERE FriendshipID = @friend";
-                SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-                cmd.Parameters.AddWithValue("@friend", newFriend.FriendshipID);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                MFNameLabel.Text = dt.Rows[0]["NameFor2"].ToString();
-            }
-            Information.SqlCon.Close();
+            //if (newFriend.IsFirstFriend == true)
+            //{
+            //    string sql = "SELECT NameFor1 FROM Friends WHERE FriendshipID = @friend";
+            //    SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            //    cmd.Parameters.AddWithValue("@friend", newFriend.FriendshipID);
+            //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+            //    DataTable dt = new DataTable();
+            //    da.Fill(dt);
+            //    MFNameLabel.Text = dt.Rows[0]["NameFor1"].ToString();
+            //}
+            //else
+            //{
+            //    string sql = "SELECT NameFor2 FROM Friends WHERE FriendshipID = @friend";
+            //    SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            //    cmd.Parameters.AddWithValue("@friend", newFriend.FriendshipID);
+            //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+            //    DataTable dt = new DataTable();
+            //    da.Fill(dt);
+            //    MFNameLabel.Text = dt.Rows[0]["NameFor2"].ToString();
+            //}
+            //Information.SqlCon.Close();
 
             MFNameLabel.Text = newFriend.UsernameText;
         }

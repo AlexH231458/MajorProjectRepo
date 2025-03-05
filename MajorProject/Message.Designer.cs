@@ -37,10 +37,10 @@
             // MessageText
             // 
             this.MessageText.AutoSize = true;
-            this.MessageText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MessageText.Location = new System.Drawing.Point(10, 35);
+            this.MessageText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MessageText.Location = new System.Drawing.Point(5, 25);
             this.MessageText.Name = "MessageText";
-            this.MessageText.Size = new System.Drawing.Size(47, 24);
+            this.MessageText.Size = new System.Drawing.Size(67, 31);
             this.MessageText.TabIndex = 0;
             this.MessageText.Text = "Text";
             this.MessageText.Click += new System.EventHandler(this.MessageText_Click);
@@ -61,7 +61,7 @@
             this.MessageDelete.BackColor = System.Drawing.Color.Firebrick;
             this.MessageDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MessageDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MessageDelete.Location = new System.Drawing.Point(445, 10);
+            this.MessageDelete.Location = new System.Drawing.Point(450, 5);
             this.MessageDelete.Name = "MessageDelete";
             this.MessageDelete.Size = new System.Drawing.Size(25, 30);
             this.MessageDelete.TabIndex = 2;
@@ -73,7 +73,7 @@
             // 
             this.MessageUser.AutoSize = true;
             this.MessageUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MessageUser.Location = new System.Drawing.Point(10, 10);
+            this.MessageUser.Location = new System.Drawing.Point(5, 5);
             this.MessageUser.Name = "MessageUser";
             this.MessageUser.Size = new System.Drawing.Size(39, 20);
             this.MessageUser.TabIndex = 3;
@@ -89,7 +89,7 @@
             this.Controls.Add(this.MessageTime);
             this.Controls.Add(this.MessageText);
             this.Name = "Message";
-            this.Size = new System.Drawing.Size(480, 80);
+            this.Size = new System.Drawing.Size(480, 60);
             this.Load += new System.EventHandler(this.Message_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

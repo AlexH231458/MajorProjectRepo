@@ -19,13 +19,29 @@ namespace MajorProject
         {
             InitializeComponent();
             NewMsg = C;
+            foreach (Control control in this.Controls)
+            {
+                float size = control.Font.Size;
+                string fName = Information.font.Name.ToString(); ;
+                Font font = new Font(fName, size);
+                control.Font = font;
+            }
             this.Load += Message_Load;
         }
 
         private void Message_Load(object sender, EventArgs e)
         {
+            MessageUser.Font = new Font(MessageUser.Font, FontStyle.Bold);
             MessageTime.Text = NewMsg.Time.ToString("t");
             MessageUser.Text = NewMsg.Name;
+            if (MessageUser.Text == "Me")
+            {
+                MessageUser.ForeColor = Color.MediumVioletRed;
+            }
+            else
+            {
+                MessageUser.ForeColor = Color.SteelBlue;
+            }
             MessageText.Text = NewMsg.Text;
         }
 

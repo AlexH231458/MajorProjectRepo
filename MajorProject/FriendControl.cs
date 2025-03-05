@@ -18,6 +18,13 @@ namespace MajorProject
         {
             InitializeComponent();
             newFriend = F;
+            foreach (Control control in this.Controls)
+            {
+                float size = control.Font.Size;
+                string fName = Information.font.Name.ToString(); ;
+                Font font = new Font(fName, size);
+                control.Font = font;
+            }
             this.Load += FriendControl_Load;
         }
 

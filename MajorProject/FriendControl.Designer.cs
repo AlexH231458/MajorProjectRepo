@@ -53,7 +53,7 @@
             // 
             this.FCNameLabel.AutoSize = true;
             this.FCNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FCNameLabel.Location = new System.Drawing.Point(30, 20);
+            this.FCNameLabel.Location = new System.Drawing.Point(10, 15);
             this.FCNameLabel.Name = "FCNameLabel";
             this.FCNameLabel.Size = new System.Drawing.Size(0, 20);
             this.FCNameLabel.TabIndex = 2;
@@ -62,7 +62,7 @@
             // FCNicknameLabel
             // 
             this.FCNicknameLabel.AutoSize = true;
-            this.FCNicknameLabel.Location = new System.Drawing.Point(230, 5);
+            this.FCNicknameLabel.Location = new System.Drawing.Point(220, 5);
             this.FCNicknameLabel.Name = "FCNicknameLabel";
             this.FCNicknameLabel.Size = new System.Drawing.Size(58, 13);
             this.FCNicknameLabel.TabIndex = 3;
@@ -72,7 +72,7 @@
             // FCNicknameBox
             // 
             this.FCNicknameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FCNicknameBox.Location = new System.Drawing.Point(210, 17);
+            this.FCNicknameBox.Location = new System.Drawing.Point(220, 20);
             this.FCNicknameBox.Name = "FCNicknameBox";
             this.FCNicknameBox.Size = new System.Drawing.Size(100, 22);
             this.FCNicknameBox.TabIndex = 4;
