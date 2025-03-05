@@ -40,7 +40,7 @@ namespace MajorProject
 
         private void RegShowCheck_CheckedChanged(object sender, EventArgs e)
         {
-            //hides characters displayed in password box if checkbox is false
+            //shows or hides characters displayed in password box
             if (RegShowCheck.Checked == true)
             {
                 RegPasswordBox.UseSystemPasswordChar = false;
@@ -61,6 +61,7 @@ namespace MajorProject
 
         public bool checkPassword(string text)
         {
+            //checks that user input contains numbers, upper case and lower case characters
             bool allNumbers;
             int tempNumber;
             try
@@ -105,6 +106,7 @@ namespace MajorProject
 
         private void RegEnterButton_Click(object sender, EventArgs e)
         {
+            //resets error text
             RegErrorText.Text = "";
             RegErrorText.Show();
             //sets variables from user input
@@ -112,16 +114,12 @@ namespace MajorProject
             string password = RegPasswordBox.Text;
             DateTime DoB = DateTime.Parse(RegDateBox.Text);
 
-            //Opens SQL connection
+            //Searches for username in database
             Information.SqlCon.Open();
-
             string sqlUser = ("SELECT * FROM [Users] WHERE Username = @U COLLATE SQL_Latin1_General_CP1_CS_AS");
-
-            //fills parameters with values from user input
             SqlCommand DataAdaptor1 = new SqlCommand(sqlUser, Information.SqlCon);
             DataAdaptor1.CommandType.ToString();
             DataAdaptor1.Parameters.AddWithValue("@U", userName);
-
             SqlDataAdapter selectUser = new SqlDataAdapter(DataAdaptor1);
             DataTable DT1 = new DataTable();
             selectUser.Fill(DT1);
@@ -130,7 +128,6 @@ namespace MajorProject
             bool userFound = false;
             foreach (DataRow row in DT1.Rows)
             {
-                //checks that username is unique
                 if (DT1.Rows.Count == 1)
                 {
                     userFound = true;
@@ -140,7 +137,7 @@ namespace MajorProject
 
             if (userFound == false)
             {
-                //checks that the password has lower case, upper case and numbers
+                //checks for secure password
                 if (checkPassword(password) == false)
                 {
                     RegErrorText.Text = "Error: Password is not secure";
@@ -166,7 +163,6 @@ namespace MajorProject
                     cmd.Parameters.AddWithValue("@Pin", System.DBNull.Value);
                     cmd.ExecuteNonQuery();
                     Information.SqlCon.Close();
-
                     Login LoginForm = new Login();
                     this.Hide();
                     LoginForm.Show();

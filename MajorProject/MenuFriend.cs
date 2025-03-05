@@ -19,6 +19,9 @@ namespace MajorProject
         {
             InitializeComponent();
             newFriend = F;
+            this.Load += MenuFriend_Load;
+
+            //changes font to user setting
             foreach (Control control in this.Controls)
             {
                 float size = control.Font.Size;
@@ -26,45 +29,17 @@ namespace MajorProject
                 Font font = new Font(fName, size);
                 control.Font = font;
             }
-            this.Load += MenuFriend_Load;
-            //float size = this.Font.Size;
-            //string fName = Information.font.Name.ToString(); ;
-            //Font font = new Font(fName, size);
-            //MFNameLabel.Font = font;
-            //MFChatButton.Font = font;
         }
 
         private void MenuFriend_Load(object sender, EventArgs e)
         {
-            //Information.SqlCon.Open();
-
-            //if (newFriend.IsFirstFriend == true)
-            //{
-            //    string sql = "SELECT NameFor1 FROM Friends WHERE FriendshipID = @friend";
-            //    SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-            //    cmd.Parameters.AddWithValue("@friend", newFriend.FriendshipID);
-            //    SqlDataAdapter da = new SqlDataAdapter(cmd);
-            //    DataTable dt = new DataTable();
-            //    da.Fill(dt);
-            //    MFNameLabel.Text = dt.Rows[0]["NameFor1"].ToString();
-            //}
-            //else
-            //{
-            //    string sql = "SELECT NameFor2 FROM Friends WHERE FriendshipID = @friend";
-            //    SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-            //    cmd.Parameters.AddWithValue("@friend", newFriend.FriendshipID);
-            //    SqlDataAdapter da = new SqlDataAdapter(cmd);
-            //    DataTable dt = new DataTable();
-            //    da.Fill(dt);
-            //    MFNameLabel.Text = dt.Rows[0]["NameFor2"].ToString();
-            //}
-            //Information.SqlCon.Close();
-
+            //displays name of friend
             MFNameLabel.Text = newFriend.UsernameText;
         }
 
         private void MFChatButton_Click(object sender, EventArgs e)
         {
+            //switches to chats form on button click
             Chat ChatForm = new Chat(chatList, newFriend);
             Control MenuForm = this.Parent.Parent;
             MenuForm.Hide();

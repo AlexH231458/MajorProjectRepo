@@ -20,6 +20,9 @@ namespace MajorProject
         {
             InitializeComponent();
             NewRequest = R;
+            this.Load += Requests_Load;
+
+            //changes font to user setting
             foreach (Control control in this.Controls)
             {
                 float size = control.Font.Size;
@@ -27,15 +30,15 @@ namespace MajorProject
                 Font font = new Font(fName, size);
                 control.Font = font;
             }
-            //ChatGPT used
-            this.Load += Requests_Load;
         }
 
 
         public void Requests_Load(object sender, EventArgs e)
         {
+            //displays username of request
             RequestNameText.Text = NewRequest.UsernameText;
 
+            //finds userID of request
             Information.SqlCon.Open();
             string sql1 = ("SELECT UserID FROM Users WHERE Username = @U");
             SqlCommand Cmd = new SqlCommand(sql1, Information.SqlCon);
@@ -49,6 +52,7 @@ namespace MajorProject
 
         private void RequestRemoveButton_Click(object sender, EventArgs e)
         {
+            //removes request from database
             Information.SqlCon.Open();
             string sql = ("DELETE FROM Friends WHERE Friend1 = @F1 AND Friend2 = @F2");
             SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
@@ -61,6 +65,7 @@ namespace MajorProject
 
         private void RequestAcceptButton_Click(object sender, EventArgs e)
         {
+            //changes status of frienship on database
             Information.SqlCon.Open();
             string sql1 = ("UPDATE Friends SET Status = @S WHERE Friend1 = @F");
             SqlCommand cmd1 = new SqlCommand(sql1, Information.SqlCon);

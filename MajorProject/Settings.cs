@@ -21,19 +21,8 @@ namespace MajorProject
         {
             InitializeComponent();
 
-            Information.SqlCon.Open();
-
-            string sql = "SELECT Autoshift FROM Users WHERE UserID = @u";
-            SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
-            cmd.Parameters.AddWithValue("@u", Information.userID);
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable DT1 = new DataTable();
-            adapter.Fill(DT1);
-            bool shift = Convert.ToBoolean(DT1.Rows[0]["Autoshift"]);
-
-            Information.SqlCon.Close();
-
-            if (shift == true)
+            //changes value stored in autoshift box depending on value stored
+            if (Information.autoShift == 1)
             {
                 SettingsAutoshiftBox.Text = "On";
             }
@@ -42,6 +31,7 @@ namespace MajorProject
                 SettingsAutoshiftBox.Text = "Off";
             }
 
+            //changes colour and font to user setting
             this.BackColor = Information.colour;
             foreach (Control control in this.Controls)
             {
@@ -59,15 +49,14 @@ namespace MajorProject
 
         private void SettingsColourButton_Click(object sender, EventArgs e)
         {
+            //shows colour dialog then updates database with user input
             DialogResult result = SettingsColourDialog.ShowDialog();
             if (result == DialogResult.OK)
             {
                 Information.colour = SettingsColourDialog.Color;
                 this.BackColor = Information.colour;
             }
-
             string colourName = Information.colour.Name.ToString();
-
             Information.SqlCon.Open();
             string sql = "UPDATE Users SET Colour = @Colour WHERE UserID = @ID";
             SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
@@ -95,6 +84,7 @@ namespace MajorProject
 
         private void SettingsFontButton_Click(object sender, EventArgs e)
         {
+            //shows font dialog and updates database with user input
             SettingsFontDialog.MaxSize = 8;
             SettingsFontDialog.MinSize = 8;
             DialogResult result = SettingsFontDialog.ShowDialog();
@@ -103,7 +93,6 @@ namespace MajorProject
                 System.Drawing.Font newFont = SettingsFontDialog.Font;
                 newFont = new System.Drawing.Font(newFont, FontStyle.Regular);
                 Information.font = newFont;
-
                 foreach (Control control in this.Controls)
                 {
                     float size = control.Font.Size;
@@ -111,7 +100,6 @@ namespace MajorProject
                     Font font = new Font(fName, size);
                     control.Font = font;
                 }
-
                 System.ComponentModel.TypeConverter convert = System.ComponentModel.TypeDescriptor.GetConverter(typeof(Font));
                 string fontName = (string)convert.ConvertToString(Information.font);
                 Information.SqlCon.Open();
@@ -126,6 +114,7 @@ namespace MajorProject
 
         private void SettingsShowCheck_CheckedChanged(object sender, EventArgs e)
         {
+            //shows or hides characters displayed in password boxes
             if (SettingsShowCheck.Checked == true)
             {
                 SettingsOldBox.UseSystemPasswordChar = false;
@@ -145,6 +134,7 @@ namespace MajorProject
 
         public bool checkPassword(string text)
         {
+            //checks that user input contains numbers, upper case and lower case characters
             bool allNumbers;
             int tempNumber;
             try
@@ -189,9 +179,11 @@ namespace MajorProject
 
         private void SettingsPassButton_Click(object sender, EventArgs e)
         {
+            //resets error text
             SettingsErrorLabel.Text = "";
-            Information.SqlCon.Open();
 
+            //finds original user password to check against user input
+            Information.SqlCon.Open();
             string sql = "SELECT Password FROM Users WHERE UserID = @u";
             SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
             cmd.Parameters.AddWithValue("@u", Information.userID);
@@ -199,16 +191,17 @@ namespace MajorProject
             DataTable dt = new DataTable();
             adapter.Fill(dt);
             string password = dt.Rows[0]["Password"].ToString();
-
             if (password == SettingsOldBox.Text)
             {
                 password = SettingsNewBox.Text;
                 if (checkPassword(password) == false)
                 {
+                    //displays error text for insecure password
                     SettingsErrorLabel.Text = "Error:\nPassword is not secure";
                 }
                 else
                 {
+                    //updates database with new password
                     string sql1 = "UPDATE Users SET Password = @p WHERE UserID = @u";
                     SqlCommand cmd1 = new SqlCommand(sql1, Information.SqlCon);
                     cmd1.Parameters.AddWithValue("@p", password);
@@ -218,26 +211,28 @@ namespace MajorProject
             }
             else
             {
+                //displays error text if user inputs wrong password
                 SettingsErrorLabel.Text = "Error:\nIncorrect password";
             }
-
             Information.SqlCon.Close();
         }
 
         private void SettingsAutoshiftBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //updates database with changed value for autoshift
             Information.SqlCon.Open();
-
             string sql = "UPDATE Users SET Autoshift = @a WHERE UserID = @u";
             SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
             cmd.Parameters.AddWithValue("@u", Information.userID);
             if (SettingsAutoshiftBox.Text == "On")
             {
                 cmd.Parameters.AddWithValue("@a", true);
+                Information.autoShift = 1;
             }
             else
             {
                 cmd.Parameters.AddWithValue("@a", false);
+                Information.autoShift = 0;
             }
             cmd.ExecuteNonQuery();
             Information.SqlCon.Close();

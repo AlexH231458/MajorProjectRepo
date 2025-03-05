@@ -15,9 +15,7 @@ namespace MajorProject
     {
         private List<NewRequest> requestList;
         public List<NewFriend> FriendsList = new List<NewFriend>();
-        //private List<NewFriend> UserFriends = new List<NewFriend>();
         private FriendDisplay individualFriend = new FriendDisplay();
-        //private List<NewFriend> friendsList;
         public Menu()
         {
             InitializeComponent();
@@ -25,6 +23,7 @@ namespace MajorProject
 
         private void Menu_Load(object sender, EventArgs e)
         {
+            //changes colour and font to user setting
             this.BackColor = Information.colour;
             foreach (Control control in this.Controls)
             {
@@ -58,6 +57,7 @@ namespace MajorProject
 
         public void displayFriends(List<NewFriend> friendsList)
         {
+            //finds which user is pinned to display at the top
             Information.SqlCon.Open();
             string sql = "SELECT PinnedUser FROM Users WHERE UserID = @U";
             SqlCommand cmd1 = new SqlCommand(sql, Information.SqlCon);
@@ -79,10 +79,9 @@ namespace MajorProject
                 noPin.TextAlign = ContentAlignment.MiddleCenter;
                 MenuPinnedPanel.Controls.Add(noPin);
             }
-
             Information.SqlCon.Close();
 
-
+            //displays all other friends below in the main panel
             MenuAllPanel.Controls.Clear();
             List<NewFriend> currentFriendsList = friendsList ?? FriendsList;
             if (currentFriendsList == null || currentFriendsList.Count == 0)
