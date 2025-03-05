@@ -37,10 +37,10 @@
             // MessageText
             // 
             this.MessageText.AutoSize = true;
-            this.MessageText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MessageText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MessageText.Location = new System.Drawing.Point(5, 25);
             this.MessageText.Name = "MessageText";
-            this.MessageText.Size = new System.Drawing.Size(67, 31);
+            this.MessageText.Size = new System.Drawing.Size(60, 29);
             this.MessageText.TabIndex = 0;
             this.MessageText.Text = "Text";
             this.MessageText.Click += new System.EventHandler(this.MessageText_Click);

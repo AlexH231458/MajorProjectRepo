@@ -85,9 +85,8 @@
             this.ChatNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChatNameLabel.Location = new System.Drawing.Point(160, 25);
             this.ChatNameLabel.Name = "ChatNameLabel";
-            this.ChatNameLabel.Size = new System.Drawing.Size(136, 31);
+            this.ChatNameLabel.Size = new System.Drawing.Size(0, 31);
             this.ChatNameLabel.TabIndex = 3;
-            this.ChatNameLabel.Text = "TempText";
             this.ChatNameLabel.Click += new System.EventHandler(this.ChatNameLabel_Click);
             // 
             // ChatMessageBox

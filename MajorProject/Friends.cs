@@ -77,6 +77,7 @@ namespace MajorProject
             {
                 FriendsErrorLabel.Text = "Error: no user selected";
             }
+            FriendsSearchBox.Text = "";
         }
 
         private List<NewFriend> UserFriends = new List<NewFriend>();

@@ -79,20 +79,32 @@ namespace MajorProject
         private void FCRemoveButton_Click(object sender, EventArgs e)
         {
             Information.SqlCon.Open();
-            string sql = ("DELETE FROM Friends WHERE Friend1 = @F1 AND Friend2 = @F2");
+            string sql = ("SELECT PinnedUser FROM Users WHERE UserID = @u");
             SqlCommand cmd = new SqlCommand(sql, Information.SqlCon);
+            cmd.Parameters.AddWithValue("@u", Information.userID);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            int pin = Convert.ToInt32(dt.Rows[0]["PinnedUser"]);
+            if (pin == newFriend.FriendshipID)
+            {
+                string Sql = "UPDATE Users SET PinnedUser = @n WHERE UserID = @u";
+                SqlCommand Cmd = new SqlCommand(Sql, Information.SqlCon);
+                Cmd.Parameters.AddWithValue("@n", System.DBNull.Value);
+                Cmd.Parameters.AddWithValue("@u", Information.userID);
+                Cmd.ExecuteNonQuery();
+            }
 
-            if (newFriend.IsFirstFriend == true)
-            {
-                cmd.Parameters.AddWithValue("@F1", newFriend.FriendID);
-                cmd.Parameters.AddWithValue("@F2", Information.userID);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@F2", newFriend.FriendID);
-                cmd.Parameters.AddWithValue("@F1", Information.userID);
-            }
-            cmd.ExecuteNonQuery();
+            string sql1 = ("DELETE FROM Messages WHERE Friendship = @f");
+            SqlCommand cmd1 = new SqlCommand(sql1, Information.SqlCon);
+            cmd1.Parameters.AddWithValue("@f", newFriend.FriendshipID);
+            cmd1.ExecuteNonQuery();
+
+            string sql2 = ("DELETE FROM Friends WHERE FriendshipID = @F");
+            SqlCommand cmd2 = new SqlCommand(sql2, Information.SqlCon);
+            cmd2.Parameters.AddWithValue("@F", newFriend.FriendshipID);
+            cmd2.ExecuteNonQuery();
+
             Information.SqlCon.Close();
             this.Hide();
         }
