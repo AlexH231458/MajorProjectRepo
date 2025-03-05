@@ -73,6 +73,7 @@ namespace MajorProject
             catch
             {
                 Label noPin = new Label();
+                noPin.Font = new Font(Information.font.Name, 12);
                 noPin.Text = "Pin a user in Friends";
                 noPin.Dock = DockStyle.Fill;
                 noPin.TextAlign = ContentAlignment.MiddleCenter;
@@ -112,6 +113,7 @@ namespace MajorProject
             else
             {
                 Label noFriends = new Label();
+                noFriends.Font = new Font(Information.font.Name, 12);
                 noFriends.Text = "You have no friends :(";
                 noFriends.Dock = DockStyle.Fill;
                 noFriends.TextAlign = ContentAlignment.MiddleCenter;

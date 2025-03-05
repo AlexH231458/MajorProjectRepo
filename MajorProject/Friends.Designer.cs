@@ -71,9 +71,9 @@
             this.FriendSearchLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FriendSearchLabel.Location = new System.Drawing.Point(15, 100);
             this.FriendSearchLabel.Name = "FriendSearchLabel";
-            this.FriendSearchLabel.Size = new System.Drawing.Size(106, 24);
+            this.FriendSearchLabel.Size = new System.Drawing.Size(111, 24);
             this.FriendSearchLabel.TabIndex = 18;
-            this.FriendSearchLabel.Text = "Add friends";
+            this.FriendSearchLabel.Text = "Add friends:";
             // 
             // FriendRequestButton
             // 
@@ -143,7 +143,7 @@
             // 
             this.FriendsRequestsLabel.AutoSize = true;
             this.FriendsRequestsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FriendsRequestsLabel.Location = new System.Drawing.Point(10, 185);
+            this.FriendsRequestsLabel.Location = new System.Drawing.Point(15, 190);
             this.FriendsRequestsLabel.Name = "FriendsRequestsLabel";
             this.FriendsRequestsLabel.Size = new System.Drawing.Size(78, 20);
             this.FriendsRequestsLabel.TabIndex = 26;
@@ -154,7 +154,7 @@
             // 
             this.FriendsFriendsLabel.AutoSize = true;
             this.FriendsFriendsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FriendsFriendsLabel.Location = new System.Drawing.Point(10, 360);
+            this.FriendsFriendsLabel.Location = new System.Drawing.Point(15, 360);
             this.FriendsFriendsLabel.Name = "FriendsFriendsLabel";
             this.FriendsFriendsLabel.Size = new System.Drawing.Size(62, 20);
             this.FriendsFriendsLabel.TabIndex = 27;

@@ -107,6 +107,7 @@ namespace MajorProject
             else
             {
                 Label noFriends = new Label();
+                noFriends.Font = new Font(Information.font.Name, 12);
                 noFriends.Text = "You have no friends :(";
                 noFriends.Dock = DockStyle.Fill;
                 noFriends.TextAlign = ContentAlignment.MiddleCenter;
@@ -151,6 +152,7 @@ namespace MajorProject
             {
                 // Add a label or message if no freind requests exist
                 Label noFRequests = new Label();
+                noFRequests.Font = new Font(Information.font.Name, 12);
                 noFRequests.Text = "No friend requests have been found.";
                 noFRequests.Dock = DockStyle.Fill;
                 noFRequests.TextAlign = ContentAlignment.MiddleCenter;
@@ -196,11 +198,11 @@ namespace MajorProject
 
                 Random rnd = new Random();
                 int number = rnd.Next(users.Count);
-                FriendsRecLabel.Text = "Recommended: " + users[number];
+                FriendsRecLabel.Text = "Recommended:    " + users[number];
             }
             catch
             {
-                FriendsRecLabel.Text = "Recommended: No users found";
+                FriendsRecLabel.Text = "Recommended:    No users found";
             }
         }
 
