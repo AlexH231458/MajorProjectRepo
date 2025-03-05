@@ -9,6 +9,7 @@ namespace MajorProject
 {
     internal static class Program
     {
+        //Program, request, settings, menu friend, menu, registration, login
         [STAThread]
         static void Main()
         {
