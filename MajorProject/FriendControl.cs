@@ -67,15 +67,22 @@ namespace MajorProject
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
-            int pin = Convert.ToInt32(dt.Rows[0]["PinnedUser"]);
-            if (pin == newFriend.FriendshipID)
+            try
             {
-                //removes user if they are pinned
-                string Sql = "UPDATE Users SET PinnedUser = @n WHERE UserID = @u";
-                SqlCommand Cmd = new SqlCommand(Sql, Information.SqlCon);
-                Cmd.Parameters.AddWithValue("@n", System.DBNull.Value);
-                Cmd.Parameters.AddWithValue("@u", Information.userID);
-                Cmd.ExecuteNonQuery();
+                int pin = Convert.ToInt32(dt.Rows[0]["PinnedUser"]);
+                if (pin == newFriend.FriendshipID)
+                {
+                    //removes user if they are pinned
+                    string Sql = "UPDATE Users SET PinnedUser = @n WHERE UserID = @u";
+                    SqlCommand Cmd = new SqlCommand(Sql, Information.SqlCon);
+                    Cmd.Parameters.AddWithValue("@n", System.DBNull.Value);
+                    Cmd.Parameters.AddWithValue("@u", Information.userID);
+                    Cmd.ExecuteNonQuery();
+                }
+            }
+            catch
+            {
+
             }
 
             //removes any messages for the friendship

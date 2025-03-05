@@ -233,7 +233,7 @@
             this.SettingsErrorLabel.AutoSize = true;
             this.SettingsErrorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SettingsErrorLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.SettingsErrorLabel.Location = new System.Drawing.Point(100, 325);
+            this.SettingsErrorLabel.Location = new System.Drawing.Point(15, 265);
             this.SettingsErrorLabel.Name = "SettingsErrorLabel";
             this.SettingsErrorLabel.Size = new System.Drawing.Size(0, 24);
             this.SettingsErrorLabel.TabIndex = 25;

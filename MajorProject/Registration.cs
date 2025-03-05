@@ -144,7 +144,7 @@ namespace MajorProject
                 }
 
                 //checks that the user is over 13 years old
-                else if (DoB.AddYears(13) >= DateTime.Today)
+                else if (DoB.AddYears(13) > DateTime.Today)
                 {
                     RegErrorText.Text = "Error: Users must be over 13";
                 }
