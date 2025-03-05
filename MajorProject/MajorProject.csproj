@@ -69,12 +69,6 @@
     <Compile Include="Chat.Designer.cs">
       <DependentUpon>Chat.cs</DependentUpon>
     </Compile>
-    <Compile Include="Enc6.cs" />
-    <Compile Include="Encryption1.cs" />
-    <Compile Include="Encryption2.cs" />
-    <Compile Include="Encryption3.cs" />
-    <Compile Include="Encryption4.cs" />
-    <Compile Include="Encryption5.cs" />
     <Compile Include="FriendChat.cs" />
     <Compile Include="FriendControl.cs">
       <SubType>UserControl</SubType>

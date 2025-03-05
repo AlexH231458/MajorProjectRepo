@@ -65,6 +65,7 @@ namespace MajorProject
             else
             {
                 Label noChats = new Label();
+                noChats.Font = new Font(Information.font.Name, 12);
                 noChats.Text = "No messages have been found";
                 noChats.Dock = DockStyle.Fill;
                 noChats.TextAlign = ContentAlignment.MiddleCenter;
