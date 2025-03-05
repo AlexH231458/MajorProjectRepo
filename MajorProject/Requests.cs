@@ -65,7 +65,7 @@ namespace MajorProject
 
         private void RequestAcceptButton_Click(object sender, EventArgs e)
         {
-            //changes status of frienship on database
+            //changes status of friendship on database
             Information.SqlCon.Open();
             string sql1 = ("UPDATE Friends SET Status = @S WHERE Friend1 = @F");
             SqlCommand cmd1 = new SqlCommand(sql1, Information.SqlCon);

@@ -149,7 +149,7 @@ namespace MajorProject
                     RegErrorText.Text = "Error: Users must be over 13";
                 }
 
-                //adds the new user to the databse then returns to the login form
+                //adds the new user to the database then returns to the login form
                 else
                 {
                     Information.SqlCon.Open();
