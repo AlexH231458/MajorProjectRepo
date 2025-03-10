@@ -239,5 +239,10 @@ namespace MajorProject
         {
 
         }
+
+        private void FriendTitleLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

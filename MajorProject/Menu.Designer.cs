@@ -73,6 +73,7 @@
             this.MenuHeadingLabel.Size = new System.Drawing.Size(86, 31);
             this.MenuHeadingLabel.TabIndex = 2;
             this.MenuHeadingLabel.Text = "Chats";
+            this.MenuHeadingLabel.Click += new System.EventHandler(this.MenuHeadingLabel_Click);
             // 
             // MenuAllPanel
             // 

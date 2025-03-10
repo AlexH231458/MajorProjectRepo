@@ -140,5 +140,10 @@ namespace MajorProject
         {
 
         }
+
+        private void MenuHeadingLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

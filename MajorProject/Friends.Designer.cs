@@ -64,6 +64,7 @@
             this.FriendTitleLabel.Size = new System.Drawing.Size(105, 31);
             this.FriendTitleLabel.TabIndex = 17;
             this.FriendTitleLabel.Text = "Friends";
+            this.FriendTitleLabel.Click += new System.EventHandler(this.FriendTitleLabel_Click);
             // 
             // FriendSearchLabel
             // 
