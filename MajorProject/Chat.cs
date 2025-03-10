@@ -21,7 +21,6 @@ namespace MajorProject
         public Chat(NewFriend Friend)
         {
             friend = Friend;
-            //_ChatList = chatList;
             InitializeComponent();
             this.Load += Chat_Load;
 

@@ -32,7 +32,6 @@ namespace MajorProject
             }
         }
 
-
         public void Requests_Load(object sender, EventArgs e)
         {
             //displays username of request

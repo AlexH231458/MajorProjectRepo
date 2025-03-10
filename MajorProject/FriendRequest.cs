@@ -11,7 +11,6 @@ namespace MajorProject
     internal class FriendRequest
     {
         private List<NewRequest> _RequestList = new List<NewRequest>();
-
         internal List<NewRequest> RequestList
         {
             get { return _RequestList; }
